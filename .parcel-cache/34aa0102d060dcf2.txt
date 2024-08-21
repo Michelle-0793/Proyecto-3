@@ -1,0 +1,27 @@
+26
+84C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\index.975ef6c8.js.map133685159179078499 0
+70C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\package.json133686472374964122 0
+75C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\package-lock.json133686472569410480 0
+68C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\.gitignore133682972934940578 0
+61C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\src133686474551862411 1
+65C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\db.json133685181916567329 0
+85C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\index.3092e1e0.css.map133685181032399824 0
+62C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist133686474540489898 1
+71C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\src\servicios133686383997749518 1
+68C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\index.html133685188235687362 0
+67C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\README.md133686382637101474 0
+65C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\src\css133686384102891617 1
+83C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\src\Pages\formulario.html133686474218208849 0
+72C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\src\index.html133686474551862411 0
+70C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\src\index.js133686474552030283 0
+64C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\src\js133686384055946568 1
+67C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\src\Pages133686474625691812 1
+80C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\index.0d966ffc.js133685181118319262 0
+84C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\index.0d966ffc.js.map133685181118386866 0
+81C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\index.3092e1e0.css133686474540489898 0
+80C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\index.579125c3.js133683016856264117 0
+84C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\index.579125c3.js.map133683016856364061 0
+80C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\index.975ef6c8.js133685159178897057 0
+73C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\index.html133686472522800296 0
+84C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\Plantilla.59712999.js133683016856264117 0
+88C:\Users\michelleLopez\Desktop\sistemaPermisos\Proyecto-3\dist\Plantilla.59712999.js.map133683016856364061 0
