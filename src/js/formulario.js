@@ -52,7 +52,14 @@ fechaRegreso.value = "";
     mensaje.textContent = "Solicitud enviada exitosamente";
 
 }
+// Función para manejar el evento click del botón "Ver historial"
+async function verHistorial() {
+    window.location.href = 'historial.html';
+}
 
 
 // Asignar la función al evento click del botón
 btnEnviar.addEventListener("click", enviarSolicitud);
+
+// Asignar la función al evento click del botón "Ver historial"
+btnHistorial.addEventListener("click", verHistorial);
