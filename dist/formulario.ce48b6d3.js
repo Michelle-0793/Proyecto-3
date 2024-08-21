@@ -559,6 +559,7 @@ function hmrAccept(bundle, id) {
 },{}],"d3rjD":[function(require,module,exports) {
 var _postSolicitud = require("../servicios/postSolicitud");
 var _getSolicitud = require("../servicios/getSolicitud");
+var _updateSolicitud = require("../servicios/updateSolicitud");
 const nombre = document.getElementById("nombre");
 const codigoComputadora = document.getElementById("codigoComputadora");
 const sede = document.getElementById("sede");
@@ -570,11 +571,24 @@ const btnHistorial = document.getElementById("btnHistorial");
 const mensaje = document.getElementById("mensaje");
 const tablaSolicitudes = document.getElementById("tablaSolicitudes");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
+// Función para obtener y mostrar solicitudes
 async function cargarSolicitudes() {
     const solicitudes = await (0, _getSolicitud.getSolicitud)();
     renderizarSolicitudes(solicitudes);
 }
 cargarSolicitudes();
+// Función para manejar el evento click del botón "Aceptar"
+async function aceptarSolicitud(idSolicitud) {
+    //Objeto con el nuevo estado de la solicitud
+    const solicitudActualizada = {
+        estado: "Aceptado"
+    };
+    // Enviar la nueva solicitud usando postSolicitudes
+    const response = await (0, _updateSolicitud.updateSolicitud)(idSolicitud, solicitudActualizada);
+    cargarSolicitudes();
+    mensaje.textContent = "Solicitud aceptada con \xe9xito";
+}
+// Función para renderizar solicitudes en la tabla
 function renderizarSolicitudes(solicitudes) {
     const filas = solicitudes.map((solicitud)=>`
         <tr>
@@ -585,8 +599,8 @@ function renderizarSolicitudes(solicitudes) {
             <td>${solicitud.fechaRegreso}</td>
             <td>${solicitud.estado || "Pendiente"}</td>
             <td>
-                <button onclick="editarSolicitud('${solicitud.id}')">Rechazar</button>
-                <button onclick="eliminarSolicitud('${solicitud.id}')">Aceptar</button>
+                <button onclick="rechazarSolicitud('${solicitud.id}')">Rechazar</button>
+                <button onclick="aceptarSolicitud('${solicitud.id}')">Aceptar</button>
             </td>
         </tr>
     `);
@@ -618,8 +632,6 @@ async function enviarSolicitud() {
     sede.value = "";
     fechaSalida.value = "";
     fechaRegreso.value = "";
-    // Función para renderizar solicitudes en la tabla
-    // Función para obtener y mostrar solicitudes
     // Enviar la nueva solicitud usando postSolicitudes
     const response = await (0, _postSolicitud.postSolicitud)(nuevaSolicitud);
     mensaje.textContent = "Solicitud enviada exitosamente";
@@ -633,7 +645,7 @@ btnEnviar.addEventListener("click", enviarSolicitud);
 // Asignar la función al evento click del botón "Ver historial"
 btnHistorial.addEventListener("click", verHistorial);
 
-},{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7"}],"aWKt8":[function(require,module,exports) {
+},{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7","../servicios/updateSolicitud":"bWa6f"}],"aWKt8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "postSolicitud", ()=>postSolicitud);
@@ -700,6 +712,30 @@ async function getSolicitud() {
         const data = await response.json();
         // Retorna los datos obtenidos de la respuesta del servidor
         return data;
+    } catch (error) {
+        // Captura y muestra cualquier error que ocurra durante la solicitud
+        console.error(error);
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bWa6f":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "updateSolicitud", ()=>updateSolicitud);
+async function updateSolicitud(id, datos) {
+    try {
+        // Realiza una solicitud POST a la URL especificada
+        const response = await fetch("http://localhost:3003/users/" + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json" // Indica que los datos se envían en formato JSON. en este apartado tambien se pueden enviar tokens
+            },
+            body: JSON.stringify(datos) // Convierte el objeto newUser a JSON para enviarlo en el cuer
+        });
+        // Espera la respuesta en formato JSON
+        const data = await response.json();
+        // Retorna los datos obtenidos de la respuesta del servidor
+        return data; /// siempre hay que ponerlo 
     } catch (error) {
         // Captura y muestra cualquier error que ocurra durante la solicitud
         console.error(error);

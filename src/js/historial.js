@@ -1,5 +1,5 @@
 import { getSolicitud } from "../servicios/getSolicitud";
-import { putSolicitud } from "../servicios/putSolicitud";
+import { putSolicitud } from "../servicios/updateSolicitud";
 import { deleteSolicitud } from "../servicios/deleteSolicitud";
 
 
@@ -30,6 +30,7 @@ function renderizarSolicitudes(solicitudes) {
 
 // Función para obtener y mostrar solicitudes
 async function cargarSolicitudes() {
+
     const solicitudes = await getSolicitud();
     renderizarSolicitudes(solicitudes);
 }

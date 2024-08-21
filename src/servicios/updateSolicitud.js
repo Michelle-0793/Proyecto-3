@@ -1,8 +1,4 @@
-async function updateUsers(nombre, apellido,id) {
-    const userData={
-        nombre, 
-        apellido
-    }
+async function updateSolicitud(id, datos) {
     try {
         // Realiza una solicitud POST a la URL especificada
         const response = await fetch('http://localhost:3003/users/'+id, {
@@ -10,7 +6,7 @@ async function updateUsers(nombre, apellido,id) {
             headers: {
                 'Content-Type': 'application/json' // Indica que los datos se envían en formato JSON. en este apartado tambien se pueden enviar tokens
             },
-            body: JSON.stringify(userData) // Convierte el objeto newUser a JSON para enviarlo en el cuer
+            body: JSON.stringify(datos) // Convierte el objeto newUser a JSON para enviarlo en el cuer
         });
 
         // Espera la respuesta en formato JSON
@@ -22,4 +18,4 @@ async function updateUsers(nombre, apellido,id) {
         console.error(error);
     }
 }
-export {updateUsers};
+export {updateSolicitud};

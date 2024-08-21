@@ -1,5 +1,6 @@
 import { postSolicitud } from "../servicios/postSolicitud";
 import { getSolicitud } from "../servicios/getSolicitud";
+import { updateSolicitud } from "../servicios/updateSolicitud";
 
 
 const nombre = document.getElementById("nombre");
@@ -14,13 +15,30 @@ const mensaje = document.getElementById("mensaje");
 const tablaSolicitudes = document.getElementById("tablaSolicitudes");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
 
+// Función para obtener y mostrar solicitudes
 async function cargarSolicitudes() {
     const solicitudes = await getSolicitud();
     renderizarSolicitudes(solicitudes);
 }
+cargarSolicitudes() 
+
+// Función para manejar el evento click del botón "Aceptar"
+async function aceptarSolicitud (idSolicitud) {
+    //Objeto con el nuevo estado de la solicitud
+           const solicitudActualizada = {
+            estado: "Aceptado"
+        }
+
+// Enviar la nueva solicitud usando postSolicitudes
+const response = await updateSolicitud (idSolicitud, solicitudActualizada);
 
 cargarSolicitudes()
 
+mensaje.textContent = "Solicitud aceptada con éxito";
+}      
+
+
+// Función para renderizar solicitudes en la tabla
 function renderizarSolicitudes(solicitudes) {
     const filas = solicitudes.map(solicitud => `
         <tr>
@@ -31,8 +49,8 @@ function renderizarSolicitudes(solicitudes) {
             <td>${solicitud.fechaRegreso}</td>
             <td>${solicitud.estado || 'Pendiente'}</td>
             <td>
-                <button onclick="editarSolicitud('${solicitud.id}')">Rechazar</button>
-                <button onclick="eliminarSolicitud('${solicitud.id}')">Aceptar</button>
+                <button onclick="rechazarSolicitud('${solicitud.id}')">Rechazar</button>
+                <button onclick="aceptarSolicitud('${solicitud.id}')">Aceptar</button>
             </td>
         </tr>
     `);
@@ -40,9 +58,9 @@ function renderizarSolicitudes(solicitudes) {
     cuerpoTabla.innerHTML = filas.join('');
 }
 
+
 // Función para manejar el evento click del botón "Enviar"
 async function enviarSolicitud() {
-
 // Validar que todos los campos estén llenos
     if (!nombre.value || !codigoComputadora.value || !sede.value || !fechaSalida.value || !fechaRegreso.value) {
         mensaje.textContent = "Por favor, complete todos los campos";
@@ -70,11 +88,6 @@ codigoComputadora.value = "";
 sede.value = "";
 fechaSalida.value = "";
 fechaRegreso.value = "";
-
-// Función para renderizar solicitudes en la tabla
-
-
-// Función para obtener y mostrar solicitudes
 
 
 // Enviar la nueva solicitud usando postSolicitudes
