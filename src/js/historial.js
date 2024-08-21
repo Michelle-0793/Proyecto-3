@@ -19,8 +19,8 @@ function renderizarSolicitudes(solicitudes) {
             <td>${solicitud.fechaRegreso}</td>
             <td>${solicitud.estado || 'Pendiente'}</td>
             <td>
-                <button onclick="editarSolicitud('${solicitud.id}')">Editar</button>
-                <button onclick="eliminarSolicitud('${solicitud.id}')">Eliminar</button>
+                <button onclick="editarSolicitud('${solicitud.id}')">Rechazar</button>
+                <button onclick="eliminarSolicitud('${solicitud.id}')">Rechazar</button>
             </td>
         </tr>
     `);

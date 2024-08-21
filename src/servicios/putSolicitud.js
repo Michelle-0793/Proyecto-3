@@ -5,7 +5,7 @@ async function updateUsers(nombre, apellido,id) {
     }
     try {
         // Realiza una solicitud POST a la URL especificada
-        const response = await fetch('http://localhost:3002/users/'+id, {
+        const response = await fetch('http://localhost:3003/users/'+id, {
             method: 'PUT', // Especifica que se está utilizando el método PUT
             headers: {
                 'Content-Type': 'application/json' // Indica que los datos se envían en formato JSON. en este apartado tambien se pueden enviar tokens

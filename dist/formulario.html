@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Solicitud de permiso</title>
+</head>
+<body>
+    <h1>Registro de Salida de Computadoras</h1>
+<input id="nombre" type="text" placeholder="Nombre/ID Usuario"><br>
+<br><br>
+
+<input id="codigoComputadora" type="text" placeholder="Código computadora">
+<br><br>
+
+<select class="btnSelect" name="select" id="sede">
+    <option value="" disabled="" selected=""> Sede</option>
+    <option value="sedeNosara">Sede Nosara</option>
+    <option value="sedeSantaAna">Sede Santa Ana</option>
+    <option value="sedePuntarenas">Sede Puntarenas</option>
+</select> 
+<br><br>
+
+<label for="fechaSalida">Fecha de salida:</label><br><br>
+<input type="date" id="fechaSalida" name="fechaSalida" value="dd/mm/aaaa" min="01-08-2024" max="31-12-2025">
+<br><br>
+
+<label for="fechaRegreso">Fecha de regreso:</label><br><br>
+<input type="date" id="fechaRegreso" name="fechaRegreso" value="dd/mm/aaaa" min="01-08-2024" max="31-12-2025">
+<br><br>
+
+<div>
+<div><input type="checkbox" id="terminosCondiciones" name="terminosCondiciones">Acepto terminos y condiciones</div>
+
+<!--<div>Acepto los <a href="terminosCondiciones.html">terminos y condiciones</a></div> -->
+</div>
+<br><br>
+
+<div>
+    <button id="btnEnviar">Enviar</button>
+    <button id="btnHistorial">Ver historial</button>
+</div>
+
+<div id="mensaje"></div>
+
+<br><br>
+<table id="tablaSolicitudes">
+    <thead>
+        <tr>
+            <th>Nombre/ID Usuario</th>
+            <th>Código Computadora</th>
+            <th>Sede</th>
+            <th>Fecha de Salida</th>
+            <th>Fecha de Regreso</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody id="cuerpoTabla">
+        <!-- Aquí se insertarán las filas de las solicitudes -->
+    </tbody>
+</table>
+
+<script src="/formulario.ce48b6d3.js" defer=""></script>
+
+
+</body>
+</html>

@@ -11,7 +11,34 @@ const terminosCondiciones = document.getElementById("terminosCondiciones");
 const btnEnviar = document.getElementById("btnEnviar");
 const btnHistorial = document.getElementById("btnHistorial");
 const mensaje = document.getElementById("mensaje");
+const tablaSolicitudes = document.getElementById("tablaSolicitudes");
+const cuerpoTabla = document.getElementById("cuerpoTabla");
 
+async function cargarSolicitudes() {
+    const solicitudes = await getSolicitud();
+    renderizarSolicitudes(solicitudes);
+}
+
+cargarSolicitudes()
+
+function renderizarSolicitudes(solicitudes) {
+    const filas = solicitudes.map(solicitud => `
+        <tr>
+            <td>${solicitud.nombreUsuario}</td>
+            <td>${solicitud.codigoComputadora}</td>
+            <td>${solicitud.sede}</td>
+            <td>${solicitud.fechaSalida}</td>
+            <td>${solicitud.fechaRegreso}</td>
+            <td>${solicitud.estado || 'Pendiente'}</td>
+            <td>
+                <button onclick="editarSolicitud('${solicitud.id}')">Rechazar</button>
+                <button onclick="eliminarSolicitud('${solicitud.id}')">Aceptar</button>
+            </td>
+        </tr>
+    `);
+    
+    cuerpoTabla.innerHTML = filas.join('');
+}
 
 // Función para manejar el evento click del botón "Enviar"
 async function enviarSolicitud() {
@@ -24,12 +51,9 @@ async function enviarSolicitud() {
 
 // Validar que se hayan aceptado los términos y condiciones
     if (!terminosCondiciones.checked) {
-        mensaje.textContent = "Acepte los términos y condiciones";
+        mensaje.textContent = "Debe aceptar los términos y condiciones";
         return;
     }
-
-//Obtener las solicitudes existentes
-const solicitudes = await getSolicitud();
 
 // Nueva solicitud con los datos del formulario
 const nuevaSolicitud = {
@@ -47,9 +71,15 @@ sede.value = "";
 fechaSalida.value = "";
 fechaRegreso.value = "";
 
+// Función para renderizar solicitudes en la tabla
+
+
+// Función para obtener y mostrar solicitudes
+
+
 // Enviar la nueva solicitud usando postSolicitudes
-    const response = await postSolicitud(nuevaSolicitud);
-    mensaje.textContent = "Solicitud enviada exitosamente";
+const response = await postSolicitud (nuevaSolicitud);
+mensaje.textContent = "Solicitud enviada exitosamente";
 
 }
 // Función para manejar el evento click del botón "Ver historial"
