@@ -1,5 +1,22 @@
-let cedula = document.getElementById("cedula")
-let contraseña = document.getElementById("contraseña")
-let btnLogin = document.getElementById("btnLogin")
+import { getUsers } from "../services/getUsuarios"
 
-async
+const cedula = document.getElementById("cedula")
+const contraseña = document.getElementById("contraseña")
+const btnLogin = document.getElementById("btnLogin")
+
+btnLogin.addEventListener("click", function () {
+
+ validarUsuario()
+
+  async function validarUsuario() {
+  const lista = await getUsers()
+  for (let index = 0; index < lista.length; index++) {
+    
+    
+  }
+
+    
+ }
+    
+})
+
