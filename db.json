@@ -1,9 +1,12 @@
 {
   "users": [
     {
-      "id": "d65b",
-      "nombre": "Michelle",
-      "apellido": "López"
+      "id": "dddf",
+      "nombre": "Yancy Alfaro",
+      "cedula": "2083000065",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "1617",
+      "codigo": "0036"
     }
   ]
 }
