@@ -572,6 +572,7 @@ const btnEnviar = document.getElementById("btnEnviar");
 const btnHistorial = document.getElementById("btnHistorial");
 const mensaje = document.getElementById("mensaje");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
+const urlHistorial = "http://localhost:3001/historial";
 //2 FUNCIONES AUXILIARES
 // Función para renderizar solicitudes en la tabla
 function renderizarSolicitudes(solicitudes) {
@@ -610,11 +611,11 @@ cargarSolicitudes();
 // Función para obtener y mostrar solicitudes
 async function cargarSolicitudes() {
     // Obtener las solicitudes
-    const solicitudes = await (0, _getSolicitud.getSolicitud)();
+    const solicitud = await (0, _getSolicitud.getSolicitud)();
     // Limpiar el cuerpo de la tabla antes de renderizar nuevas solicitudes
     cuerpoTabla.innerHTML = "";
     // Renderizar las solicitudes en la tabla
-    renderizarSolicitudes(solicitudes);
+    renderizarSolicitudes(solicitud);
 }
 // Función "Enviar"
 async function enviarSolicitud() {
@@ -647,41 +648,34 @@ async function enviarSolicitud() {
     sede.value = "";
     fechaSalida.value = "";
     fechaRegreso.value = "";
+    checked.value = "";
 }
 //ACEPTAR SOLICITUD
 // Función para manejar el evento click del botón "Aceptar"
-async function aceptarSolicitud(idSolicitud) {
-    const solicitudActualizada = {
-        estado: "Aceptado"
-    };
-    console.log(idSolicitud, solicitudActualizada);
-    await (0, _updateSolicitud.updateSolicitud)(idSolicitud, solicitudActualizada);
-    mensaje.textContent = "Solicitud aceptada con \xe9xito";
-    // Esperar 2 segundos antes de mover al historial
+async function aceptarSolicitud(nuevaSolicitud) {
+    const solicitud = await (0, _getSolicitud.getSolicitud)(nuevaSolicitud);
     setTimeout(async ()=>{
-        await moverSolicitudAlHistorial(solicitudActualizada);
+        await moverSolicitudAlHistorial(solicitud);
     }, 2000);
     cargarSolicitudes(); // Recargar la lista de solicitudes
+    return;
 }
 //RECHAZAR SOLICITUD
 // Función "Rechazar"
-async function rechazarSolicitud(id) {
-    const solicitudActualizada = {
-        estado: "Rechazado"
-    };
-    // Enviar la solicitud actualizada con updateSolicitud
-    await (0, _updateSolicitud.updateSolicitud)(id, solicitudActualizada);
-    mensaje.textContent = "Solicitud rechazada con \xe9xito";
-    // Esperar 2 segundos antes de mover al historial
+async function rechazarSolicitud(nuevaSolicitud) {
+    const solicitud = await (0, _getSolicitud.getSolicitud)(nuevaSolicitud);
     setTimeout(async ()=>{
-        await moverSolicitudAlHistorial(solicitudActualizada);
+        await moverSolicitudAlHistorial(solicitud);
     }, 2000);
     cargarSolicitudes(); // Recargar la lista de solicitudes
+    return;
 }
 //ENVIAR AL HISTORIAL
 // Función para mover la solicitud al historial
 async function moverSolicitudAlHistorial(solicitud) {
-    await (0, _postSolicitud.postSolicitud)(solicitud, "historial");
+    delete solicitud.estado //Para remover el estado
+    ;
+    await (0, _postSolicitud.postSolicitud)(solicitud, urlHistorial);
 }
 //EVENTO DE LOS BOTONES
 // Función "Ver historial"
@@ -769,7 +763,7 @@ async function getSolicitud() {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "updateSolicitud", ()=>updateSolicitud);
-async function updateSolicitud(id, estado) {
+async function updateSolicitud(id) {
     try {
         // Realiza una solicitud PUT a la URL especificada con el ID
         const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {

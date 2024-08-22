@@ -1,4 +1,4 @@
-async function updateSolicitud(id, estado) {
+async function updateSolicitud(id) {
     try {
         // Realiza una solicitud PUT a la URL especificada con el ID
         const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {

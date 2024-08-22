@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="../css/formulario.css">
 </head>
 <body>
-    <h1>Registro de Salida de Computadoras</h1>
-<input id="nombre" type="text" placeholder="Nombre/ID Usuario"><br>
+    <h3>Registro de Salida de Computadoras</h3>
+<input class="inputRegistro" id="nombre" type="text" placeholder="Nombre/ID Usuario"><br>
+<br>
+
+<input class="inputRegistro" id="codigoComputadora" type="text" placeholder="Código computadora">
 <br><br>
 
-<input id="codigoComputadora" type="text" placeholder="Código computadora">
-<br><br>
-
-<select class="btnSelect" name="select" id="sede">
-    <option value="" disabled selected> Sede</option>
+<select class="select" name="select" id="sede">
+    <option value="" disabled selected> Selecciona sede</option>
     <option value="sedeNosara">Sede Nosara</option>
     <option value="sedeSantaAna">Sede Santa Ana</option>
     <option value="sedePuntarenas">Sede Puntarenas</option>
 </select> 
 <br><br>
 
-<label for="fechaSalida">Fecha de salida:</label><br><br>
-<input type="date" id="fechaSalida" name="fechaSalida" value="dd/mm/aaaa" min="2024-08-01" max="2025-12-31" />
+<label class="textoCalendario" for="fechaSalida">Fecha de salida:</label><br><br>
+<input class="inputRegistro" type="date" id="fechaSalida" name="fechaSalida" value="dd/mm/aaaa" min="2024-08-01" max="2025-12-31" />
 <br><br>
 
 <label for="fechaRegreso">Fecha de regreso:</label><br><br>
-<input type="date" id="fechaRegreso" name="fechaRegreso" value="dd/mm/aaaa" min="2024-08-01" max="2025-12-31" />
+<input class="inputRegistro" type="date" id="fechaRegreso" name="fechaRegreso" value="dd/mm/aaaa" min="2024-08-01" max="2025-12-31" />
 <br><br>
 
 <div>

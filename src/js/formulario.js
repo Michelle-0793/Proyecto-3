@@ -16,6 +16,7 @@ const btnHistorial = document.getElementById("btnHistorial");
 const mensaje = document.getElementById("mensaje");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
 
+const urlHistorial = "http://localhost:3001/historial"
 
 //2 FUNCIONES AUXILIARES
 // Función para renderizar solicitudes en la tabla
@@ -37,7 +38,7 @@ function renderizarSolicitudes(solicitudes) {
 
         // Botón para aceptar la solicitud
         const btnAceptar = document.createElement('button');
-        btnAceptar .textContent = "Aceptar";
+        btnAceptar.textContent = "Aceptar";
         btnAceptar.addEventListener('click', () => aceptarSolicitud(solicitud.id));
 
         // Botón para rechazar la solicitud
@@ -62,12 +63,12 @@ cargarSolicitudes()
 // Función para obtener y mostrar solicitudes
 async function cargarSolicitudes() {
     // Obtener las solicitudes
-    const solicitudes = await getSolicitud();
+    const solicitud = await getSolicitud();
     // Limpiar el cuerpo de la tabla antes de renderizar nuevas solicitudes
     cuerpoTabla.innerHTML = '';
 
     // Renderizar las solicitudes en la tabla
-    renderizarSolicitudes(solicitudes);
+    renderizarSolicitudes(solicitud);
 }
 
 
@@ -107,48 +108,40 @@ async function enviarSolicitud() {
     sede.value = "";
     fechaSalida.value = "";
     fechaRegreso.value = "";
+    checked.value ="";
 }
 
 //ACEPTAR SOLICITUD
 // Función para manejar el evento click del botón "Aceptar"
-async function aceptarSolicitud(idSolicitud) {
-    const solicitudActualizada = {
-        estado: "Aceptado"
-    };
-    console.log(idSolicitud, solicitudActualizada);
-    await updateSolicitud(idSolicitud, solicitudActualizada);
-    mensaje.textContent = "Solicitud aceptada con éxito";
-
-    // Esperar 2 segundos antes de mover al historial
+async function aceptarSolicitud(nuevaSolicitud) {
+    const solicitud = await getSolicitud (nuevaSolicitud)
     setTimeout(async () => {
-        await moverSolicitudAlHistorial(solicitudActualizada);
+        await moverSolicitudAlHistorial(solicitud);
     }, 2000);
+   
     cargarSolicitudes(); // Recargar la lista de solicitudes
+    return
+    
 }
-
 
 //RECHAZAR SOLICITUD
 // Función "Rechazar"
-async function rechazarSolicitud(id) {
-    const solicitudActualizada = {
-        estado: "Rechazado"
-    };
-// Enviar la solicitud actualizada con updateSolicitud
-    await updateSolicitud(id, solicitudActualizada);
-    mensaje.textContent = "Solicitud rechazada con éxito";   
-    // Esperar 2 segundos antes de mover al historial
+async function rechazarSolicitud(nuevaSolicitud) {
+    const solicitud = await getSolicitud (nuevaSolicitud)
     setTimeout(async () => {
-        await moverSolicitudAlHistorial(solicitudActualizada);
+        await moverSolicitudAlHistorial(solicitud);
     }, 2000);
 
     cargarSolicitudes(); // Recargar la lista de solicitudes
+    return
 }
 
 
 //ENVIAR AL HISTORIAL
 // Función para mover la solicitud al historial
 async function moverSolicitudAlHistorial(solicitud) {
-   await postSolicitud(solicitud, "historial"); 
+   delete solicitud.estado //Para remover el estado
+   await postSolicitud(solicitud, urlHistorial)
 }
 
 

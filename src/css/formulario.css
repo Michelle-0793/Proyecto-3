@@ -1,4 +1,44 @@
-h1{
+h3{
     color: #00264D;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    font-size: 23px;
+    text-align: center;
+}
+.inputRegistro{
+    height:add(5rem, input-height-border);
+    line-height:1.25;
+    padding:3rem;
+    padding-top:1.625rem;
+    padding-block:.625rem;
+    height:30px;
+    width: 160px;
+    transform:scale(.85) translateY(-.5rem) translateX(.15rem);
+    color:gray-300;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+    font-size: 16px;
+    border-radius: 50px;
+    border: transparent;
+    background-color: #E3E3E3;  
+    text-align: center;  
+}
+.select{
+    height:50px;
+    width: 260px;
+    transform:scale(.85) translateY(-.5rem) translateX(.15rem);
+    color:gray-300;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+    font-size: 16px;
+    border-radius: 50px;
+    border: transparent;
+    background-color: #E3E3E3;  
+    text-align: center; 
+}
+.textoCalendario{
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    font-weight: bold;
+    color: #04082c;
+    text-align: center;
+
 }
