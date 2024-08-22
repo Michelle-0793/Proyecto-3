@@ -2,6 +2,8 @@ import { postSolicitud } from "../servicios/postSolicitud";
 import { getSolicitud } from "../servicios/getSolicitud";
 import { updateSolicitud } from "../servicios/updateSolicitud";
 
+
+//1 DECLARAR VARIABLES DEL DOM
 // Obtener referencias a los elementos del DOM
 const nombre = document.getElementById("nombre");
 const codigoComputadora = document.getElementById("codigoComputadora");
@@ -14,62 +16,10 @@ const btnHistorial = document.getElementById("btnHistorial");
 const mensaje = document.getElementById("mensaje");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
 
-// Función para obtener y mostrar solicitudes
-async function cargarSolicitudes() {
-    const solicitudes = await getSolicitud();
-    // Renderizar las solicitudes en la tabla
-    renderizarSolicitudes(solicitudes);
-}
 
-
-//ACEPTAR SOLICITUD
-// Función para manejar el evento click del botón "Aceptar"
-async function aceptarSolicitud(idSolicitud) {
-    const solicitudActualizada = {
-        estado: "Aceptado"
-    };
-
-    const response = await updateSolicitud(idSolicitud, solicitudActualizada);
-    mensaje.textContent = "Solicitud aceptada con éxito";
-
-    // Esperar 2 segundos antes de mover al historial
-    setTimeout(async () => {
-        await moverSolicitudAlHistorial(solicitudActualizada);
-    }, 2000);
-
-    cargarSolicitudes(); // Recargar la lista de solicitudes
-}
-
-//RECHAZAR SOLICITUD
-// Función para manejar el evento click del botón "Rechazar"
-async function rechazarSolicitud(idSolicitud) {
-    const solicitudActualizada = {
-        estado: "Rechazado"
-    };
-// Enviar la solicitud actualizada con updateSolicitud
-    const response = await updateSolicitud(idSolicitud, solicitudActualizada);
-    mensaje.textContent = "Solicitud rechazada con éxito";   
-    // Esperar 2 segundos antes de mover al historial
-    setTimeout(async () => {
-        await moverSolicitudAlHistorial(solicitudActualizada);
-    }, 2000);
-
-    cargarSolicitudes(); // Recargar la lista de solicitudes
-}
-
-//ENVIAR AL HISTORIAL
-// Función para mover la solicitud al historial
-async function moverSolicitudAlHistorial(solicitud) {
-   const response = await postSolicitud(solicitud, "historial"); 
-}
-
-
+//2 FUNCIONES AUXILIARES
 // Función para renderizar solicitudes en la tabla
 function renderizarSolicitudes(solicitudes) {
-    console.log('Datos recibidos para renderizar:', solicitudes)
-    // Limpiar la tabla antes de renderizar nuevas filas
-    cuerpoTabla.innerHTML = '';
-
     solicitudes.forEach(solicitud => {
         // Crear la fila para cada solicitud
         const fila = document.createElement('tr');
@@ -82,7 +32,6 @@ function renderizarSolicitudes(solicitudes) {
             <td>${solicitud.fechaRegreso}</td>
             <td>${solicitud.estado || 'Pendiente'}</td>
         `;
-
         // Crear las celdas con los botones
         const celdaBotones = document.createElement('td');
 
@@ -92,7 +41,7 @@ function renderizarSolicitudes(solicitudes) {
         btnAceptar.addEventListener('click', () => aceptarSolicitud(solicitud.id));
 
         // Botón para rechazar la solicitud
-        const  btnRechazar = document.createElement('button');
+        const btnRechazar = document.createElement('button');
         btnRechazar.textContent = "Rechazar";
         btnRechazar.addEventListener('click', () => rechazarSolicitud(solicitud.id));
 
@@ -108,7 +57,21 @@ function renderizarSolicitudes(solicitudes) {
     });
 }
 
-// Función para manejar el evento click del botón "Enviar"
+cargarSolicitudes()
+//3 FUNCIONES PRINCIPALES
+// Función para obtener y mostrar solicitudes
+async function cargarSolicitudes() {
+    // Obtener las solicitudes
+    const solicitudes = await getSolicitud();
+    // Limpiar el cuerpo de la tabla antes de renderizar nuevas solicitudes
+    cuerpoTabla.innerHTML = '';
+
+    // Renderizar las solicitudes en la tabla
+    renderizarSolicitudes(solicitudes);
+}
+
+
+// Función "Enviar"
 async function enviarSolicitud() {
     // Validar que todos los campos estén llenos
     if (!nombre.value || !codigoComputadora.value || !sede.value || !fechaSalida.value || !fechaRegreso.value) {
@@ -123,7 +86,7 @@ async function enviarSolicitud() {
     }
 
     // Crear un objeto con los datos de la nueva solicitud
-    const nuevaSolicitud = {
+        const nuevaSolicitud = {
         nombreUsuario: nombre.value,
         codigoComputadora: codigoComputadora.value,
         sede: sede.value,
@@ -131,32 +94,73 @@ async function enviarSolicitud() {
         fechaRegreso: fechaRegreso.value
     };
 
+   
+// Enviar la nueva solicitud usando postSolicitud
+    await postSolicitud(nuevaSolicitud);
+    mensaje.textContent = "Solicitud enviada exitosamente";
+    console.log(nuevaSolicitud);  
+    cargarSolicitudes()
+
 // Limpiar los campos del formulario
     nombre.value = "";
     codigoComputadora.value = "";
     sede.value = "";
     fechaSalida.value = "";
     fechaRegreso.value = "";
-
-    // Enviar la nueva solicitud usando postSolicitud
-    const response = await postSolicitud(nuevaSolicitud);
-    mensaje.textContent = "Solicitud enviada exitosamente";
-    
-    // Recargar las solicitudes para ver la nueva solicitud
-    cargarSolicitudes();
 }
 
-// Función para manejar el evento click del botón "Ver historial"
+//ACEPTAR SOLICITUD
+// Función para manejar el evento click del botón "Aceptar"
+async function aceptarSolicitud(idSolicitud) {
+    const solicitudActualizada = {
+        estado: "Aceptado"
+    };
+    console.log(idSolicitud, solicitudActualizada);
+    await updateSolicitud(idSolicitud, solicitudActualizada);
+    mensaje.textContent = "Solicitud aceptada con éxito";
+
+    // Esperar 2 segundos antes de mover al historial
+    setTimeout(async () => {
+        await moverSolicitudAlHistorial(solicitudActualizada);
+    }, 2000);
+    cargarSolicitudes(); // Recargar la lista de solicitudes
+}
+
+
+//RECHAZAR SOLICITUD
+// Función "Rechazar"
+async function rechazarSolicitud(id) {
+    const solicitudActualizada = {
+        estado: "Rechazado"
+    };
+// Enviar la solicitud actualizada con updateSolicitud
+    await updateSolicitud(id, solicitudActualizada);
+    mensaje.textContent = "Solicitud rechazada con éxito";   
+    // Esperar 2 segundos antes de mover al historial
+    setTimeout(async () => {
+        await moverSolicitudAlHistorial(solicitudActualizada);
+    }, 2000);
+
+    cargarSolicitudes(); // Recargar la lista de solicitudes
+}
+
+
+//ENVIAR AL HISTORIAL
+// Función para mover la solicitud al historial
+async function moverSolicitudAlHistorial(solicitud) {
+   await postSolicitud(solicitud, "historial"); 
+}
+
+
+
+//EVENTO DE LOS BOTONES
+// Función "Ver historial"
 function verHistorial() {
     window.location.href = 'historial.html';
 }
-// Asignar la función al evento click del botón "Ver historial"
 btnHistorial.addEventListener("click", verHistorial);
 
 // Asignar la función al evento click del botón "Enviar"
 btnEnviar.addEventListener("click", enviarSolicitud);
 
-
-// Cargar solicitudes al cargar la página
-cargarSolicitudes();
 

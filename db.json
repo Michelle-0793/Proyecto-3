@@ -1,6 +1,25 @@
-
 {
-  "solicitudes": [],
-
-   "historial": []
+  "solicitudes": [
+    {
+      "estado": "Aceptado",
+      "id": "dc22"
+    },
+    {
+      "id": "4ae4",
+      "estado": "Aceptado"
+    },
+    {
+      "id": "0857",
+      "estado": "Aceptado"
+    },
+    {
+      "estado": "Aceptado",
+      "id": "aa46"
+    },
+    {
+      "id": "7144",
+      "estado": "Aceptado"
+    }
+  ],
+  "historial": []
 }

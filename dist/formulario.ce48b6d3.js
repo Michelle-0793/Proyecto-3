@@ -560,6 +560,7 @@ function hmrAccept(bundle, id) {
 var _postSolicitud = require("../servicios/postSolicitud");
 var _getSolicitud = require("../servicios/getSolicitud");
 var _updateSolicitud = require("../servicios/updateSolicitud");
+//1 DECLARAR VARIABLES DEL DOM
 // Obtener referencias a los elementos del DOM
 const nombre = document.getElementById("nombre");
 const codigoComputadora = document.getElementById("codigoComputadora");
@@ -571,51 +572,9 @@ const btnEnviar = document.getElementById("btnEnviar");
 const btnHistorial = document.getElementById("btnHistorial");
 const mensaje = document.getElementById("mensaje");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
-// Función para obtener y mostrar solicitudes
-async function cargarSolicitudes() {
-    const solicitudes = await (0, _getSolicitud.getSolicitud)();
-    // Renderizar las solicitudes en la tabla
-    renderizarSolicitudes(solicitudes);
-}
-//ACEPTAR SOLICITUD
-// Función para manejar el evento click del botón "Aceptar"
-async function aceptarSolicitud(idSolicitud) {
-    const solicitudActualizada = {
-        estado: "Aceptado"
-    };
-    const response = await (0, _updateSolicitud.updateSolicitud)(idSolicitud, solicitudActualizada);
-    mensaje.textContent = "Solicitud aceptada con \xe9xito";
-    // Esperar 2 segundos antes de mover al historial
-    setTimeout(async ()=>{
-        await moverSolicitudAlHistorial(solicitudActualizada);
-    }, 2000);
-    cargarSolicitudes(); // Recargar la lista de solicitudes
-}
-//RECHAZAR SOLICITUD
-// Función para manejar el evento click del botón "Rechazar"
-async function rechazarSolicitud(idSolicitud) {
-    const solicitudActualizada = {
-        estado: "Rechazado"
-    };
-    // Enviar la solicitud actualizada con updateSolicitud
-    const response = await (0, _updateSolicitud.updateSolicitud)(idSolicitud, solicitudActualizada);
-    mensaje.textContent = "Solicitud rechazada con \xe9xito";
-    // Esperar 2 segundos antes de mover al historial
-    setTimeout(async ()=>{
-        await moverSolicitudAlHistorial(solicitudActualizada);
-    }, 2000);
-    cargarSolicitudes(); // Recargar la lista de solicitudes
-}
-//ENVIAR AL HISTORIAL
-// Función para mover la solicitud al historial
-async function moverSolicitudAlHistorial(solicitud) {
-    const response = await (0, _postSolicitud.postSolicitud)(solicitud, "historial");
-}
+//2 FUNCIONES AUXILIARES
 // Función para renderizar solicitudes en la tabla
 function renderizarSolicitudes(solicitudes) {
-    console.log("Datos recibidos para renderizar:", solicitudes);
-    // Limpiar la tabla antes de renderizar nuevas filas
-    cuerpoTabla.innerHTML = "";
     solicitudes.forEach((solicitud)=>{
         // Crear la fila para cada solicitud
         const fila = document.createElement("tr");
@@ -646,7 +605,18 @@ function renderizarSolicitudes(solicitudes) {
         cuerpoTabla.appendChild(fila);
     });
 }
-// Función para manejar el evento click del botón "Enviar"
+cargarSolicitudes();
+//3 FUNCIONES PRINCIPALES
+// Función para obtener y mostrar solicitudes
+async function cargarSolicitudes() {
+    // Obtener las solicitudes
+    const solicitudes = await (0, _getSolicitud.getSolicitud)();
+    // Limpiar el cuerpo de la tabla antes de renderizar nuevas solicitudes
+    cuerpoTabla.innerHTML = "";
+    // Renderizar las solicitudes en la tabla
+    renderizarSolicitudes(solicitudes);
+}
+// Función "Enviar"
 async function enviarSolicitud() {
     // Validar que todos los campos estén llenos
     if (!nombre.value || !codigoComputadora.value || !sede.value || !fechaSalida.value || !fechaRegreso.value) {
@@ -666,28 +636,61 @@ async function enviarSolicitud() {
         fechaSalida: fechaSalida.value,
         fechaRegreso: fechaRegreso.value
     };
+    // Enviar la nueva solicitud usando postSolicitud
+    await (0, _postSolicitud.postSolicitud)(nuevaSolicitud);
+    mensaje.textContent = "Solicitud enviada exitosamente";
+    console.log(nuevaSolicitud);
+    cargarSolicitudes();
     // Limpiar los campos del formulario
     nombre.value = "";
     codigoComputadora.value = "";
     sede.value = "";
     fechaSalida.value = "";
     fechaRegreso.value = "";
-    // Enviar la nueva solicitud usando postSolicitud
-    const response = await (0, _postSolicitud.postSolicitud)(nuevaSolicitud);
-    mensaje.textContent = "Solicitud enviada exitosamente";
-    // Recargar las solicitudes para ver la nueva solicitud
-    cargarSolicitudes();
 }
-// Función para manejar el evento click del botón "Ver historial"
+//ACEPTAR SOLICITUD
+// Función para manejar el evento click del botón "Aceptar"
+async function aceptarSolicitud(idSolicitud) {
+    const solicitudActualizada = {
+        estado: "Aceptado"
+    };
+    console.log(idSolicitud, solicitudActualizada);
+    await (0, _updateSolicitud.updateSolicitud)(idSolicitud, solicitudActualizada);
+    mensaje.textContent = "Solicitud aceptada con \xe9xito";
+    // Esperar 2 segundos antes de mover al historial
+    setTimeout(async ()=>{
+        await moverSolicitudAlHistorial(solicitudActualizada);
+    }, 2000);
+    cargarSolicitudes(); // Recargar la lista de solicitudes
+}
+//RECHAZAR SOLICITUD
+// Función "Rechazar"
+async function rechazarSolicitud(id) {
+    const solicitudActualizada = {
+        estado: "Rechazado"
+    };
+    // Enviar la solicitud actualizada con updateSolicitud
+    await (0, _updateSolicitud.updateSolicitud)(id, solicitudActualizada);
+    mensaje.textContent = "Solicitud rechazada con \xe9xito";
+    // Esperar 2 segundos antes de mover al historial
+    setTimeout(async ()=>{
+        await moverSolicitudAlHistorial(solicitudActualizada);
+    }, 2000);
+    cargarSolicitudes(); // Recargar la lista de solicitudes
+}
+//ENVIAR AL HISTORIAL
+// Función para mover la solicitud al historial
+async function moverSolicitudAlHistorial(solicitud) {
+    await (0, _postSolicitud.postSolicitud)(solicitud, "historial");
+}
+//EVENTO DE LOS BOTONES
+// Función "Ver historial"
 function verHistorial() {
     window.location.href = "historial.html";
 }
-// Asignar la función al evento click del botón "Ver historial"
 btnHistorial.addEventListener("click", verHistorial);
 // Asignar la función al evento click del botón "Enviar"
 btnEnviar.addEventListener("click", enviarSolicitud);
-// Cargar solicitudes al cargar la página
-cargarSolicitudes();
 
 },{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7","../servicios/updateSolicitud":"bWa6f"}],"aWKt8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
