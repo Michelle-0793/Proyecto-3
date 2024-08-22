@@ -557,10 +557,73 @@ function hmrAccept(bundle, id) {
 }
 
 },{}],"47T64":[function(require,module,exports) {
-let cedula = document.getElementById("cedula");
-let contraseña = document.getElementById("contrase\xf1a");
-let btnLogin = document.getElementById("btnLogin");
-async;
+var _getUsuarios = require("../services/getUsuarios");
+const cedula = document.getElementById("cedula");
+const contrasena = document.getElementById("contrasena");
+const btnLogin = document.getElementById("btnLogin");
+btnLogin.addEventListener("click", function() {
+    validarUsuario();
+    async function validarUsuario() {
+        const lista = await (0, _getUsuarios.getUsers)();
+        for(let index = 0; index < lista.length; index++)if (lista[index].cedula === cedula.value && lista[index].contrasena === contrasena.value) {
+            let usuarioDatos = lista[index].nombre;
+            localStorage.setItem("usuarioDatos", usuarioDatos);
+            console.log("Usuario registrado");
+            window.location.href = "";
+        } else console.log("Usuario no registrado");
+    }
+});
+
+},{"../services/getUsuarios":"hsKdH"}],"hsKdH":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getUsers", ()=>getUsers);
+async function getUsers() {
+    try {
+        const response = await fetch("http://localhost:3001/users", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error("Error fetching users");
+        const users = await response.json();
+        return users;
+    } catch (error) {
+        console.error("Error fetching users:", error);
+        throw error;
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["6HT3i","47T64"], "47T64", "parcelRequire6682")
 

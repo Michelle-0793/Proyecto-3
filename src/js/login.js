@@ -15,9 +15,9 @@ btnLogin.addEventListener("click", function () {
    
            if (lista[index].cedula === cedula.value && lista[index].contrasena === contrasena.value) {
              let usuarioDatos = lista [index].nombre
-             localStorage.setItem("usuarioDatos", (usuarioDatos))
+             localStorage.setItem("usuarioDatos",(usuarioDatos))
              console.log("Usuario registrado")
-             window.location.href = "Registro.html"
+             window.location.href = ""
 
             }else{
              console.log("Usuario no registrado")

@@ -563,7 +563,7 @@ const nombre = document.getElementById("nombre");
 const cedula = document.getElementById("cedula");
 const email = document.getElementById("email");
 const contrasena = document.getElementById("contrasena");
-const codigo = document.getElementById("codigo");
+const seleccionar = document.getElementById("seleccionar");
 const btnRegistrar = document.getElementById("btnRegistrar");
 btnRegistrar.addEventListener("click", function() {
     crearUsuario();
@@ -572,21 +572,21 @@ btnRegistrar.addEventListener("click", function() {
         const cedulaUsuario = cedula.value;
         const emailUsuario = email.value;
         const contrasenaUsuario = contrasena.value;
-        const codigoUsuario = codigo.value;
-        if (!nombreUsuario || !cedulaUsuario || !emailUsuario || !contrasenaUsuario || !codigoUsuario) mensaje.textContent = "Debe llenar todos los campos";
+        const seleccionarUsuario = seleccionar.value;
+        if (!nombreUsuario || !cedulaUsuario || !emailUsuario || !contrasenaUsuario || !seleccionarUsuario) mensaje.textContent = "Debe llenar todos los campos";
         else {
             nombre.value = "";
             cedula.value = "";
             email.value = "";
             contrasena.value = "";
-            codigo.value = "";
+            seleccionar.value = "";
+            let cedulaExistente = [];
             const usuarios = await (0, _getUsuarios.getUsers)();
-            const cedulaExistente = usuarios.find((user)=>user.cedula === cedulaUsuario);
-            console.log(cedulaExistente);
-            if (cedulaExistente) mensaje.textContent = "La c\xe9dula ya est\xe1 registrada";
+            cedulaExistente = usuarios.filter((user)=>user.cedula === cedulaUsuario);
+            if (cedulaExistente.cedula === cedulaUsuario) mensaje.textContent = "La c\xe9dula ya est\xe1 registrada";
             else {
-                const response = await (0, _postUsuarios.postUsers)(nombreUsuario, cedulaUsuario, emailUsuario, contrasenaUsuario, codigoUsuario);
-                mensaje.textContent = "Usuario agregado exitosamente";
+                const response = await (0, _postUsuarios.postUsers)(nombreUsuario, cedulaUsuario, emailUsuario, contrasenaUsuario, seleccionarUsuario);
+                window.location.href = "login.html";
             }
         }
     }
@@ -647,14 +647,14 @@ exports.export = function(dest, destName, get) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "postUsers", ()=>postUsers);
-async function postUsers(nombre, cedula, email, contrasena, codigo) {
+async function postUsers(nombre, cedula, email, contrasena, seleccionar) {
     try {
         const userData = {
             nombre,
             cedula,
             email,
             contrasena,
-            codigo
+            seleccionar
         };
         const response = await fetch("http://localhost:3001/users", {
             method: "POST",

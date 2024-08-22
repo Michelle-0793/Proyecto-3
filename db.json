@@ -7,6 +7,38 @@
       "email": "aalfaro@fwdcostarica.com",
       "contrasena": "1617",
       "codigo": "0036"
+    },
+    {
+      "id": "4789",
+      "nombre": "Yancy Alfaro",
+      "cedula": "6876876i7",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "hyuyuki",
+      "seleccionar": "Administrador"
+    },
+    {
+      "id": "4f48",
+      "nombre": "Yarlin Alfaro",
+      "cedula": "205430345",
+      "email": "yarling@gmail.com",
+      "contrasena": "1920",
+      "seleccionar": "Administrador"
+    },
+    {
+      "id": "5539",
+      "nombre": "Yancy Alfaro",
+      "cedula": "201230321",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "2223",
+      "seleccionar": "Administrador"
+    },
+    {
+      "id": "bfc7",
+      "nombre": "Yancy Alfaro",
+      "cedula": "201230321",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "2223",
+      "seleccionar": "Administrador"
     }
   ]
 }

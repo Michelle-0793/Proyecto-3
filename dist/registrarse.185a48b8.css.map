@@ -1,0 +1,1 @@
+{"mappings":"AAAA","sources":["src/css/registrarse.css"],"sourcesContent":["body{\r\n    background-image: url(\"../img/fondo_login.jpg\");\r\n    background-size: cover;\r\n    background-repeat: no-repeat;\r\n}"],"names":[],"version":3,"file":"registrarse.185a48b8.css.map","sourceRoot":"/__parcel_source_root/"}

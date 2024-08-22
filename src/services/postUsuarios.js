@@ -1,4 +1,4 @@
-async function postUsers(nombre,cedula, email, contrasena, codigo) {
+async function postUsers(nombre,cedula, email, contrasena, seleccionar) {
     try {
      
         const userData = { 
@@ -6,7 +6,7 @@ async function postUsers(nombre,cedula, email, contrasena, codigo) {
             cedula, 
             email, 
             contrasena, 
-            codigo
+            seleccionar
         
         };
 

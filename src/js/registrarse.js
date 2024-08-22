@@ -5,8 +5,9 @@ const nombre = document.getElementById("nombre")
 const cedula = document.getElementById("cedula")
 const email = document.getElementById("email")
 const contrasena = document.getElementById("contrasena")
-const codigo = document.getElementById("codigo")
+const seleccionar = document.getElementById("seleccionar")
 const btnRegistrar = document.getElementById("btnRegistrar")
+
 
 btnRegistrar.addEventListener("click", function () {
 
@@ -18,38 +19,44 @@ btnRegistrar.addEventListener("click", function () {
     const cedulaUsuario = cedula.value
     const emailUsuario = email.value
     const contrasenaUsuario = contrasena.value
-    const codigoUsuario = codigo.value
+    const seleccionarUsuario = seleccionar.value
 
 
-    if (!nombreUsuario || !cedulaUsuario || !emailUsuario || !contrasenaUsuario || !codigoUsuario) {
+
+    
+
+    if (!nombreUsuario || !cedulaUsuario || !emailUsuario || !contrasenaUsuario || !seleccionarUsuario) {
        mensaje.textContent = "Debe llenar todos los campos";
       
-    }else{
+     }else{
 
           
-    nombre.value = "";
-    cedula.value = "";
-    email.value = "";
-    contrasena.value = "";
-    codigo.value = "";
+     nombre.value = "";
+     cedula.value = "";
+     email.value = "";
+     contrasena.value = "";
+     seleccionar.value = "";
 
-   const usuarios = await getUsers();
-   const cedulaExistente = usuarios.find(user => user.cedula === cedulaUsuario);
+ 
+     let cedulaExistente=[]
+    
+     const usuarios = await getUsers();
+     cedulaExistente = usuarios.filter(user => user.cedula === cedulaUsuario);
   
-   console.log(cedulaExistente);
+
    
-   if (cedulaExistente) {
-      mensaje.textContent = "La cédula ya está registrada";
+     if (cedulaExistente.cedula===cedulaUsuario ) {
+        mensaje.textContent = "La cédula ya está registrada";
       
   
-    }else{
+      }else{
 
-     const response = await postUsers(nombreUsuario,cedulaUsuario, emailUsuario, contrasenaUsuario, codigoUsuario);
-      mensaje.textContent = "Usuario agregado exitosamente"
+       const response = await postUsers(nombreUsuario,cedulaUsuario, emailUsuario, contrasenaUsuario, seleccionarUsuario);
+      
+       window.location.href = "login.html"
    
+      }
     }
   }
-
-    }
 })
 

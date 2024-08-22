@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REGISTRAR</title>
+    <link rel="stylesheet" href="../css/registrarse.css">
 </head>
 <body>
-  
+  <div class="contenedor">
+    <div class="contenedor-info">
 <input id="nombre" type="text" placeholder="NOMBRE COMPLETO">
 <br>
 <br>
@@ -19,10 +21,20 @@
 <input id="contrasena" type="text"placeholder="CONTRASEÑA">
 <br>
 <br>
-<input id="codigo"  type="text"placeholder="CÓDIGO">
+<select name="seleccionar" id="seleccionar"> 
+    <option value="">Seleccione una opción</option>
+    <option value="Administrador">Administrador</option> 
+    <option value="Usuario">Usuario</option>
+</select>
 <br>
-<br>
-<button id="btnRegistrar">REGISTRARSE</button>
+<div class="boton">
+    <button id="btnRegistrar">REGISTRARSE</button>
+
+    <p id="mensaje"></p>
+</div>
+
+</div>
+</div>
 
 <script type="module" src="../js/registrarse.js"></script>
 
