@@ -1,7 +1,7 @@
 async function getSolicitud() {
     try {
         // Realiza una solicitud GET a la URL especificada para obtener las solicitudes
-        const response = await fetch('http://localhost:3003/solicitudes', {
+        const response = await fetch('http://localhost:3001/solicitudes', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

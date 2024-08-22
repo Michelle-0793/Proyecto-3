@@ -1,28 +1,6 @@
+
 {
-  "solicitudes": [
-    {
-      "id": "d13b",
-      "nombreUsuario": "Michelle",
-      "codigoComputadora": "34",
-      "sede": "sedeSantaAna",
-      "fechaSalida": "2024-08-22",
-      "fechaRegreso": "2024-08-24"
-    },
-    {
-      "id": "9601",
-      "nombreUsuario": "Karen",
-      "codigoComputadora": "45",
-      "sede": "sedePuntarenas",
-      "fechaSalida": "2024-08-21",
-      "fechaRegreso": "2024-08-23"
-    },
-    {
-      "id": "d62d",
-      "nombreUsuario": "Catalina",
-      "codigoComputadora": "7678",
-      "sede": "sedeNosara",
-      "fechaSalida": "2024-08-22",
-      "fechaRegreso": "2024-08-23"
-    }
-  ]
+  "solicitudes": [],
+
+   "historial": []
 }

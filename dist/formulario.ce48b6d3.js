@@ -560,6 +560,7 @@ function hmrAccept(bundle, id) {
 var _postSolicitud = require("../servicios/postSolicitud");
 var _getSolicitud = require("../servicios/getSolicitud");
 var _updateSolicitud = require("../servicios/updateSolicitud");
+// Obtener referencias a los elementos del DOM
 const nombre = document.getElementById("nombre");
 const codigoComputadora = document.getElementById("codigoComputadora");
 const sede = document.getElementById("sede");
@@ -569,42 +570,81 @@ const terminosCondiciones = document.getElementById("terminosCondiciones");
 const btnEnviar = document.getElementById("btnEnviar");
 const btnHistorial = document.getElementById("btnHistorial");
 const mensaje = document.getElementById("mensaje");
-const tablaSolicitudes = document.getElementById("tablaSolicitudes");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
 // Función para obtener y mostrar solicitudes
 async function cargarSolicitudes() {
     const solicitudes = await (0, _getSolicitud.getSolicitud)();
+    // Renderizar las solicitudes en la tabla
     renderizarSolicitudes(solicitudes);
 }
-cargarSolicitudes();
+//ACEPTAR SOLICITUD
 // Función para manejar el evento click del botón "Aceptar"
 async function aceptarSolicitud(idSolicitud) {
-    //Objeto con el nuevo estado de la solicitud
     const solicitudActualizada = {
         estado: "Aceptado"
     };
-    // Enviar la nueva solicitud usando postSolicitudes
     const response = await (0, _updateSolicitud.updateSolicitud)(idSolicitud, solicitudActualizada);
-    cargarSolicitudes();
     mensaje.textContent = "Solicitud aceptada con \xe9xito";
+    // Esperar 2 segundos antes de mover al historial
+    setTimeout(async ()=>{
+        await moverSolicitudAlHistorial(solicitudActualizada);
+    }, 2000);
+    cargarSolicitudes(); // Recargar la lista de solicitudes
+}
+//RECHAZAR SOLICITUD
+// Función para manejar el evento click del botón "Rechazar"
+async function rechazarSolicitud(idSolicitud) {
+    const solicitudActualizada = {
+        estado: "Rechazado"
+    };
+    // Enviar la solicitud actualizada con updateSolicitud
+    const response = await (0, _updateSolicitud.updateSolicitud)(idSolicitud, solicitudActualizada);
+    mensaje.textContent = "Solicitud rechazada con \xe9xito";
+    // Esperar 2 segundos antes de mover al historial
+    setTimeout(async ()=>{
+        await moverSolicitudAlHistorial(solicitudActualizada);
+    }, 2000);
+    cargarSolicitudes(); // Recargar la lista de solicitudes
+}
+//ENVIAR AL HISTORIAL
+// Función para mover la solicitud al historial
+async function moverSolicitudAlHistorial(solicitud) {
+    const response = await (0, _postSolicitud.postSolicitud)(solicitud, "historial");
 }
 // Función para renderizar solicitudes en la tabla
 function renderizarSolicitudes(solicitudes) {
-    const filas = solicitudes.map((solicitud)=>`
-        <tr>
+    console.log("Datos recibidos para renderizar:", solicitudes);
+    // Limpiar la tabla antes de renderizar nuevas filas
+    cuerpoTabla.innerHTML = "";
+    solicitudes.forEach((solicitud)=>{
+        // Crear la fila para cada solicitud
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
             <td>${solicitud.nombreUsuario}</td>
             <td>${solicitud.codigoComputadora}</td>
             <td>${solicitud.sede}</td>
             <td>${solicitud.fechaSalida}</td>
             <td>${solicitud.fechaRegreso}</td>
             <td>${solicitud.estado || "Pendiente"}</td>
-            <td>
-                <button onclick="rechazarSolicitud('${solicitud.id}')">Rechazar</button>
-                <button onclick="aceptarSolicitud('${solicitud.id}')">Aceptar</button>
-            </td>
-        </tr>
-    `);
-    cuerpoTabla.innerHTML = filas.join("");
+        `;
+        // Crear las celdas con los botones
+        const celdaBotones = document.createElement("td");
+        // Botón para aceptar la solicitud
+        const btnAceptar = document.createElement("button");
+        btnAceptar.textContent = "Aceptar";
+        btnAceptar.addEventListener("click", ()=>aceptarSolicitud(solicitud.id));
+        // Botón para rechazar la solicitud
+        const btnRechazar = document.createElement("button");
+        btnRechazar.textContent = "Rechazar";
+        btnRechazar.addEventListener("click", ()=>rechazarSolicitud(solicitud.id));
+        // Agregar botones a la celda
+        celdaBotones.appendChild(btnAceptar);
+        celdaBotones.appendChild(btnRechazar);
+        // Añadir la celda de botones a la fila
+        fila.appendChild(celdaBotones);
+        // Añadir la fila al cuerpo de la tabla
+        cuerpoTabla.appendChild(fila);
+    });
 }
 // Función para manejar el evento click del botón "Enviar"
 async function enviarSolicitud() {
@@ -618,7 +658,7 @@ async function enviarSolicitud() {
         mensaje.textContent = "Debe aceptar los t\xe9rminos y condiciones";
         return;
     }
-    // Nueva solicitud con los datos del formulario
+    // Crear un objeto con los datos de la nueva solicitud
     const nuevaSolicitud = {
         nombreUsuario: nombre.value,
         codigoComputadora: codigoComputadora.value,
@@ -626,24 +666,28 @@ async function enviarSolicitud() {
         fechaSalida: fechaSalida.value,
         fechaRegreso: fechaRegreso.value
     };
-    // Limpiar los campos
+    // Limpiar los campos del formulario
     nombre.value = "";
     codigoComputadora.value = "";
     sede.value = "";
     fechaSalida.value = "";
     fechaRegreso.value = "";
-    // Enviar la nueva solicitud usando postSolicitudes
+    // Enviar la nueva solicitud usando postSolicitud
     const response = await (0, _postSolicitud.postSolicitud)(nuevaSolicitud);
     mensaje.textContent = "Solicitud enviada exitosamente";
+    // Recargar las solicitudes para ver la nueva solicitud
+    cargarSolicitudes();
 }
 // Función para manejar el evento click del botón "Ver historial"
-async function verHistorial() {
+function verHistorial() {
     window.location.href = "historial.html";
 }
-// Asignar la función al evento click del botón
-btnEnviar.addEventListener("click", enviarSolicitud);
 // Asignar la función al evento click del botón "Ver historial"
 btnHistorial.addEventListener("click", verHistorial);
+// Asignar la función al evento click del botón "Enviar"
+btnEnviar.addEventListener("click", enviarSolicitud);
+// Cargar solicitudes al cargar la página
+cargarSolicitudes();
 
 },{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7","../servicios/updateSolicitud":"bWa6f"}],"aWKt8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -651,7 +695,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "postSolicitud", ()=>postSolicitud);
 async function postSolicitud(solicitud) {
     try {
-        const response = await fetch("http://localhost:3003/solicitudes", {
+        const response = await fetch("http://localhost:3001/solicitudes", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -702,7 +746,7 @@ parcelHelpers.export(exports, "getSolicitud", ()=>getSolicitud);
 async function getSolicitud() {
     try {
         // Realiza una solicitud GET a la URL especificada para obtener las solicitudes
-        const response = await fetch("http://localhost:3003/solicitudes", {
+        const response = await fetch("http://localhost:3001/solicitudes", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -722,23 +766,26 @@ async function getSolicitud() {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "updateSolicitud", ()=>updateSolicitud);
-async function updateSolicitud(id, datos) {
+async function updateSolicitud(id, estado) {
     try {
-        // Realiza una solicitud POST a la URL especificada
-        const response = await fetch("http://localhost:3003/users/" + id, {
+        // Realiza una solicitud PUT a la URL especificada con el ID
+        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json" // Indica que los datos se envían en formato JSON. en este apartado tambien se pueden enviar tokens
+                "Content-Type": "application/json" // Indica que los datos se envían en formato JSON
             },
-            body: JSON.stringify(datos) // Convierte el objeto newUser a JSON para enviarlo en el cuer
+            body: JSON.stringify(estado) // Convierte el objeto de estado a JSON para enviarlo en el cuerpo de la solicitud
         });
+        // Verifica si la respuesta es exitosa
+        if (!response.ok) throw new Error(`Error en la actualización: ${response.statusText}`);
         // Espera la respuesta en formato JSON
         const data = await response.json();
         // Retorna los datos obtenidos de la respuesta del servidor
-        return data; /// siempre hay que ponerlo 
+        return data;
     } catch (error) {
         // Captura y muestra cualquier error que ocurra durante la solicitud
-        console.error(error);
+        console.error("Error en updateSolicitud:", error);
+        throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
     }
 }
 
