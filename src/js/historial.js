@@ -1,6 +1,8 @@
 import { getHistorial } from "../servicios/getSolicitud";
 
 const cuerpoTablaHistorial = document.getElementById("cuerpoTablaHistorial");
+const btnAceptadas = document.getElementById("btnAceptadas");
+const urlAceptadas = "http://localhost:3001/solicitudesAceptadas";
 
 async function cargarHistorial() {
     const historial = await getHistorial(); // Obtener historial
@@ -22,8 +24,10 @@ async function cargarHistorial() {
 
 cargarHistorial() 
 
-
-
+function verAceptadas() {
+    window.location.href = 'solcitudesAceptadas.html';
+}
+btnAceptadas.addEventListener("click", verAceptadas );
 
 /*
 function renderizarSolicitudes(solicitudes) {

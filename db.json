@@ -1,5 +1,34 @@
 {
   "solicitudes": [],
-  "historial": [],
-  "solicitudesAceptadas": []
+  "historial": [
+    {
+      "id": "9da6",
+      "nombreUsuario": "UsuarioTest",
+      "codigoComputadora": "34",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "9da6",
+      "nombreUsuario": "UsuarioTest",
+      "codigoComputadora": "34",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    }
+  ],
+  "solicitudesAceptadas": [
+    {
+      "id": "9da6",
+      "nombreUsuario": "UsuarioTest",
+      "codigoComputadora": "34",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    }
+  ]
 }

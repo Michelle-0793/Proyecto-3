@@ -693,7 +693,7 @@ function verHistorial() {
 btnHistorial.addEventListener("click", verHistorial);
 btnEnviar.addEventListener("click", enviarSolicitud);
 
-},{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7","../servicios/updateSolicitud":"bWa6f","../servicios/deleteSolicitud":"1UBwW"}],"aWKt8":[function(require,module,exports) {
+},{"../servicios/postSolicitud":"aWKt8","../servicios/updateSolicitud":"bWa6f","../servicios/deleteSolicitud":"1UBwW","../servicios/getSolicitud":"2Hfe7"}],"aWKt8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "postSolicitud", ()=>postSolicitud);
@@ -783,7 +783,57 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"2Hfe7":[function(require,module,exports) {
+},{}],"bWa6f":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "updateSolicitud", ()=>updateSolicitud);
+async function updateSolicitud(id, estado) {
+    try {
+        // Realiza una solicitud PUT a la URL especificada con el ID
+        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json" // Indica que los datos se envían en formato JSON
+            },
+            body: JSON.stringify(estado) // Convierte el objeto de estado a JSON para enviarlo en el cuerpo de la solicitud
+        });
+        // Verifica si la respuesta es exitosa
+        if (!response.ok) throw new Error(`Error en la actualización: ${response.statusText}`);
+        // Espera la respuesta en formato JSON
+        const data = await response.json();
+        // Retorna los datos obtenidos de la respuesta del servidor
+        return data;
+    } catch (error) {
+        // Captura y muestra cualquier error que ocurra durante la solicitud
+        console.error("Error en updateSolicitud:", error);
+        throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1UBwW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "deleteSolicitud", ()=>deleteSolicitud);
+async function deleteSolicitud(id) {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error deleting request with id ${id}`);
+        return {
+            message: `Request with id ${id} deleted successfully`
+        };
+    } catch (error) {
+        console.error("Error deleting request:", error);
+        // Puedes mostrar un mensaje al usuario aquí si lo deseas
+        throw error;
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2Hfe7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSolicitud", ()=>getSolicitud);
@@ -862,56 +912,6 @@ async function getHistorial() {
         return data; // Asegúrate de que esta es una lista
     } catch (error) {
         console.error("Error al obtener el historial:", error);
-        throw error;
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bWa6f":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "updateSolicitud", ()=>updateSolicitud);
-async function updateSolicitud(id, estado) {
-    try {
-        // Realiza una solicitud PUT a la URL especificada con el ID
-        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json" // Indica que los datos se envían en formato JSON
-            },
-            body: JSON.stringify(estado) // Convierte el objeto de estado a JSON para enviarlo en el cuerpo de la solicitud
-        });
-        // Verifica si la respuesta es exitosa
-        if (!response.ok) throw new Error(`Error en la actualización: ${response.statusText}`);
-        // Espera la respuesta en formato JSON
-        const data = await response.json();
-        // Retorna los datos obtenidos de la respuesta del servidor
-        return data;
-    } catch (error) {
-        // Captura y muestra cualquier error que ocurra durante la solicitud
-        console.error("Error en updateSolicitud:", error);
-        throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1UBwW":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "deleteSolicitud", ()=>deleteSolicitud);
-async function deleteSolicitud(id) {
-    try {
-        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        if (!response.ok) throw new Error(`Error deleting request with id ${id}`);
-        return {
-            message: `Request with id ${id} deleted successfully`
-        };
-    } catch (error) {
-        console.error("Error deleting request:", error);
-        // Puedes mostrar un mensaje al usuario aquí si lo deseas
         throw error;
     }
 }

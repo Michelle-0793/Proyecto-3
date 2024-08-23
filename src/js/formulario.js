@@ -1,10 +1,7 @@
-import { postSolicitud, postSolicitudAceptadas } from "../servicios/postSolicitud";
-import { postSolicitudHistorial } from "../servicios/postSolicitud";
-import { getSolicitud } from "../servicios/getSolicitud";
+import { postSolicitud, postSolicitudHistorial, postSolicitudAceptadas } from "../servicios/postSolicitud";
+import { getSolicitud, getSolicitudById } from "../servicios/getSolicitud";
 import { updateSolicitud} from "../servicios/updateSolicitud";
 import { deleteSolicitud } from "../servicios/deleteSolicitud";
-
-import { getSolicitudById } from "../servicios/getSolicitud";
 
 
 //1 DECLARAR VARIABLES DEL DOM
@@ -20,6 +17,7 @@ const mensaje = document.getElementById("mensaje");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
 
 const urlHistorial = "http://localhost:3001/historial"
+const urlAceptadas = "http://localhost:3001/solicitudesAceptadas"
 
 // Simulación de login - Prellenar campos con un valor para hacer pruebas
 function simularLogin() {
@@ -163,7 +161,7 @@ async function rechazarSolicitud(idSolicitud) {
 //ENVIAR AL HISTORIAL
 async function moverSolicitudAlHistorial(solicitud) {
     delete solicitud.id; // Se elimina el ID para que no se duplique en el historial
-    await postSolicitud(solicitud, urlHistorial);
+    await postSolicitud(solicitud, urlHistorial, urlAceptadas);
 }
 
 //EVENTO DE LOS BOTONES
