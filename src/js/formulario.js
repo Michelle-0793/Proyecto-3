@@ -1,12 +1,13 @@
-import { postSolicitud } from "../servicios/postSolicitud";
+import { postSolicitud, postSolicitudAceptadas } from "../servicios/postSolicitud";
 import { postSolicitudHistorial } from "../servicios/postSolicitud";
 import { getSolicitud } from "../servicios/getSolicitud";
 import { updateSolicitud} from "../servicios/updateSolicitud";
 import { deleteSolicitud } from "../servicios/deleteSolicitud";
 
+import { getSolicitudById } from "../servicios/getSolicitud";
+
 
 //1 DECLARAR VARIABLES DEL DOM
-// Obtener referencias a los elementos del DOM
 const nombre = document.getElementById("nombre");
 const codigoComputadora = document.getElementById("codigoComputadora");
 const sede = document.getElementById("sede");
@@ -20,16 +21,13 @@ const cuerpoTabla = document.getElementById("cuerpoTabla");
 
 const urlHistorial = "http://localhost:3001/historial"
 
-// Simulación de login - Prellenar campos con valores de prueba
+// Simulación de login - Prellenar campos con un valor para hacer pruebas
 function simularLogin() {
-    const nombreUsuarioPlaceholder = "UsuarioTest"; // Usar un nombre fijo para testeo
-    // Asignar los valores simulados al campo nombre
+    const nombreUsuarioPlaceholder = "UsuarioTest"; //Nombre para testeo
+    //Valores para al campo nombre
     nombre.value = nombreUsuarioPlaceholder;
-
-    // Si se utiliza localStorage para guardar el nombre del usuario:
     localStorage.setItem('nombreUsuario', nombreUsuarioPlaceholder);
 }
-
 // Llamar a la simulación de login
 simularLogin();
 
@@ -39,8 +37,8 @@ simularLogin();
 // Función para renderizar solicitudes en la tabla
 function renderizarSolicitudes(solicitudes) {
     solicitudes.forEach(solicitud => {
-        // Crear la fila para cada solicitud
-        const fila = document.createElement('tr');
+        // Fila para cada solicitud
+        const fila = document.createElement("tr");
 
         fila.innerHTML = `
             <td>${solicitud.nombreUsuario}</td>
@@ -48,18 +46,18 @@ function renderizarSolicitudes(solicitudes) {
             <td>${solicitud.sede}</td>
             <td>${solicitud.fechaSalida}</td>
             <td>${solicitud.fechaRegreso}</td>
-            <td>${solicitud.estado || 'Pendiente'}</td>
+            <td>${solicitud.estado || "Pendiente"}</td>
         `;
-        // Crear las celdas con los botones
-        const celdaBotones = document.createElement('td');
+        //Celdas con los botones
+        const celdaBotones = document.createElement("td");
 
         // Botón para aceptar la solicitud
-        const btnAceptar = document.createElement('button');
+        const btnAceptar = document.createElement("button");
         btnAceptar.textContent = "Aceptar";
         btnAceptar.addEventListener('click', () => aceptarSolicitud(solicitud.id));
 
         // Botón para rechazar la solicitud
-        const btnRechazar = document.createElement('button');
+        const btnRechazar = document.createElement("button");
         btnRechazar.textContent = "Rechazar";
         btnRechazar.addEventListener('click', () => rechazarSolicitud(solicitud.id));
 
@@ -76,13 +74,15 @@ function renderizarSolicitudes(solicitudes) {
 }
 
 cargarSolicitudes()
+
 //3 FUNCIONES PRINCIPALES
+
 // Función para obtener y mostrar solicitudes
 async function cargarSolicitudes() {
-    // Obtener las solicitudes
+    // Obtengo las solicitudes
     const solicitud = await getSolicitud();
-    // Limpiar el cuerpo de la tabla antes de renderizar nuevas solicitudes
-    cuerpoTabla.innerHTML = '';
+    // Limpio el cuerpo de la tabla antes de renderizar nuevas solicitudes
+    cuerpoTabla.innerHTML = "";
 
     // Renderizar las solicitudes en la tabla
     renderizarSolicitudes(solicitud);
@@ -109,7 +109,8 @@ async function enviarSolicitud() {
         codigoComputadora: codigoComputadora.value,
         sede: sede.value,
         fechaSalida: fechaSalida.value,
-        fechaRegreso: fechaRegreso.value
+        fechaRegreso: fechaRegreso.value,
+        estado:"Pendiente"
     };
 
    
@@ -129,18 +130,30 @@ async function enviarSolicitud() {
 
 //ACEPTAR SOLICITUD
 async function aceptarSolicitud(idSolicitud) {
-    let solicitud = await getSolicitud(idSolicitud);
+
+    console.log(idSolicitud);
+    
+    let solicitud = await getSolicitudById(idSolicitud);
     solicitud.estado = "Aceptada";
+
+    console.log(solicitud);
+    
     await postSolicitudHistorial(solicitud); // Mueve la solicitud al historial
+    await postSolicitudAceptadas (solicitud); // Mueve la solicitud a aceptadas
     await deleteSolicitud(idSolicitud); // Elimina la solicitud del formulario
     cargarSolicitudes(); // Recarga la lista de solicitudes
 }
 
 //RECHAZAR SOLICITUD
-// Función "Rechazar"
 async function rechazarSolicitud(idSolicitud) {
-    let solicitud = await getSolicitud(idSolicitud);
+
+    console.log(idSolicitud);
+
+    let solicitud = await getSolicitudById(idSolicitud);
     solicitud.estado = "Rechazada";
+
+    console.log(solicitud);
+
     await postSolicitudHistorial(solicitud); // Mueve la solicitud al historial
     await deleteSolicitud(idSolicitud); // Elimina la solicitud del formulario
     cargarSolicitudes(); // Recarga la lista de solicitudes
@@ -148,7 +161,6 @@ async function rechazarSolicitud(idSolicitud) {
 
 
 //ENVIAR AL HISTORIAL
-// Función para mover la solicitud al historial
 async function moverSolicitudAlHistorial(solicitud) {
     delete solicitud.id; // Se elimina el ID para que no se duplique en el historial
     await postSolicitud(solicitud, urlHistorial);
