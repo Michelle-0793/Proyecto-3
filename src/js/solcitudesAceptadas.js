@@ -1,11 +1,11 @@
-import { getSolicitudesAceptadas } from "../servicios/getSolicitud";
+import { getHistorial } from "../servicios/getSolicitud";
 
 const cuerpoTablaHistorial = document.getElementById("cuerpoTablaHistorial");
 
 async function cargarHistorial() {
-    const historial = await getSolicitudesAceptadas(); // Obtener de aceptdas
+    const historial = await getHistorial(); // Obtener de aceptdas
     console.log(historial);
-    cuerpoTablaHistorial.innerHTML = '';
+    cuerpoTablaHistorial.innerHTML = "";
     historial.forEach(solicitud => {
         const fila = document.createElement('tr');
         fila.innerHTML = `

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel serve src/pages/formulario.html --open",
+    "start": "parcel serve src/pages/solcitudesAceptadas.html --open",
     "server": "node server",
     "test": "jest"
   },

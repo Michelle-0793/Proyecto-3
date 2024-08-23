@@ -1,13 +1,17 @@
+
 import { getHistorial } from "../servicios/getSolicitud";
+
 
 const cuerpoTablaHistorial = document.getElementById("cuerpoTablaHistorial");
 const btnAceptadas = document.getElementById("btnAceptadas");
-const urlAceptadas = "http://localhost:3001/solicitudesAceptadas";
+
+
+
 
 async function cargarHistorial() {
     const historial = await getHistorial(); // Obtener historial
-    console.log(historial);
-    cuerpoTablaHistorial.innerHTML = '';
+    console.log( cuerpoTablaHistorial);
+    cuerpoTablaHistorial.innerHTML = "";
     historial.forEach(solicitud => {
         const fila = document.createElement('tr');
         fila.innerHTML = `

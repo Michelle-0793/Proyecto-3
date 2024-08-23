@@ -56,7 +56,7 @@ async function getHistorial() {
         throw error;
     }
 }
-export { getHistorial };
+export  { getHistorial };
 
 async function getSolicitudesAceptadas() {
     try {
@@ -77,34 +77,3 @@ async function getSolicitudesAceptadas() {
     }
 }
 export { getSolicitudesAceptadas };
-
-
-/*async function getSolicitud(id) {
-    try {
-        // Realiza una solicitud GET a la URL especificada para obtener las solicitudes
-        const response = await fetch('http://localhost:3001/solicitudes', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        // Verifica si la solicitud fue exitosa
-        if (!response.ok) {
-            // Captura el texto del error para una mejor depuración
-            const errorText = await response.text();
-            throw new Error(`Error ${response.status}: ${errorText}`);
-        }
-
-        // Espera la respuesta en formato JSON
-        const data = await response.json();
-        // Retorna los datos obtenidos de la respuesta del servidor
-        return data;
-    } catch (error) {
-        // Captura y muestra cualquier error que ocurra durante la solicitud
-        console.error('Error al obtener las solicitudes:', error);
-        throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
-    }
-}
-
-export { getSolicitud };*/

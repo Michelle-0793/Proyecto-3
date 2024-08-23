@@ -560,7 +560,7 @@ function hmrAccept(bundle, id) {
 var _getSolicitud = require("../servicios/getSolicitud");
 const cuerpoTablaHistorial = document.getElementById("cuerpoTablaHistorial");
 async function cargarHistorial() {
-    const historial = await (0, _getSolicitud.getSolicitudesAceptadas)(); // Obtener de aceptdas
+    const historial = await (0, _getSolicitud.getHistorial)(); // Obtener de aceptdas
     console.log(historial);
     cuerpoTablaHistorial.innerHTML = "";
     historial.forEach((solicitud)=>{
@@ -584,35 +584,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSolicitud", ()=>getSolicitud);
 parcelHelpers.export(exports, "getSolicitudById", ()=>getSolicitudById);
 parcelHelpers.export(exports, "getHistorial", ()=>getHistorial);
-parcelHelpers.export(exports, "getSolicitudesAceptadas", ()=>getSolicitudesAceptadas) /*async function getSolicitud(id) {
-    try {
-        // Realiza una solicitud GET a la URL especificada para obtener las solicitudes
-        const response = await fetch('http://localhost:3001/solicitudes', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        // Verifica si la solicitud fue exitosa
-        if (!response.ok) {
-            // Captura el texto del error para una mejor depuración
-            const errorText = await response.text();
-            throw new Error(`Error ${response.status}: ${errorText}`);
-        }
-
-        // Espera la respuesta en formato JSON
-        const data = await response.json();
-        // Retorna los datos obtenidos de la respuesta del servidor
-        return data;
-    } catch (error) {
-        // Captura y muestra cualquier error que ocurra durante la solicitud
-        console.error('Error al obtener las solicitudes:', error);
-        throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
-    }
-}
-
-export { getSolicitud };*/ ;
+parcelHelpers.export(exports, "getSolicitudesAceptadas", ()=>getSolicitudesAceptadas);
 async function getSolicitud() {
     try {
         const response = await fetch(`http://localhost:3001/solicitudes`, {

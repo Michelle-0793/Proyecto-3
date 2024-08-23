@@ -573,6 +573,7 @@ const btnHistorial = document.getElementById("btnHistorial");
 const mensaje = document.getElementById("mensaje");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
 const urlHistorial = "http://localhost:3001/historial";
+const urlAceptadas = "http://localhost:3001/solicitudesAceptadas";
 // Simulación de login - Prellenar campos con un valor para hacer pruebas
 function simularLogin() {
     const nombreUsuarioPlaceholder = "UsuarioTest"; //Nombre para testeo
@@ -683,7 +684,7 @@ async function rechazarSolicitud(idSolicitud) {
 //ENVIAR AL HISTORIAL
 async function moverSolicitudAlHistorial(solicitud) {
     delete solicitud.id; // Se elimina el ID para que no se duplique en el historial
-    await (0, _postSolicitud.postSolicitud)(solicitud, urlHistorial);
+    await (0, _postSolicitud.postSolicitud)(solicitud, urlHistorial, urlAceptadas);
 }
 //EVENTO DE LOS BOTONES
 // Función "Ver historial"
@@ -838,7 +839,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSolicitud", ()=>getSolicitud);
 parcelHelpers.export(exports, "getSolicitudById", ()=>getSolicitudById);
-parcelHelpers.export(exports, "getHistorial", ()=>getHistorial) /*async function getSolicitud(id) {
+parcelHelpers.export(exports, "getHistorial", ()=>getHistorial);
+parcelHelpers.export(exports, "getSolicitudesAceptadas", ()=>getSolicitudesAceptadas) /*async function getSolicitud(id) {
     try {
         // Realiza una solicitud GET a la URL especificada para obtener las solicitudes
         const response = await fetch('http://localhost:3001/solicitudes', {
@@ -902,6 +904,22 @@ async function getSolicitudById(id) {
 async function getHistorial() {
     try {
         const response = await fetch("http://localhost:3001/historial", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error: ${response.status} ${response.statusText}`);
+        const data = await response.json();
+        return data; // Asegúrate de que esta es una lista
+    } catch (error) {
+        console.error("Error al obtener el historial:", error);
+        throw error;
+    }
+}
+async function getSolicitudesAceptadas() {
+    try {
+        const response = await fetch("http://localhost:3001/solicitudesAceptadas", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

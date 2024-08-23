@@ -559,9 +559,10 @@ function hmrAccept(bundle, id) {
 },{}],"1lCog":[function(require,module,exports) {
 var _getSolicitud = require("../servicios/getSolicitud");
 const cuerpoTablaHistorial = document.getElementById("cuerpoTablaHistorial");
+const btnAceptadas = document.getElementById("btnAceptadas");
 async function cargarHistorial() {
-    const historial = await (0, _getSolicitud.getHistorial)(); // Obtener historial (array de objetos)
-    console.log(historial);
+    const historial = await (0, _getSolicitud.getHistorial)(); // Obtener historial
+    console.log(cuerpoTablaHistorial);
     cuerpoTablaHistorial.innerHTML = "";
     historial.forEach((solicitud)=>{
         const fila = document.createElement("tr");
@@ -577,43 +578,66 @@ async function cargarHistorial() {
     });
 }
 cargarHistorial();
+function verAceptadas() {
+    window.location.href = "solcitudesAceptadas.html";
+}
+btnAceptadas.addEventListener("click", verAceptadas); /*
+function renderizarSolicitudes(solicitudes) {
+    solicitudes.forEach(solicitud => {
+        // Fila para cada solicitud
+        const fila = document.createElement("tr");
+
+        fila.innerHTML = `
+            <td>${solicitud.nombreUsuario}</td>
+            <td>${solicitud.codigoComputadora}</td>
+            <td>${solicitud.sede}</td>
+            <td>${solicitud.fechaSalida}</td>
+            <td>${solicitud.fechaRegreso}</td>
+            <td>${solicitud.estado || "Pendiente"}</td>
+        `;
+    })} 
+
+    cargarHistorial() 
+
+// Función para obtener y mostrar solicitudes
+async function cargarSolicitudes() {
+    // Obtengo las solicitudes
+    const solicitud = await getSolicitud();
+    // Limpio el cuerpo de la tabla antes de renderizar nuevas solicitudes
+    cuerpoTabla.innerHTML = "";
+
+    // Renderizar las solicitudes en la tabla
+    renderizarSolicitudes(solicitud);
+}
+
+*/ 
 
 },{"../servicios/getSolicitud":"2Hfe7"}],"2Hfe7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSolicitud", ()=>getSolicitud);
-parcelHelpers.export(exports, "getHistorial", ()=>getHistorial) /*async function getSolicitud(id) {
-    try {
-        // Realiza una solicitud GET a la URL especificada para obtener las solicitudes
-        const response = await fetch('http://localhost:3001/solicitudes', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        // Verifica si la solicitud fue exitosa
-        if (!response.ok) {
-            // Captura el texto del error para una mejor depuración
-            const errorText = await response.text();
-            throw new Error(`Error ${response.status}: ${errorText}`);
-        }
-
-        // Espera la respuesta en formato JSON
-        const data = await response.json();
-        // Retorna los datos obtenidos de la respuesta del servidor
-        return data;
-    } catch (error) {
-        // Captura y muestra cualquier error que ocurra durante la solicitud
-        console.error('Error al obtener las solicitudes:', error);
-        throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
-    }
-}
-
-export { getSolicitud };*/ ;
-async function getSolicitud(id) {
+parcelHelpers.export(exports, "getSolicitudById", ()=>getSolicitudById);
+parcelHelpers.export(exports, "getHistorial", ()=>getHistorial);
+parcelHelpers.export(exports, "getSolicitudesAceptadas", ()=>getSolicitudesAceptadas);
+async function getSolicitud() {
     try {
         const response = await fetch(`http://localhost:3001/solicitudes`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error: ${response.status} ${response.statusText}`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error al obtener la solicitud:", error);
+        throw error;
+    }
+}
+async function getSolicitudById(id) {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudes/` + id, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -630,6 +654,22 @@ async function getSolicitud(id) {
 async function getHistorial() {
     try {
         const response = await fetch("http://localhost:3001/historial", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error: ${response.status} ${response.statusText}`);
+        const data = await response.json();
+        return data; // Asegúrate de que esta es una lista
+    } catch (error) {
+        console.error("Error al obtener el historial:", error);
+        throw error;
+    }
+}
+async function getSolicitudesAceptadas() {
+    try {
+        const response = await fetch("http://localhost:3001/solicitudesAceptadas", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

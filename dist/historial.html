@@ -7,10 +7,13 @@
 </head>
 <body>
     <h1>Historial de Solicitudes</h1>
-
+    <br>
     <input type="text" id="busqueda" placeholder="Buscar por nombre, fecha o estado">
     <button id="btnBuscar">Buscar</button>
+<br><br>
+    <button id="btnAceptadas">Ver solicitudes aceptadas</button>    
 
+<br><br>
     <table id="tablaSolicitudes">
         <thead>
             <tr>
@@ -20,10 +23,11 @@
                 <th>Fecha de Salida</th>
                 <th>Fecha de Regreso</th>
                 <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody id="cuerpoTablaHistorial">
-            <!-- Las filas se insertarán aquí -->
+            <!-- Aquí se insertarán las filas de las solicitudes -->
         </tbody>
     </table>
 

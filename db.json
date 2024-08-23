@@ -2,32 +2,50 @@
   "solicitudes": [],
   "historial": [
     {
-      "id": "9da6",
+      "id": "d5f6",
       "nombreUsuario": "UsuarioTest",
-      "codigoComputadora": "34",
+      "codigoComputadora": "686",
       "sede": "sedeNosara",
-      "fechaSalida": "2024-08-24",
-      "fechaRegreso": "2024-08-25",
+      "fechaSalida": "2024-08-23",
+      "fechaRegreso": "2024-08-26",
+      "estado": "Rechazada"
+    },
+    {
+      "id": "b03e",
+      "nombreUsuario": "UsuarioTest",
+      "codigoComputadora": "4543",
+      "sede": "sedePuntarenas",
+      "fechaSalida": "2024-08-26",
+      "fechaRegreso": "2024-08-26",
       "estado": "Aceptada"
     },
     {
-      "id": "9da6",
+      "id": "4d09",
       "nombreUsuario": "UsuarioTest",
-      "codigoComputadora": "34",
-      "sede": "sedeNosara",
+      "codigoComputadora": "dsgd",
+      "sede": "sedeSantaAna",
       "fechaSalida": "2024-08-24",
-      "fechaRegreso": "2024-08-25",
+      "fechaRegreso": "2024-08-26",
       "estado": "Aceptada"
     }
   ],
   "solicitudesAceptadas": [
     {
-      "id": "9da6",
+      "id": "b03e",
       "nombreUsuario": "UsuarioTest",
-      "codigoComputadora": "34",
-      "sede": "sedeNosara",
+      "codigoComputadora": "4543",
+      "sede": "sedePuntarenas",
+      "fechaSalida": "2024-08-26",
+      "fechaRegreso": "2024-08-26",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "4d09",
+      "nombreUsuario": "UsuarioTest",
+      "codigoComputadora": "dsgd",
+      "sede": "sedeSantaAna",
       "fechaSalida": "2024-08-24",
-      "fechaRegreso": "2024-08-25",
+      "fechaRegreso": "2024-08-26",
       "estado": "Aceptada"
     }
   ]
