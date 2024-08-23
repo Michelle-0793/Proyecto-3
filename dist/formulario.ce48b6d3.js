@@ -579,7 +579,7 @@ function simularLogin() {
     const nombreUsuarioPlaceholder = "UsuarioTest"; // Usar un nombre fijo para testeo
     // Asignar los valores simulados al campo nombre
     nombre.value = nombreUsuarioPlaceholder;
-    // Si estás utilizando localStorage para guardar el nombre del usuario:
+    // Si se utiliza localStorage para guardar el nombre del usuario:
     localStorage.setItem("nombreUsuario", nombreUsuarioPlaceholder);
 }
 // Llamar a la simulación de login
@@ -689,7 +689,6 @@ function verHistorial() {
     window.location.href = "historial.html";
 }
 btnHistorial.addEventListener("click", verHistorial);
-// Asignar la función al evento click del botón "Enviar"
 btnEnviar.addEventListener("click", enviarSolicitud);
 
 },{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7","../servicios/updateSolicitud":"bWa6f","../servicios/deleteSolicitud":"1UBwW"}],"aWKt8":[function(require,module,exports) {

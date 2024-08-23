@@ -26,7 +26,7 @@ function simularLogin() {
     // Asignar los valores simulados al campo nombre
     nombre.value = nombreUsuarioPlaceholder;
 
-    // Si estás utilizando localStorage para guardar el nombre del usuario:
+    // Si se utiliza localStorage para guardar el nombre del usuario:
     localStorage.setItem('nombreUsuario', nombreUsuarioPlaceholder);
 }
 
@@ -159,9 +159,10 @@ async function moverSolicitudAlHistorial(solicitud) {
 function verHistorial() {
     window.location.href = 'historial.html';
 }
+
 btnHistorial.addEventListener("click", verHistorial);
 
-// Asignar la función al evento click del botón "Enviar"
+
 btnEnviar.addEventListener("click", enviarSolicitud);
 
 

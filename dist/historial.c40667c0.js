@@ -560,7 +560,7 @@ function hmrAccept(bundle, id) {
 var _getSolicitud = require("../servicios/getSolicitud");
 const cuerpoTablaHistorial = document.getElementById("cuerpoTablaHistorial");
 async function cargarHistorial() {
-    const historial = await (0, _getSolicitud.getHistorial)();
+    const historial = await (0, _getSolicitud.getHistorial)(); // Obtener historial (array de objetos)
     console.log(historial);
     cuerpoTablaHistorial.innerHTML = "";
     historial.forEach((solicitud)=>{
@@ -577,12 +577,6 @@ async function cargarHistorial() {
     });
 }
 cargarHistorial();
-// Función para obtener y mostrar solicitudes
-async function cargarSolicitudes() {
-    const solicitudesHistorial = await (0, _getSolicitud.getHistorial)();
-}
-// Cargar solicitudes al inicio
-cargarSolicitudes();
 
 },{"../servicios/getSolicitud":"2Hfe7"}],"2Hfe7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
