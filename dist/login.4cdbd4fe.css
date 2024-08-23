@@ -1,0 +1,64 @@
+body {
+  background-image: url("fondo_login.ea8ac2b7.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  place-content: center;
+  margin-top: 0;
+  display: grid;
+}
+
+.contenedor {
+  height: 600px;
+  width: 520px;
+  background-image: url("cajaLogin_login.c398bf5f.png");
+  background-size: cover;
+}
+
+.contenedor-info {
+  position: relative;
+  top: 50%;
+  left: 30%;
+}
+
+input {
+  color: #000;
+  inline-size: 200px;
+  background-color: #0000;
+  border: thin solid #000;
+  border-radius: 20px;
+  padding: 10px 15px;
+  box-shadow: 0 2px 5px #0000001a;
+}
+
+select {
+  color: #000;
+  inline-size: 230px;
+  background-color: #0000;
+  border: thin solid #000;
+  border-radius: 20px;
+  padding: 10px 15px;
+  box-shadow: 0 2px 5px #0000001a;
+}
+
+.texto {
+  color: #000;
+  margin-top: -2%;
+  margin-left: 1%;
+}
+
+.boton {
+  margin-top: 25%;
+  position: relative;
+  left: 8%;
+}
+
+button {
+  color: #000;
+  inline-size: 150px;
+  background-color: #0000;
+  border: thin solid #000;
+  border-radius: 20px;
+  padding: 10px 15px;
+}
+
+/*# sourceMappingURL=login.4cdbd4fe.css.map */

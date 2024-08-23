@@ -7,7 +7,7 @@ const email = document.getElementById("email")
 const contrasena = document.getElementById("contrasena")
 const seleccionar = document.getElementById("seleccionar")
 const btnRegistrar = document.getElementById("btnRegistrar")
-
+const mensaje = document.getElementById("mensaje")
 
 btnRegistrar.addEventListener("click", function () {
 
@@ -46,7 +46,7 @@ btnRegistrar.addEventListener("click", function () {
 
    
      if (cedulaExistente.cedula===cedulaUsuario ) {
-        mensaje.textContent = "La cédula ya está registrada";
+        mensaje.textContent = "¡La cédula ya está registrada!";
       
   
       }else{

@@ -565,6 +565,7 @@ const email = document.getElementById("email");
 const contrasena = document.getElementById("contrasena");
 const seleccionar = document.getElementById("seleccionar");
 const btnRegistrar = document.getElementById("btnRegistrar");
+const mensaje = document.getElementById("mensaje");
 btnRegistrar.addEventListener("click", function() {
     crearUsuario();
     async function crearUsuario() {
@@ -583,7 +584,7 @@ btnRegistrar.addEventListener("click", function() {
             let cedulaExistente = [];
             const usuarios = await (0, _getUsuarios.getUsers)();
             cedulaExistente = usuarios.filter((user)=>user.cedula === cedulaUsuario);
-            if (cedulaExistente.cedula === cedulaUsuario) mensaje.textContent = "La c\xe9dula ya est\xe1 registrada";
+            if (cedulaExistente.cedula === cedulaUsuario) mensaje.textContent = "\xa1La c\xe9dula ya est\xe1 registrada!";
             else {
                 const response = await (0, _postUsuarios.postUsers)(nombreUsuario, cedulaUsuario, emailUsuario, contrasenaUsuario, seleccionarUsuario);
                 window.location.href = "login.html";

@@ -1,0 +1,63 @@
+body{
+    background-image: url("../img/fondo_login.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    margin-top: 0;
+}
+.contenedor{
+    background-image: url(../img/cajaLogin_login.png);
+    background-size: cover;
+    height: 600px;
+    width: 520px;
+
+
+}
+.contenedor-info{
+    position: relative;
+    top: 50%;
+    left: 30%;
+}
+
+input{
+    background-color: transparent;
+    color: black;
+    inline-size: 200px;
+    padding: 10px 15px;
+    border: solid thin black;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+}
+
+select{
+    background-color: transparent;
+    color: black;
+    padding: 10px 15px;
+    inline-size: 230px;
+    border-radius: 20px;
+    border: solid thin black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+}
+.texto{
+    color: black;
+    margin-top: -2%;
+    margin-left: 1%;
+}
+
+.boton{
+    position: relative;
+    margin-top: 25%;
+    left: 8%;
+}
+
+button{
+    color: black;
+    background-color: transparent;
+    border: solid thin black;
+    inline-size: 150px;
+    padding: 10px 15px;
+    border-radius: 20px;
+  
+}

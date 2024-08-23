@@ -4,7 +4,7 @@
   "description": "",
   "Yancy": "registrarse.js",
   "scripts": {
-    "start": "parcel src/pages/registrarse.html --open"
+    "start": "parcel src/pages/login.html --open"
   },
   "keywords": [],
   "author": "",

@@ -39,6 +39,62 @@
       "email": "aalfaro@fwdcostarica.com",
       "contrasena": "2223",
       "seleccionar": "Administrador"
+    },
+    {
+      "id": "5bae",
+      "nombre": "Yancy Alfaro",
+      "cedula": "2083000065",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "1920",
+      "seleccionar": "Usuario"
+    },
+    {
+      "id": "630c",
+      "nombre": "Yancy Alfaro",
+      "cedula": "2083000065",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "1920",
+      "seleccionar": "Usuario"
+    },
+    {
+      "id": "09df",
+      "nombre": "Yancy Alfaro",
+      "cedula": "6876876i7",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "hyuyuki",
+      "seleccionar": "Administrador"
+    },
+    {
+      "id": "3396",
+      "nombre": "Yancy Alfaro",
+      "cedula": "6876876i7",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "1617",
+      "seleccionar": "Administrador"
+    },
+    {
+      "id": "f529",
+      "nombre": "Yancy Alfaro",
+      "cedula": "2083000065",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "1617",
+      "seleccionar": "Usuario"
+    },
+    {
+      "id": "0152",
+      "nombre": "Yancy Alfaro",
+      "cedula": "2083000065",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "1617",
+      "seleccionar": "Administrador"
+    },
+    {
+      "id": "d753",
+      "nombre": "Yancy Alfaro",
+      "cedula": "2083000065",
+      "email": "aalfaro@fwdcostarica.com",
+      "contrasena": "1617",
+      "seleccionar": "Usuario"
     }
   ]
 }

@@ -4,21 +4,26 @@
 <head>
 	<title>LOGIN</title>
 	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
-	<h1>Usuarios</h1>
-
+	<div class="contenedor">
+		<div class="contenedor-info">
 <input id="cedula" type="text" placeholder="CÉDULA">
 <br><br>
 
 <input id="contrasena" type="text" placeholder="CONTRASEÑA">
 <br><br>
+<p class="texto">Olvidaste tu contraseña</p>
 
+<div class="boton">
 <button id="btnLogin">LOGIN</button>
+<p id="mensaje"></p>
+</div>
 
-
-
+</div>
+</div>
 
 	<script type="module" src="../js/login.js"></script>
 </body>
