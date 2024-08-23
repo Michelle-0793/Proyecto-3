@@ -28,6 +28,8 @@ h3{
     transform:scale(.85) translateY(-.5rem) translateX(.15rem);
     color:gray-300;
     transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
     font-size: 16px;
     border-radius: 50px;
     border: transparent;
@@ -40,5 +42,7 @@ h3{
     font-weight: bold;
     color: #04082c;
     text-align: center;
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
 
 }

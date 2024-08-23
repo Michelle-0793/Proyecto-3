@@ -1,6 +1,8 @@
 import { postSolicitud } from "../servicios/postSolicitud";
+import { postSolicitudHistorial } from "../servicios/postSolicitud";
 import { getSolicitud } from "../servicios/getSolicitud";
-import { updateSolicitud } from "../servicios/updateSolicitud";
+import { updateSolicitud} from "../servicios/updateSolicitud";
+import { deleteSolicitud } from "../servicios/deleteSolicitud";
 
 
 //1 DECLARAR VARIABLES DEL DOM
@@ -17,6 +19,21 @@ const mensaje = document.getElementById("mensaje");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
 
 const urlHistorial = "http://localhost:3001/historial"
+
+// Simulación de login - Prellenar campos con valores de prueba
+function simularLogin() {
+    const nombreUsuarioPlaceholder = "UsuarioTest"; // Usar un nombre fijo para testeo
+    // Asignar los valores simulados al campo nombre
+    nombre.value = nombreUsuarioPlaceholder;
+
+    // Si estás utilizando localStorage para guardar el nombre del usuario:
+    localStorage.setItem('nombreUsuario', nombreUsuarioPlaceholder);
+}
+
+// Llamar a la simulación de login
+simularLogin();
+
+
 
 //2 FUNCIONES AUXILIARES
 // Función para renderizar solicitudes en la tabla
@@ -108,43 +125,34 @@ async function enviarSolicitud() {
     sede.value = "";
     fechaSalida.value = "";
     fechaRegreso.value = "";
-    checked.value ="";
 }
 
 //ACEPTAR SOLICITUD
-// Función para manejar el evento click del botón "Aceptar"
-async function aceptarSolicitud(nuevaSolicitud) {
-    const solicitud = await getSolicitud (nuevaSolicitud)
-    setTimeout(async () => {
-        await moverSolicitudAlHistorial(solicitud);
-    }, 2000);
-   
-    cargarSolicitudes(); // Recargar la lista de solicitudes
-    return
-    
+async function aceptarSolicitud(idSolicitud) {
+    let solicitud = await getSolicitud(idSolicitud);
+    solicitud.estado = "Aceptada";
+    await postSolicitudHistorial(solicitud); // Mueve la solicitud al historial
+    await deleteSolicitud(idSolicitud); // Elimina la solicitud del formulario
+    cargarSolicitudes(); // Recarga la lista de solicitudes
 }
 
 //RECHAZAR SOLICITUD
 // Función "Rechazar"
-async function rechazarSolicitud(nuevaSolicitud) {
-    const solicitud = await getSolicitud (nuevaSolicitud)
-    setTimeout(async () => {
-        await moverSolicitudAlHistorial(solicitud);
-    }, 2000);
-
-    cargarSolicitudes(); // Recargar la lista de solicitudes
-    return
+async function rechazarSolicitud(idSolicitud) {
+    let solicitud = await getSolicitud(idSolicitud);
+    solicitud.estado = "Rechazada";
+    await postSolicitudHistorial(solicitud); // Mueve la solicitud al historial
+    await deleteSolicitud(idSolicitud); // Elimina la solicitud del formulario
+    cargarSolicitudes(); // Recarga la lista de solicitudes
 }
 
 
 //ENVIAR AL HISTORIAL
 // Función para mover la solicitud al historial
 async function moverSolicitudAlHistorial(solicitud) {
-   delete solicitud.estado //Para remover el estado
-   await postSolicitud(solicitud, urlHistorial)
+    delete solicitud.id; // Se elimina el ID para que no se duplique en el historial
+    await postSolicitud(solicitud, urlHistorial);
 }
-
-
 
 //EVENTO DE LOS BOTONES
 // Función "Ver historial"

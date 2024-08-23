@@ -1,4 +1,4 @@
-async function updateSolicitud(id) {
+async function updateSolicitud(id, estado) {
     try {
         // Realiza una solicitud PUT a la URL especificada con el ID
         const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
@@ -8,6 +8,7 @@ async function updateSolicitud(id) {
             },
             body: JSON.stringify(estado) // Convierte el objeto de estado a JSON para enviarlo en el cuerpo de la solicitud
         });
+
         // Verifica si la respuesta es exitosa
         if (!response.ok) {
             throw new Error(`Error en la actualización: ${response.statusText}`);

@@ -558,62 +558,95 @@ function hmrAccept(bundle, id) {
 
 },{}],"1lCog":[function(require,module,exports) {
 var _getSolicitud = require("../servicios/getSolicitud");
-var _putSolicitud = require("../servicios/putSolicitud");
-var _deleteSolicitud = require("../servicios/deleteSolicitud");
-const tablaSolicitudes = document.getElementById("tablaSolicitudes");
-const cuerpoTabla = document.getElementById("cuerpoTabla");
-const busqueda = document.getElementById("busqueda");
-const btnBuscar = document.getElementById("btnBuscar");
-// Función para renderizar solicitudes en la tabla
-function renderizarSolicitudes(solicitudes) {
-    const filas = solicitudes.map((solicitud)=>`
-        <tr>
+const cuerpoTablaHistorial = document.getElementById("cuerpoTablaHistorial");
+async function cargarHistorial() {
+    const historial = await (0, _getSolicitud.getHistorial)();
+    console.log(historial);
+    cuerpoTablaHistorial.innerHTML = "";
+    historial.forEach((solicitud)=>{
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
             <td>${solicitud.nombreUsuario}</td>
             <td>${solicitud.codigoComputadora}</td>
             <td>${solicitud.sede}</td>
             <td>${solicitud.fechaSalida}</td>
             <td>${solicitud.fechaRegreso}</td>
             <td>${solicitud.estado || "Pendiente"}</td>
-            <td>
-                <button onclick="editarSolicitud('${solicitud.id}')">Rechazar</button>
-                <button onclick="eliminarSolicitud('${solicitud.id}')">Aceptar</button>
-            </td>
-        </tr>
-    `);
-    cuerpoTabla.innerHTML = filas.join("");
+        `;
+        cuerpoTablaHistorial.appendChild(fila);
+    });
 }
+cargarHistorial();
 // Función para obtener y mostrar solicitudes
 async function cargarSolicitudes() {
-    const solicitudes = await (0, _getSolicitud.getSolicitud)();
-    renderizarSolicitudes(solicitudes);
+    const solicitudesHistorial = await (0, _getSolicitud.getHistorial)();
 }
-// Función para eliminar solicitud
-async function eliminarSolicitud(id) {
-    await (0, _deleteSolicitud.deleteSolicitud)(id);
-    cargarSolicitudes(); // Volver a cargar solicitudes después de eliminar
-}
+// Cargar solicitudes al inicio
 cargarSolicitudes();
 
-},{"../servicios/getSolicitud":"2Hfe7","../servicios/putSolicitud":"aUEyn","../servicios/deleteSolicitud":"1UBwW"}],"2Hfe7":[function(require,module,exports) {
+},{"../servicios/getSolicitud":"2Hfe7"}],"2Hfe7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSolicitud", ()=>getSolicitud);
-async function getSolicitud() {
+parcelHelpers.export(exports, "getHistorial", ()=>getHistorial) /*async function getSolicitud(id) {
     try {
         // Realiza una solicitud GET a la URL especificada para obtener las solicitudes
-        const response = await fetch("http://localhost:3003/solicitudes", {
-            method: "GET",
+        const response = await fetch('http://localhost:3001/solicitudes', {
+            method: 'GET',
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             }
         });
+
+        // Verifica si la solicitud fue exitosa
+        if (!response.ok) {
+            // Captura el texto del error para una mejor depuración
+            const errorText = await response.text();
+            throw new Error(`Error ${response.status}: ${errorText}`);
+        }
+
         // Espera la respuesta en formato JSON
         const data = await response.json();
         // Retorna los datos obtenidos de la respuesta del servidor
         return data;
     } catch (error) {
         // Captura y muestra cualquier error que ocurra durante la solicitud
-        console.error(error);
+        console.error('Error al obtener las solicitudes:', error);
+        throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
+    }
+}
+
+export { getSolicitud };*/ ;
+async function getSolicitud(id) {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudes`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error: ${response.status} ${response.statusText}`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error al obtener la solicitud:", error);
+        throw error;
+    }
+}
+async function getHistorial() {
+    try {
+        const response = await fetch("http://localhost:3001/historial", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error: ${response.status} ${response.statusText}`);
+        const data = await response.json();
+        return data; // Asegúrate de que esta es una lista
+    } catch (error) {
+        console.error("Error al obtener el historial:", error);
+        throw error;
     }
 }
 
@@ -647,56 +680,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"aUEyn":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "updateUsers", ()=>updateUsers);
-async function updateUsers(nombre, apellido, id) {
-    const userData = {
-        nombre,
-        apellido
-    };
-    try {
-        // Realiza una solicitud POST a la URL especificada
-        const response = await fetch("http://localhost:3002/users/" + id, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json" // Indica que los datos se envían en formato JSON. en este apartado tambien se pueden enviar tokens
-            },
-            body: JSON.stringify(userData) // Convierte el objeto newUser a JSON para enviarlo en el cuer
-        });
-        // Espera la respuesta en formato JSON
-        const data = await response.json();
-        // Retorna los datos obtenidos de la respuesta del servidor
-        return data; /// siempre hay que ponerlo 
-    } catch (error) {
-        // Captura y muestra cualquier error que ocurra durante la solicitud
-        console.error(error);
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1UBwW":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "deleteUser", ()=>deleteUser);
-async function deleteUser(id) {
-    try {
-        const response = await fetch(`http://localhost:3001/users/${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        if (!response.ok) throw new Error(`Error deleting user with id ${id}`);
-        return {
-            message: `User with id ${id} deleted successfully`
-        };
-    } catch (error) {
-        console.error("Error deleting user:", error);
-        throw error;
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aXeaW","1lCog"], "1lCog", "parcelRequire6682")
+},{}]},["aXeaW","1lCog"], "1lCog", "parcelRequire6682")
 
 //# sourceMappingURL=historial.c40667c0.js.map

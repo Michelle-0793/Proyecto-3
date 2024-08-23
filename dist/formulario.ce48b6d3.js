@@ -560,6 +560,7 @@ function hmrAccept(bundle, id) {
 var _postSolicitud = require("../servicios/postSolicitud");
 var _getSolicitud = require("../servicios/getSolicitud");
 var _updateSolicitud = require("../servicios/updateSolicitud");
+var _deleteSolicitud = require("../servicios/deleteSolicitud");
 //1 DECLARAR VARIABLES DEL DOM
 // Obtener referencias a los elementos del DOM
 const nombre = document.getElementById("nombre");
@@ -573,6 +574,16 @@ const btnHistorial = document.getElementById("btnHistorial");
 const mensaje = document.getElementById("mensaje");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
 const urlHistorial = "http://localhost:3001/historial";
+// Simulación de login - Prellenar campos con valores de prueba
+function simularLogin() {
+    const nombreUsuarioPlaceholder = "UsuarioTest"; // Usar un nombre fijo para testeo
+    // Asignar los valores simulados al campo nombre
+    nombre.value = nombreUsuarioPlaceholder;
+    // Si estás utilizando localStorage para guardar el nombre del usuario:
+    localStorage.setItem("nombreUsuario", nombreUsuarioPlaceholder);
+}
+// Llamar a la simulación de login
+simularLogin();
 //2 FUNCIONES AUXILIARES
 // Función para renderizar solicitudes en la tabla
 function renderizarSolicitudes(solicitudes) {
@@ -648,33 +659,28 @@ async function enviarSolicitud() {
     sede.value = "";
     fechaSalida.value = "";
     fechaRegreso.value = "";
-    checked.value = "";
 }
 //ACEPTAR SOLICITUD
-// Función para manejar el evento click del botón "Aceptar"
-async function aceptarSolicitud(nuevaSolicitud) {
-    const solicitud = await (0, _getSolicitud.getSolicitud)(nuevaSolicitud);
-    setTimeout(async ()=>{
-        await moverSolicitudAlHistorial(solicitud);
-    }, 2000);
-    cargarSolicitudes(); // Recargar la lista de solicitudes
-    return;
+async function aceptarSolicitud(idSolicitud) {
+    let solicitud = await (0, _getSolicitud.getSolicitud)(idSolicitud);
+    solicitud.estado = "Aceptada";
+    await (0, _postSolicitud.postSolicitudHistorial)(solicitud); // Mueve la solicitud al historial
+    await (0, _deleteSolicitud.deleteSolicitud)(idSolicitud); // Elimina la solicitud del formulario
+    cargarSolicitudes(); // Recarga la lista de solicitudes
 }
 //RECHAZAR SOLICITUD
 // Función "Rechazar"
-async function rechazarSolicitud(nuevaSolicitud) {
-    const solicitud = await (0, _getSolicitud.getSolicitud)(nuevaSolicitud);
-    setTimeout(async ()=>{
-        await moverSolicitudAlHistorial(solicitud);
-    }, 2000);
-    cargarSolicitudes(); // Recargar la lista de solicitudes
-    return;
+async function rechazarSolicitud(idSolicitud) {
+    let solicitud = await (0, _getSolicitud.getSolicitud)(idSolicitud);
+    solicitud.estado = "Rechazada";
+    await (0, _postSolicitud.postSolicitudHistorial)(solicitud); // Mueve la solicitud al historial
+    await (0, _deleteSolicitud.deleteSolicitud)(idSolicitud); // Elimina la solicitud del formulario
+    cargarSolicitudes(); // Recarga la lista de solicitudes
 }
 //ENVIAR AL HISTORIAL
 // Función para mover la solicitud al historial
 async function moverSolicitudAlHistorial(solicitud) {
-    delete solicitud.estado //Para remover el estado
-    ;
+    delete solicitud.id; // Se elimina el ID para que no se duplique en el historial
     await (0, _postSolicitud.postSolicitud)(solicitud, urlHistorial);
 }
 //EVENTO DE LOS BOTONES
@@ -686,10 +692,11 @@ btnHistorial.addEventListener("click", verHistorial);
 // Asignar la función al evento click del botón "Enviar"
 btnEnviar.addEventListener("click", enviarSolicitud);
 
-},{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7","../servicios/updateSolicitud":"bWa6f"}],"aWKt8":[function(require,module,exports) {
+},{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7","../servicios/updateSolicitud":"bWa6f","../servicios/deleteSolicitud":"1UBwW"}],"aWKt8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "postSolicitud", ()=>postSolicitud);
+parcelHelpers.export(exports, "postSolicitudHistorial", ()=>postSolicitudHistorial);
 async function postSolicitud(solicitud) {
     try {
         const response = await fetch("http://localhost:3001/solicitudes", {
@@ -699,10 +706,30 @@ async function postSolicitud(solicitud) {
             },
             body: JSON.stringify(solicitud)
         });
+        if (!response.ok) throw new Error(`Error: ${response.status} ${response.statusText}`);
         const data = await response.json();
         return data;
     } catch (error) {
         console.error("Error al enviar la solicitud:", error);
+        throw error;
+    }
+}
+// postSolicitudHistorial.js
+async function postSolicitudHistorial(solicitud) {
+    try {
+        const response = await fetch("http://localhost:3001/historial", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(solicitud)
+        });
+        if (!response.ok) throw new Error(`Error: ${response.status} ${response.statusText}`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error al enviar la solicitud al historial:", error);
+        throw error;
     }
 }
 
@@ -740,22 +767,65 @@ exports.export = function(dest, destName, get) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSolicitud", ()=>getSolicitud);
-async function getSolicitud() {
+parcelHelpers.export(exports, "getHistorial", ()=>getHistorial) /*async function getSolicitud(id) {
     try {
         // Realiza una solicitud GET a la URL especificada para obtener las solicitudes
-        const response = await fetch("http://localhost:3001/solicitudes", {
-            method: "GET",
+        const response = await fetch('http://localhost:3001/solicitudes', {
+            method: 'GET',
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             }
         });
+
+        // Verifica si la solicitud fue exitosa
+        if (!response.ok) {
+            // Captura el texto del error para una mejor depuración
+            const errorText = await response.text();
+            throw new Error(`Error ${response.status}: ${errorText}`);
+        }
+
         // Espera la respuesta en formato JSON
         const data = await response.json();
         // Retorna los datos obtenidos de la respuesta del servidor
         return data;
     } catch (error) {
         // Captura y muestra cualquier error que ocurra durante la solicitud
-        console.error(error);
+        console.error('Error al obtener las solicitudes:', error);
+        throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
+    }
+}
+
+export { getSolicitud };*/ ;
+async function getSolicitud(id) {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudes`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error: ${response.status} ${response.statusText}`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error al obtener la solicitud:", error);
+        throw error;
+    }
+}
+async function getHistorial() {
+    try {
+        const response = await fetch("http://localhost:3001/historial", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error: ${response.status} ${response.statusText}`);
+        const data = await response.json();
+        return data; // Asegúrate de que esta es una lista
+    } catch (error) {
+        console.error("Error al obtener el historial:", error);
+        throw error;
     }
 }
 
@@ -763,7 +833,7 @@ async function getSolicitud() {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "updateSolicitud", ()=>updateSolicitud);
-async function updateSolicitud(id) {
+async function updateSolicitud(id, estado) {
     try {
         // Realiza una solicitud PUT a la URL especificada con el ID
         const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
@@ -783,6 +853,29 @@ async function updateSolicitud(id) {
         // Captura y muestra cualquier error que ocurra durante la solicitud
         console.error("Error en updateSolicitud:", error);
         throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1UBwW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "deleteSolicitud", ()=>deleteSolicitud);
+async function deleteSolicitud(id) {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error deleting request with id ${id}`);
+        return {
+            message: `Request with id ${id} deleted successfully`
+        };
+    } catch (error) {
+        console.error("Error deleting request:", error);
+        // Puedes mostrar un mensaje al usuario aquí si lo deseas
+        throw error;
     }
 }
 

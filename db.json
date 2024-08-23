@@ -1,164 +1,27 @@
 {
-  "solicitudes": [
-    {
-      "id": "74c5",
-      "nombreUsuario": "Michelle",
-      "codigoComputadora": "34",
-      "sede": "sedeSantaAna",
-      "fechaSalida": "2024-08-22",
-      "fechaRegreso": "2024-08-23"
-    },
-    {
-      "id": "c36a",
-      "nombreUsuario": "Karen",
-      "codigoComputadora": "3534",
-      "sede": "sedePuntarenas",
-      "fechaSalida": "2024-08-23",
-      "fechaRegreso": "2024-08-26"
-    },
-    {
-      "id": "5d4c",
-      "nombreUsuario": "Catalina",
-      "codigoComputadora": "7658",
-      "sede": "sedeNosara",
-      "fechaSalida": "2024-08-23",
-      "fechaRegreso": "2024-08-25"
-    },
+  "solicitudes": [],
+  "historial": [
     {
       "0": {
-        "id": "74c5",
-        "nombreUsuario": "Michelle",
-        "codigoComputadora": "34",
-        "sede": "sedeSantaAna",
-        "fechaSalida": "2024-08-22",
-        "fechaRegreso": "2024-08-23"
-      },
-      "1": {
-        "id": "c36a",
-        "nombreUsuario": "Karen",
-        "codigoComputadora": "3534",
-        "sede": "sedePuntarenas",
+        "id": "023e",
+        "nombreUsuario": "UsuarioTest",
+        "codigoComputadora": "2131",
+        "sede": "sedeNosara",
         "fechaSalida": "2024-08-23",
         "fechaRegreso": "2024-08-26"
       },
-      "2": {
-        "id": "5d4c",
-        "nombreUsuario": "Catalina",
-        "codigoComputadora": "7658",
-        "sede": "sedeNosara",
-        "fechaSalida": "2024-08-23",
-        "fechaRegreso": "2024-08-25"
-      },
-      "id": "e749"
+      "id": "9f52"
     },
     {
       "0": {
-        "id": "74c5",
-        "nombreUsuario": "Michelle",
-        "codigoComputadora": "34",
-        "sede": "sedeSantaAna",
-        "fechaSalida": "2024-08-22",
-        "fechaRegreso": "2024-08-23"
-      },
-      "1": {
-        "id": "c36a",
-        "nombreUsuario": "Karen",
-        "codigoComputadora": "3534",
+        "id": "f2d9",
+        "nombreUsuario": "UsuarioTest",
+        "codigoComputadora": "344645",
         "sede": "sedePuntarenas",
-        "fechaSalida": "2024-08-23",
+        "fechaSalida": "2024-08-24",
         "fechaRegreso": "2024-08-26"
       },
-      "2": {
-        "id": "5d4c",
-        "nombreUsuario": "Catalina",
-        "codigoComputadora": "7658",
-        "sede": "sedeNosara",
-        "fechaSalida": "2024-08-23",
-        "fechaRegreso": "2024-08-25"
-      },
-      "id": "d999"
-    },
-    {
-      "0": {
-        "id": "74c5",
-        "nombreUsuario": "Michelle",
-        "codigoComputadora": "34",
-        "sede": "sedeSantaAna",
-        "fechaSalida": "2024-08-22",
-        "fechaRegreso": "2024-08-23"
-      },
-      "1": {
-        "id": "c36a",
-        "nombreUsuario": "Karen",
-        "codigoComputadora": "3534",
-        "sede": "sedePuntarenas",
-        "fechaSalida": "2024-08-23",
-        "fechaRegreso": "2024-08-26"
-      },
-      "2": {
-        "id": "5d4c",
-        "nombreUsuario": "Catalina",
-        "codigoComputadora": "7658",
-        "sede": "sedeNosara",
-        "fechaSalida": "2024-08-23",
-        "fechaRegreso": "2024-08-25"
-      },
-      "id": "ef05"
-    },
-    {
-      "0": {
-        "id": "74c5",
-        "nombreUsuario": "Michelle",
-        "codigoComputadora": "34",
-        "sede": "sedeSantaAna",
-        "fechaSalida": "2024-08-22",
-        "fechaRegreso": "2024-08-23"
-      },
-      "1": {
-        "id": "c36a",
-        "nombreUsuario": "Karen",
-        "codigoComputadora": "3534",
-        "sede": "sedePuntarenas",
-        "fechaSalida": "2024-08-23",
-        "fechaRegreso": "2024-08-26"
-      },
-      "2": {
-        "id": "5d4c",
-        "nombreUsuario": "Catalina",
-        "codigoComputadora": "7658",
-        "sede": "sedeNosara",
-        "fechaSalida": "2024-08-23",
-        "fechaRegreso": "2024-08-25"
-      },
-      "id": "7d18"
-    },
-    {
-      "0": {
-        "id": "74c5",
-        "nombreUsuario": "Michelle",
-        "codigoComputadora": "34",
-        "sede": "sedeSantaAna",
-        "fechaSalida": "2024-08-22",
-        "fechaRegreso": "2024-08-23"
-      },
-      "1": {
-        "id": "c36a",
-        "nombreUsuario": "Karen",
-        "codigoComputadora": "3534",
-        "sede": "sedePuntarenas",
-        "fechaSalida": "2024-08-23",
-        "fechaRegreso": "2024-08-26"
-      },
-      "2": {
-        "id": "5d4c",
-        "nombreUsuario": "Catalina",
-        "codigoComputadora": "7658",
-        "sede": "sedeNosara",
-        "fechaSalida": "2024-08-23",
-        "fechaRegreso": "2024-08-25"
-      },
-      "id": "8821"
+      "id": "e690"
     }
-  ],
-  "historial": []
+  ]
 }
