@@ -559,7 +559,6 @@ function hmrAccept(bundle, id) {
 },{}],"d3rjD":[function(require,module,exports) {
 var _postSolicitud = require("../servicios/postSolicitud");
 var _getSolicitud = require("../servicios/getSolicitud");
-var _updateSolicitud = require("../servicios/updateSolicitud");
 var _deleteSolicitud = require("../servicios/deleteSolicitud");
 //1 DECLARAR VARIABLES DEL DOM
 const nombre = document.getElementById("nombre");
@@ -694,7 +693,7 @@ function verHistorial() {
 btnHistorial.addEventListener("click", verHistorial);
 btnEnviar.addEventListener("click", enviarSolicitud);
 
-},{"../servicios/postSolicitud":"aWKt8","../servicios/updateSolicitud":"bWa6f","../servicios/deleteSolicitud":"1UBwW","../servicios/getSolicitud":"2Hfe7"}],"aWKt8":[function(require,module,exports) {
+},{"../servicios/postSolicitud":"aWKt8","../servicios/deleteSolicitud":"1UBwW","../servicios/getSolicitud":"2Hfe7"}],"aWKt8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "postSolicitud", ()=>postSolicitud);
@@ -784,34 +783,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"bWa6f":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "updateSolicitud", ()=>updateSolicitud);
-async function updateSolicitud(id, estado) {
-    try {
-        // Realiza una solicitud PUT a la URL especificada con el ID
-        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json" // Indica que los datos se envían en formato JSON
-            },
-            body: JSON.stringify(estado) // Convierte el objeto de estado a JSON para enviarlo en el cuerpo de la solicitud
-        });
-        // Verifica si la respuesta es exitosa
-        if (!response.ok) throw new Error(`Error en la actualización: ${response.statusText}`);
-        // Espera la respuesta en formato JSON
-        const data = await response.json();
-        // Retorna los datos obtenidos de la respuesta del servidor
-        return data;
-    } catch (error) {
-        // Captura y muestra cualquier error que ocurra durante la solicitud
-        console.error("Error en updateSolicitud:", error);
-        throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1UBwW":[function(require,module,exports) {
+},{}],"1UBwW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "deleteSolicitud", ()=>deleteSolicitud);
@@ -840,35 +812,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSolicitud", ()=>getSolicitud);
 parcelHelpers.export(exports, "getSolicitudById", ()=>getSolicitudById);
 parcelHelpers.export(exports, "getHistorial", ()=>getHistorial);
-parcelHelpers.export(exports, "getSolicitudesAceptadas", ()=>getSolicitudesAceptadas) /*async function getSolicitud(id) {
-    try {
-        // Realiza una solicitud GET a la URL especificada para obtener las solicitudes
-        const response = await fetch('http://localhost:3001/solicitudes', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        // Verifica si la solicitud fue exitosa
-        if (!response.ok) {
-            // Captura el texto del error para una mejor depuración
-            const errorText = await response.text();
-            throw new Error(`Error ${response.status}: ${errorText}`);
-        }
-
-        // Espera la respuesta en formato JSON
-        const data = await response.json();
-        // Retorna los datos obtenidos de la respuesta del servidor
-        return data;
-    } catch (error) {
-        // Captura y muestra cualquier error que ocurra durante la solicitud
-        console.error('Error al obtener las solicitudes:', error);
-        throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
-    }
-}
-
-export { getSolicitud };*/ ;
+parcelHelpers.export(exports, "getSolicitudesAceptadas", ()=>getSolicitudesAceptadas);
 async function getSolicitud() {
     try {
         const response = await fetch(`http://localhost:3001/solicitudes`, {

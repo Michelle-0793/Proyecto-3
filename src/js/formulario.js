@@ -1,6 +1,5 @@
 import { postSolicitud, postSolicitudHistorial, postSolicitudAceptadas } from "../servicios/postSolicitud";
 import { getSolicitud, getSolicitudById } from "../servicios/getSolicitud";
-import { updateSolicitud} from "../servicios/updateSolicitud";
 import { deleteSolicitud } from "../servicios/deleteSolicitud";
 
 

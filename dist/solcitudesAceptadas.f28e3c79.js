@@ -560,7 +560,7 @@ function hmrAccept(bundle, id) {
 var _getSolicitud = require("../servicios/getSolicitud");
 const cuerpoTablaHistorial = document.getElementById("cuerpoTablaHistorial");
 async function cargarHistorial() {
-    const historial = await (0, _getSolicitud.getHistorial)(); // Obtener de aceptdas
+    const historial = await (0, _getSolicitud.getSolicitudesAceptadas)(); // Obtener de aceptdas
     console.log(historial);
     cuerpoTablaHistorial.innerHTML = "";
     historial.forEach((solicitud)=>{
