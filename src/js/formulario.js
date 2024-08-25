@@ -1,10 +1,11 @@
 import { postSolicitud, postSolicitudHistorial, postSolicitudAceptadas } from "../servicios/postSolicitud";
 import { getSolicitud, getSolicitudById } from "../servicios/getSolicitud";
 import { deleteSolicitud } from "../servicios/deleteSolicitud";
+import { getUsers } from "../servicios/getUsuarios";
 
 
 //1 DECLARAR VARIABLES DEL DOM
-const nombre = document.getElementById("nombre");
+const cedula = document.getElementById("cedula");
 const codigoComputadora = document.getElementById("codigoComputadora");
 const sede = document.getElementById("sede");
 const fechaSalida = document.getElementById("fechaSalida");
@@ -18,33 +19,40 @@ const cuerpoTabla = document.getElementById("cuerpoTabla");
 const urlHistorial = "http://localhost:3001/historial"
 const urlAceptadas = "http://localhost:3001/solicitudesAceptadas"
 
-// Simulación de login - Prellenar campos con un valor para hacer pruebas
-function simularLogin() {
-    const nombreUsuarioPlaceholder = "UsuarioTest"; //Nombre para testeo
-    //Valores para al campo nombre
-    nombre.value = nombreUsuarioPlaceholder;
-    localStorage.setItem('nombreUsuario', nombreUsuarioPlaceholder);
+// Prellenar el campo de cédula con el valor guardado en localStorage
+function prellenarFormulario() {
+    const usuarioDatos = JSON.parse(localStorage.getItem("usuarioDatos"));
+    if (usuarioDatos && usuarioDatos.cedula) {
+        // Prellenar el campo de cedula del usuario
+        cedula.value = usuarioDatos.cedula;
+    }
 }
-// Llamar a la simulación de login
-simularLogin();
 
+// Llamar a la función para prellenar el formulario cuando se carga la página
+window.addEventListener("load", prellenarFormulario);
 
 
 //2 FUNCIONES AUXILIARES
 // Función para renderizar solicitudes en la tabla
 function renderizarSolicitudes(solicitudes) {
+    const usuarioDatos = JSON.parse(localStorage.getItem("usuarioDatos"));
+    const selectRol = usuarioDatos ? usuarioDatos.rol : ""; // Extraer el rol con un operador ternario,
+
     solicitudes.forEach(solicitud => {
         // Fila para cada solicitud
         const fila = document.createElement("tr");
 
         fila.innerHTML = `
-            <td>${solicitud.nombreUsuario}</td>
+            <td>${solicitud.cedulaUsuario}</td>
             <td>${solicitud.codigoComputadora}</td>
             <td>${solicitud.sede}</td>
             <td>${solicitud.fechaSalida}</td>
             <td>${solicitud.fechaRegreso}</td>
             <td>${solicitud.estado || "Pendiente"}</td>
         `;
+
+//Condicional para administrador
+if (selectRol === "Administrador") {    
         //Celdas con los botones
         const celdaBotones = document.createElement("td");
 
@@ -64,7 +72,7 @@ function renderizarSolicitudes(solicitudes) {
 
         // Añadir la celda de botones a la fila
         fila.appendChild(celdaBotones);
-
+}
         // Añadir la fila al cuerpo de la tabla
         cuerpoTabla.appendChild(fila);
     });
@@ -89,7 +97,7 @@ async function cargarSolicitudes() {
 // Función "Enviar"
 async function enviarSolicitud() {
     // Validar que todos los campos estén llenos
-    if (!nombre.value || !codigoComputadora.value || !sede.value || !fechaSalida.value || !fechaRegreso.value) {
+    if (!cedula.value || !codigoComputadora.value || !sede.value || !fechaSalida.value || !fechaRegreso.value) {
         mensaje.textContent = "Por favor, complete todos los campos";
         return;
     }
@@ -102,7 +110,7 @@ async function enviarSolicitud() {
 
     // Crear un objeto con los datos de la nueva solicitud
         const nuevaSolicitud = {
-        nombreUsuario: nombre.value,
+        cedulaUsuario: cedula.value,
         codigoComputadora: codigoComputadora.value,
         sede: sede.value,
         fechaSalida: fechaSalida.value,
@@ -118,7 +126,6 @@ async function enviarSolicitud() {
     cargarSolicitudes()
 
 // Limpiar los campos del formulario
-    nombre.value = "";
     codigoComputadora.value = "";
     sede.value = "";
     fechaSalida.value = "";
@@ -173,5 +180,6 @@ btnHistorial.addEventListener("click", verHistorial);
 
 
 btnEnviar.addEventListener("click", enviarSolicitud);
+
 
 

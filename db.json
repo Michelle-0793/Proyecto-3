@@ -1,50 +1,69 @@
 {
-  "solicitudes": [],
+  "users": [
+    {
+      "id": "d0f5",
+      "nombre": "Michelle",
+      "cedula": "503950473",
+      "email": "m.com",
+      "contrasena": "1234",
+      "rol": "Usuario"
+    },
+    {
+      "id": "a696",
+      "nombre": "Karen",
+      "cedula": "503020841",
+      "email": "k.com",
+      "contrasena": "1234",
+      "rol": "Administrador"
+    }
+  ],
+  "solicitudes": [
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Pendiente"
+    },
+    {
+      "id": "0fda",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "21312",
+      "sede": "sedeSantaAna",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-26",
+      "estado": "Pendiente"
+    }
+  ],
   "historial": [
     {
-      "id": "2402",
-      "nombreUsuario": "UsuarioTest",
-      "codigoComputadora": "35434",
+      "id": "a689",
+      "cedulaUsuario": "503950473",
+      "codigoComputadora": "567",
       "sede": "sedeNosara",
-      "fechaSalida": "2024-08-23",
-      "fechaRegreso": "2024-08-24",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-26",
       "estado": "Aceptada"
     },
     {
-      "id": "87aa",
-      "nombreUsuario": "UsuarioTest",
-      "codigoComputadora": "466",
-      "sede": "sedePuntarenas",
+      "id": "1615",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "9789",
+      "sede": "sedeSantaAna",
       "fechaSalida": "2024-08-24",
       "fechaRegreso": "2024-08-25",
       "estado": "Rechazada"
-    },
-    {
-      "id": "1afd",
-      "nombreUsuario": "UsuarioTest",
-      "codigoComputadora": "3454",
-      "sede": "sedeNosara",
-      "fechaSalida": "2024-08-17",
-      "fechaRegreso": "2024-08-26",
-      "estado": "Aceptada"
     }
   ],
   "solicitudesAceptadas": [
     {
-      "id": "2402",
-      "nombreUsuario": "UsuarioTest",
-      "codigoComputadora": "35434",
+      "id": "a689",
+      "cedulaUsuario": "503950473",
+      "codigoComputadora": "567",
       "sede": "sedeNosara",
-      "fechaSalida": "2024-08-23",
-      "fechaRegreso": "2024-08-24",
-      "estado": "Aceptada"
-    },
-    {
-      "id": "1afd",
-      "nombreUsuario": "UsuarioTest",
-      "codigoComputadora": "3454",
-      "sede": "sedeNosara",
-      "fechaSalida": "2024-08-17",
+      "fechaSalida": "2024-08-24",
       "fechaRegreso": "2024-08-26",
       "estado": "Aceptada"
     }
