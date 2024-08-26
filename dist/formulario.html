@@ -8,7 +8,7 @@
 </head>
 <body>
     <h3>Registro de Salida de Computadoras</h3>
-    <input class="inputRegistro" id="nombre" type="text" placeholder="Nombre/ID Usuario" readonly=""><br>
+    <input class="inputRegistro" id="cedula" type="text" placeholder="Usuario" readonly=""><br>
 <br>
 
 <input class="inputRegistro" id="codigoComputadora" type="text" placeholder="Código computadora">
@@ -22,19 +22,27 @@
 </select> 
 <br><br>
 
-<label class="textoCalendario" for="fechaSalida">Fecha de salida:</label><br><br>
-<input class="inputRegistro" type="date" id="fechaSalida" name="fechaSalida" value="dd/mm/aaaa" min="2024-08-01" max="2025-12-31">
-<br><br>
+<div class="divFechas">
+    <div class="divFechaSalida">
+    <label class="textoCalendario" for="fechaSalida">Fecha de salida:</label><br><br>
+    <input class="inputRegistro" type="date" id="fechaSalida" name="fechaSalida" value="dd/mm/aaaa" min="2024-08-01" max="2025-12-31">
+    </div>
 
-<label for="fechaRegreso">Fecha de regreso:</label><br><br>
-<input class="inputRegistro" type="date" id="fechaRegreso" name="fechaRegreso" value="dd/mm/aaaa" min="2024-08-01" max="2025-12-31">
-<br><br>
-
-<div>
-<div><input type="checkbox" id="terminosCondiciones" name="terminosCondiciones">Acepto terminos y condiciones</div>
-
-<!--<div>Acepto los <a href="terminosCondiciones.html">terminos y condiciones</a></div> -->
+    <div class="divFechaRegreso">
+    <label class="textoCalendario" for="fechaRegreso">Fecha de regreso:</label><br><br>
+    <input class="inputRegistro" type="date" id="fechaRegreso" name="fechaRegreso" value="dd/mm/aaaa" min="2024-08-01" max="2025-12-31">
+    </div>
 </div>
+
+<br><br>
+
+<div class="divAceptarTC">
+<div><input type="checkbox" id="terminosCondiciones" name="terminosCondiciones"></div>
+
+<div><label class="aceptarTC" for="terminosCondiciones">Acepto terminos y condiciones</label></div>
+
+</div>
+
 <br><br>
 
 <div>
@@ -48,7 +56,7 @@
 <table id="tablaSolicitudes">
     <thead>
         <tr>
-            <th>Nombre/ID Usuario</th>
+            <th>Usuario</th>
             <th>Código Computadora</th>
             <th>Sede</th>
             <th>Fecha de Salida</th>

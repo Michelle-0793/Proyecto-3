@@ -44,5 +44,32 @@ h3{
     text-align: center;
     font-family: sans-serif;
     src: url(../font/AvenirLTStd-Book.otf);
+    font-size: 14px;
 
+}
+.divFechas{
+    display: grid;
+    grid-template-columns: 250px 250px;
+}
+.divFechaSalida{
+    text-align: center;
+}
+.divFechaRegreso{
+    text-align: center;
+}
+.divAceptarTC{
+    display: grid;
+    grid-template-columns: 25px 300px;
+    align-items: center;
+
+}
+.aceptarTC{
+    color: #04082c;
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    font-size: 14px;
+}
+
+input[type=checkbox] + label{
+    cursor: pointer;
 }

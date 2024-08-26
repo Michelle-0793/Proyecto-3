@@ -124,7 +124,7 @@
 109C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\iconv-lite\encodings\tables\cp950.json133683039995742459 0
 89C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\lodash\fp\props.js133683040008363975 0
 133C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\core\test\fixtures\custom-targets-distdir\package.json133681219476831212 0
-82C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\pages\historial.html133689142756081736 0
+82C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\pages\historial.html133690337617875997 0
 121C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\core\test\PublicMutableBundleGraph.test.js133681219475717558 0
 76C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\isexe133687240663243849 1
 120C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\jest-runtime\node_modules\semver\functions\lte.js133681221313799890 0
@@ -138,7 +138,7 @@
 85C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\lodash\date.js133683040003848699 0
 100C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\jest-haste-map\build\index.js133681221299901481 0
 94C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\svgo\lib\svgo\config.js133681219464855909 0
-65C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\db.json133689140776968928 0
+65C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\db.json133690339190917138 0
 96C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\svgo\plugins\sortAttrs.js133681219470612306 0
 100C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\web-encoding\test\cjs-use\src133687240743951392 1
 77C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing133687240613378255 1
@@ -148,7 +148,7 @@
 99C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\css-tree\lib\walker\index.js133681219471498111 0
 89C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\lodash\_getView.js133683040001180814 0
 117C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@babel\traverse\lib\path\inference\inferers.js133681221309886998 0
-62C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist133689233581509131 1
+62C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist133691591771312081 1
 124C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\src\internal\observable\bindCallbackInternals.ts133683040029255500 0
 80C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\nth-check133687240694836169 1
 92C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\string-length\license133681221292211725 0
@@ -157,7 +157,7 @@
 90C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\lodash\entriesIn.js133683040004389851 0
 98C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\lodash\_basePropertyDeep.js133683039999106863 0
 113C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\dist\esm5\internal\observable\race.js133683040005416351 0
-67C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\README.md133686382637101474 0
+67C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\README.md133690343868684340 0
 89C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\for-each\.eslintrc133683039989087849 0
 91C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\escape-string-regexp133687240646520940 1
 80C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\is-stream133687240662931331 1
@@ -288,17 +288,17 @@
 113C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\dist\cjs\internal\AsyncSubject.js.map133683040009650595 0
 116C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@babel\core\lib\transformation\plugin-pass.js133681221315060522 0
 117C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\dist\esm\internal\observable\defer.js.map133683040010845807 0
-83C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\pages\formulario.html133688612779626854 0
+83C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\pages\formulario.html133691591771082413 0
 122C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\package-manager\src\MockPackageInstaller.js133681219466046529 0
 103C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\packager-js\lib\utils.js133681219465348144 0
 133C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\dist\esm\internal\observable\ConnectableObservable.js.map133683040010555477 0
 100C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\terser\lib\compress\inline.js133681219468493177 0
 109C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@sinonjs\commons\types\class-name.d.ts133681221305941807 0
 96C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\prompts\lib\util\style.js133681221303059268 0
-92C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\pages\solcitudesAceptadas.html133689095213465900 0
+92C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\pages\solcitudesAceptadas.html133690338025339405 0
 88C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\dotenv-expand\lib133687240645114705 1
 122C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\dist\types\internal\operators\switchMapTo.d.ts133683040033540810 0
-78C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\js\formulario.js133689142643290621 0
+78C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\js\formulario.js133691549938108940 0
 98C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\prompts\lib\util\figures.js133681221298218476 0
 115C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@babel\types\lib\definitions\placeholders.js133681221314226710 0
 127C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing\text-encoding\cjs\coders\utf-8\UTF8Encoder.js.map133683040004024520 0
@@ -314,7 +314,7 @@
 78C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\find-up133687240650115746 1
 92C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\path-key\package.json133681221295559636 0
 108C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\caniuse-lite\data\features\details.js133681219479334476 0
-77C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\js\historial.js133689092800518565 0
+77C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\js\historial.js133690337594675598 0
 120C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\caniuse-lite\data\features\es6-string-includes.js133681219480170180 0
 111C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\src\internal\operators\mergeScan.ts133683040031924443 0
 117C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@babel\helper-environment-visitor\package.json133681221310893491 0
@@ -331,7 +331,7 @@
 93C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\lodash\fp\functions.js133683040005023883 0
 122C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\source-map\parcel_sourcemap_node\Cargo.toml133681219472660225 0
 89C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\jest-changed-files133687240666058677 1
-87C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\js\solcitudesAceptadas.js133689138275514176 0
+87C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\js\solcitudesAceptadas.js133690338232441100 0
 123C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\jest-snapshot\node_modules\semver\functions\rsort.js133681221313890465 0
 102C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\caniuse-lite\data\regions\AO.js133681219466679320 0
 83C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\lightningcss133687240674352232 1
@@ -408,7 +408,7 @@
 88C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\font\AvenirLTStd-Roman.otf133688269978302732 0
 105C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@bcoe\v8-coverage\src\lib\merge.ts133681221308353952 0
 85C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\wrappy\LICENSE133681221294716791 0
-80C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\css\formulario.css133688612657819811 0
+80C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\src\css\formulario.css133691571814062134 0
 117C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\.bin\node-gyp-build-optional-packages-test.ps1133681219488556125 0
 90C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\lodash\fp\equals.js133683040004389851 0
 120C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\dist\types\internal\util\EmptyError.d.ts.map133683040011077374 0
@@ -3303,7 +3303,7 @@
 103C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\term-size\vendor\macos\.DS_Store133681219455439854 0
 123C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing\text-encoding\es2015\helper\getGlobalScope.js133683039999886810 0
 103C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\term-size\vendor\macos\term-size133681219457058681 0
-78C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.html133689233581227809 0
+78C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.html133691591771312081 0
 80C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\svgo\dist133687240738008733 1
 83C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\svgo\plugins133687240738946230 1
 94C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\lodash\_listCacheSet.js133683040001692492 0
@@ -4707,7 +4707,7 @@
 125C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\dist\types\internal\observable\dom\webSocket.d.ts133683040034183834 0
 103C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\jest-regex-util\build\index.d.ts133681221298167957 0
 122C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\dist\types\internal\operators\isEmpty.d.ts.map133683040015074255 0
-94C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\terminosCondiciones.94686bc0.js133687265109769167 0
+94C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\terminosCondiciones.94686bc0.js133691558205613248 0
 107C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\package-manager\src\index.js133681219458492186 0
 123C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\dist\esm5\internal\util\reportUnhandledError.js133683040006017070 0
 95C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\lodash\fp\isEqualWith.js133683040006178053 0
@@ -5164,7 +5164,7 @@
 147C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\msgpackr-extract\node_modules\.bin\node-gyp-build-optional-packages-optional133681219488566119 0
 120C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\source-map\parcel_sourcemap_node\build.rs133681219472660225 0
 89C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\path-parse\LICENSE133681221294469226 0
-98C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\terminosCondiciones.94686bc0.js.map133687265109769167 0
+98C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\terminosCondiciones.94686bc0.js.map133691558205818414 0
 111C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\runtime-browser-hmr\package.json133681219462722956 0
 127C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\rxjs\dist\esm5\internal\util\reportUnhandledError.js.map133683040021438523 0
 131C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing\text-encoding\es2015\coders\gb18030\GB18030Encoder.js133683039999725528 0
@@ -7062,7 +7062,7 @@
 132C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing\text-encoding\cjs\coders\gb18030\GB18030Decoder.js.map133683040002904751 0
 95C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\react-refresh\runtime.js133681219459046620 0
 128C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\react-refresh\cjs\react-refresh-runtime.production.min.js133681219458492186 0
-87C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\terminosCondiciones.html133687265109769167 0
+87C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\terminosCondiciones.html133691558205794714 0
 164C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@mswjs\interceptors\lib\interceptors\ClientRequest\utils\normalizeClientRequestWriteArgs.d.ts133683040001023551 0
 131C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@mswjs\interceptors\lib\interceptors\XMLHttpRequest\index.js133683040000419106 0
 83C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\react-is\cjs133687240700950849 1
@@ -10461,7 +10461,7 @@
 100C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\cosmiconfig\dist\types.js.map133681219467179152 0
 91C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\cors\CONTRIBUTING.md133683039988861537 0
 86C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\cors\HISTORY.md133683039989699726 0
-85C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.ce48b6d3.js133689233581366827 0
+85C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.ce48b6d3.js133691567940744743 0
 105C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\core\lib\PackagerRunner.js133681219473017100 0
 104C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@sinclair\typebox\format\index.js133681221305386837 0
 79C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\cors\lib133687240638078026 1
@@ -11720,7 +11720,7 @@
 118C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing\text-encoding\cjs\encoding\finished.d.ts133683040004715966 0
 117C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing\text-encoding\cjs\encoding\indexes.d.ts133683040005177709 0
 115C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing\text-encoding\cjs\encoding\indexes.js133683040000747137 0
-92C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\AvenirLTStd-Book.a6bc3530.otf133689233581227809 0
+92C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\AvenirLTStd-Book.a6bc3530.otf133691567940744743 0
 118C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing\text-encoding\cjs\encoding\polyfill.d.ts133683040005252788 0
 121C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing\text-encoding\cjs\encoding\terminology.d.ts133683040005416351 0
 123C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@zxing\text-encoding\cjs\encoding\terminology.js.map133683040003848699 0
@@ -12078,7 +12078,7 @@
 103C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@swc\helpers\lib\_ts_metadata.js133681219472330605 0
 100C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@swc\helpers\lib\_ts_param.js133681219472499882 0
 101C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@swc\helpers\lib\_ts_values.js133681219472499882 0
-86C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.256b64c0.css133689233581227809 0
+86C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.256b64c0.css133691571741254470 0
 104C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\utils\test\config.test.js133681219463879065 0
 121C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@swc\helpers\lib\_unsupported_iterable_to_array.js133681219472499882 0
 114C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\@parcel\compressor-raw\lib\RawCompressor.js133681219455369818 0
@@ -13684,9 +13684,9 @@
 86C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\.bin\semver.ps1133681219488556125 0
 86C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\node_modules\.bin\terser.cmd133681219488556125 0
 93C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.256b64c0.css.9920.s133688322728434427 0
-90C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.256b64c0.css.map133689233581227809 0
+90C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.256b64c0.css.map133691571741379728 0
 86C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.a4f2ce4f.css133688225072586198 0
-89C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.ce48b6d3.js.map133689233581499030 0
+89C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\formulario.ce48b6d3.js.map133691567940744743 0
 88C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\historial.c40667c0.js.map133689094525158761 0
 77C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\historial.html133689094525330107 0
 80C:\Users\michelleLopez\Desktop\sistemaPermisos\proyecto-3\dist\index.0d966ffc.js133685181118319262 0

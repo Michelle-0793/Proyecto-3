@@ -559,9 +559,9 @@ function hmrAccept(bundle, id) {
 },{}],"d3rjD":[function(require,module,exports) {
 var _postSolicitud = require("../servicios/postSolicitud");
 var _getSolicitud = require("../servicios/getSolicitud");
-var _deleteSolicitud = require("../servicios/deleteSolicitud");
+//import { getUsers } from "../servicios/getUsuarios";
 //1 DECLARAR VARIABLES DEL DOM
-const nombre = document.getElementById("nombre");
+const cedula = document.getElementById("cedula");
 const codigoComputadora = document.getElementById("codigoComputadora");
 const sede = document.getElementById("sede");
 const fechaSalida = document.getElementById("fechaSalida");
@@ -573,44 +573,48 @@ const mensaje = document.getElementById("mensaje");
 const cuerpoTabla = document.getElementById("cuerpoTabla");
 const urlHistorial = "http://localhost:3001/historial";
 const urlAceptadas = "http://localhost:3001/solicitudesAceptadas";
-// Simulación de login - Prellenar campos con un valor para hacer pruebas
-function simularLogin() {
-    const nombreUsuarioPlaceholder = "UsuarioTest"; //Nombre para testeo
-    //Valores para al campo nombre
-    nombre.value = nombreUsuarioPlaceholder;
-    localStorage.setItem("nombreUsuario", nombreUsuarioPlaceholder);
+// Prellenar el campo de cédula con el valor guardado en localStorage
+function prellenarFormulario() {
+    const usuarioDatos = JSON.parse(localStorage.getItem("usuarioDatos"));
+    if (usuarioDatos && usuarioDatos.cedula) // Prellenar el campo de cedula del usuario
+    cedula.value = usuarioDatos.cedula;
 }
-// Llamar a la simulación de login
-simularLogin();
+// Llamar a la función para prellenar el formulario cuando se carga la página
+window.addEventListener("load", prellenarFormulario);
 //2 FUNCIONES AUXILIARES
 // Función para renderizar solicitudes en la tabla
 function renderizarSolicitudes(solicitudes) {
+    const usuarioDatos = JSON.parse(localStorage.getItem("usuarioDatos"));
+    const selectRol = usuarioDatos ? usuarioDatos.rol : ""; // Extraer el rol con un operador ternario,
     solicitudes.forEach((solicitud)=>{
         // Fila para cada solicitud
         const fila = document.createElement("tr");
         fila.innerHTML = `
-            <td>${solicitud.nombreUsuario}</td>
+            <td>${solicitud.cedulaUsuario}</td>
             <td>${solicitud.codigoComputadora}</td>
             <td>${solicitud.sede}</td>
             <td>${solicitud.fechaSalida}</td>
             <td>${solicitud.fechaRegreso}</td>
             <td>${solicitud.estado || "Pendiente"}</td>
         `;
-        //Celdas con los botones
-        const celdaBotones = document.createElement("td");
-        // Botón para aceptar la solicitud
-        const btnAceptar = document.createElement("button");
-        btnAceptar.textContent = "Aceptar";
-        btnAceptar.addEventListener("click", ()=>aceptarSolicitud(solicitud.id));
-        // Botón para rechazar la solicitud
-        const btnRechazar = document.createElement("button");
-        btnRechazar.textContent = "Rechazar";
-        btnRechazar.addEventListener("click", ()=>rechazarSolicitud(solicitud.id));
-        // Agregar botones a la celda
-        celdaBotones.appendChild(btnAceptar);
-        celdaBotones.appendChild(btnRechazar);
-        // Añadir la celda de botones a la fila
-        fila.appendChild(celdaBotones);
+        //Condicional para administrador
+        if (selectRol === "Administrador") {
+            //Celdas con los botones
+            const celdaBotones = document.createElement("td");
+            // Botón para aceptar la solicitud
+            const btnAceptar = document.createElement("button");
+            btnAceptar.textContent = "Aceptar";
+            btnAceptar.addEventListener("click", ()=>aceptarSolicitud(solicitud.id));
+            // Botón para rechazar la solicitud
+            const btnRechazar = document.createElement("button");
+            btnRechazar.textContent = "Rechazar";
+            btnRechazar.addEventListener("click", ()=>rechazarSolicitud(solicitud.id));
+            // Agregar botones a la celda
+            celdaBotones.appendChild(btnAceptar);
+            celdaBotones.appendChild(btnRechazar);
+            // Añadir la celda de botones a la fila
+            fila.appendChild(celdaBotones);
+        }
         // Añadir la fila al cuerpo de la tabla
         cuerpoTabla.appendChild(fila);
     });
@@ -629,7 +633,7 @@ async function cargarSolicitudes() {
 // Función "Enviar"
 async function enviarSolicitud() {
     // Validar que todos los campos estén llenos
-    if (!nombre.value || !codigoComputadora.value || !sede.value || !fechaSalida.value || !fechaRegreso.value) {
+    if (!cedula.value || !codigoComputadora.value || !sede.value || !fechaSalida.value || !fechaRegreso.value) {
         mensaje.textContent = "Por favor, complete todos los campos";
         return;
     }
@@ -640,7 +644,7 @@ async function enviarSolicitud() {
     }
     // Crear un objeto con los datos de la nueva solicitud
     const nuevaSolicitud = {
-        nombreUsuario: nombre.value,
+        cedulaUsuario: cedula.value,
         codigoComputadora: codigoComputadora.value,
         sede: sede.value,
         fechaSalida: fechaSalida.value,
@@ -653,7 +657,6 @@ async function enviarSolicitud() {
     console.log(nuevaSolicitud);
     cargarSolicitudes();
     // Limpiar los campos del formulario
-    nombre.value = "";
     codigoComputadora.value = "";
     sede.value = "";
     fechaSalida.value = "";
@@ -667,7 +670,7 @@ async function aceptarSolicitud(idSolicitud) {
     console.log(solicitud);
     await (0, _postSolicitud.postSolicitudHistorial)(solicitud); // Mueve la solicitud al historial
     await (0, _postSolicitud.postSolicitudAceptadas)(solicitud); // Mueve la solicitud a aceptadas
-    await (0, _deleteSolicitud.deleteSolicitud)(idSolicitud); // Elimina la solicitud del formulario
+    await (0, _postSolicitud.deleteSolicitud)(idSolicitud); // Elimina la solicitud del formulario
     cargarSolicitudes(); // Recarga la lista de solicitudes
 }
 //RECHAZAR SOLICITUD
@@ -677,7 +680,7 @@ async function rechazarSolicitud(idSolicitud) {
     solicitud.estado = "Rechazada";
     console.log(solicitud);
     await (0, _postSolicitud.postSolicitudHistorial)(solicitud); // Mueve la solicitud al historial
-    await (0, _deleteSolicitud.deleteSolicitud)(idSolicitud); // Elimina la solicitud del formulario
+    await (0, _postSolicitud.deleteSolicitud)(idSolicitud); // Elimina la solicitud del formulario
     cargarSolicitudes(); // Recarga la lista de solicitudes
 }
 //ENVIAR AL HISTORIAL
@@ -693,7 +696,7 @@ function verHistorial() {
 btnHistorial.addEventListener("click", verHistorial);
 btnEnviar.addEventListener("click", enviarSolicitud);
 
-},{"../servicios/postSolicitud":"aWKt8","../servicios/deleteSolicitud":"1UBwW","../servicios/getSolicitud":"2Hfe7"}],"aWKt8":[function(require,module,exports) {
+},{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7"}],"aWKt8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "postSolicitud", ()=>postSolicitud);
@@ -783,30 +786,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"1UBwW":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "deleteSolicitud", ()=>deleteSolicitud);
-async function deleteSolicitud(id) {
-    try {
-        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        if (!response.ok) throw new Error(`Error deleting request with id ${id}`);
-        return {
-            message: `Request with id ${id} deleted successfully`
-        };
-    } catch (error) {
-        console.error("Error deleting request:", error);
-        // Puedes mostrar un mensaje al usuario aquí si lo deseas
-        throw error;
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2Hfe7":[function(require,module,exports) {
+},{}],"2Hfe7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSolicitud", ()=>getSolicitud);

@@ -1,7 +1,7 @@
 import { postSolicitud, postSolicitudHistorial, postSolicitudAceptadas } from "../servicios/postSolicitud";
 import { getSolicitud, getSolicitudById } from "../servicios/getSolicitud";
-import { deleteSolicitud } from "../servicios/deleteSolicitud";
-import { getUsers } from "../servicios/getUsuarios";
+import { deleteSolicitud } from "../servicios/postSolicitud";
+//import { getUsers } from "../servicios/getUsuarios";
 
 
 //1 DECLARAR VARIABLES DEL DOM
