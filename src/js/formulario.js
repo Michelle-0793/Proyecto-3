@@ -1,6 +1,6 @@
 import { postSolicitud, postSolicitudHistorial, postSolicitudAceptadas } from "../servicios/postSolicitud";
 import { getSolicitud, getSolicitudById } from "../servicios/getSolicitud";
-import { deleteSolicitud } from "../servicios/postSolicitud";
+import { deleteSolicitud } from "../servicios/deleteSolicitud";
 //import { getUsers } from "../servicios/getUsuarios";
 
 
@@ -58,11 +58,13 @@ if (selectRol === "Administrador") {
 
         // Botón para aceptar la solicitud
         const btnAceptar = document.createElement("button");
+        btnAceptar.classList.add("btnAceptar"); //clase para el btn
         btnAceptar.textContent = "Aceptar";
         btnAceptar.addEventListener('click', () => aceptarSolicitud(solicitud.id));
 
         // Botón para rechazar la solicitud
         const btnRechazar = document.createElement("button");
+        btnRechazar.classList.add("btnRechazar"); //clase para el btn
         btnRechazar.textContent = "Rechazar";
         btnRechazar.addEventListener('click', () => rechazarSolicitud(solicitud.id));
 

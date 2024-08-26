@@ -17,26 +17,7 @@
       "rol": "Administrador"
     }
   ],
-  "solicitudes": [
-    {
-      "id": "44db",
-      "cedulaUsuario": "503020841",
-      "codigoComputadora": "5475",
-      "sede": "sedeNosara",
-      "fechaSalida": "2024-08-24",
-      "fechaRegreso": "2024-08-25",
-      "estado": "Pendiente"
-    },
-    {
-      "id": "0fda",
-      "cedulaUsuario": "503020841",
-      "codigoComputadora": "21312",
-      "sede": "sedeSantaAna",
-      "fechaSalida": "2024-08-24",
-      "fechaRegreso": "2024-08-26",
-      "estado": "Pendiente"
-    }
-  ],
+  "solicitudes": [],
   "historial": [
     {
       "id": "a689",
@@ -55,6 +36,195 @@
       "fechaSalida": "2024-08-24",
       "fechaRegreso": "2024-08-25",
       "estado": "Rechazada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Rechazada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Rechazada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Rechazada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Rechazada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "b521",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "46436",
+      "sede": "sedePuntarenas",
+      "fechaSalida": "2024-08-27",
+      "fechaRegreso": "2024-08-28",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Rechazada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Rechazada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Rechazada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Rechazada"
+    },
+    {
+      "id": "0fda",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "21312",
+      "sede": "sedeSantaAna",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-26",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "14e0",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "3455",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-26",
+      "fechaRegreso": "2024-08-28",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "b521",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "46436",
+      "sede": "sedePuntarenas",
+      "fechaSalida": "2024-08-27",
+      "fechaRegreso": "2024-08-28",
+      "estado": "Aceptada"
     }
   ],
   "solicitudesAceptadas": [
@@ -65,6 +235,105 @@
       "sede": "sedeNosara",
       "fechaSalida": "2024-08-24",
       "fechaRegreso": "2024-08-26",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "b521",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "46436",
+      "sede": "sedePuntarenas",
+      "fechaSalida": "2024-08-27",
+      "fechaRegreso": "2024-08-28",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "44db",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "5475",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-24",
+      "fechaRegreso": "2024-08-25",
+      "estado": "Aceptada"
+    },
+    {
+      "id": "b521",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "46436",
+      "sede": "sedePuntarenas",
+      "fechaSalida": "2024-08-27",
+      "fechaRegreso": "2024-08-28",
       "estado": "Aceptada"
     }
   ]

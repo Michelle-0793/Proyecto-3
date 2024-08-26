@@ -3,22 +3,40 @@ body{
 }
 header{
     display: grid;
-    grid-template-columns: 300px 800px 100px;
-    background-color: #A5728A;
+    grid-template-columns: 300px 700px 300px;
+    background-color: #04082c;
     align-items: center;
     width: auto;
     height: 110px;
     text-align: center;
+    justify-content: center;
 }
 .imgLogo{
     width: auto;
-    height: 60px;
+    height: 70px;
 }
+/*
+.divLogo{
+    border: yellow;
+    border-width: 2px;
+    border-style: solid;
+}
+.divTituloRegistro{
+    border: rgb(81, 164, 219);
+    border-width: 2px;
+    border-style: solid; 
+}
+.divBtnVerHistorial{
+    border: rgb(20, 218, 53);
+    border-width: 2px;
+    border-style: solid; 
+}
+*/
 h3{
     color: #ffffff;
     font-family: sans-serif;
     src: url(../font/AvenirLTStd-Book.otf);
-    font-size: 23px;
+    font-size: 25px;
     text-align: center;
 }
 .inputRegistro{
@@ -138,7 +156,13 @@ input[type=checkbox] + label{
   .checkbox{
     cursor: pointer;
 }
-
+.tituloVentana{
+    color: #04082c;
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    font-size: 23px;
+    text-align: center;  
+}
 .btnEnviar{
     height:40px;
     width: 180px;
@@ -148,6 +172,7 @@ input[type=checkbox] + label{
     background-color: #04082c;  
     text-align: center; 
     color: white;
+    cursor: pointer;
 }
 .btnHistorial{
     height:40px;
@@ -155,12 +180,75 @@ input[type=checkbox] + label{
     border: transparent;
     font-size: 16px;
     border-radius: 50px;;
-    background-color: #04082c;  
+    background-color: #A5728A;  
     text-align: center; 
-    color: white;  
+    color: white; 
+    cursor: pointer; 
 }
 .divBtnEnviar{
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.divTabla{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    background: linear-gradient(#d1a2cb, #A5728A );
+}
+table {
+    margin-top: 50px;
+    color: #fff;
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    text-align: center;
+    font-size: 15px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+thead {
+    background: rgba(29, 12, 23, 0.4);
+}
+
+th {
+    padding: 20px 15px ;
+    font-weight: 700;
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    text-transform: uppercase;
+}
+
+td {
+    padding: 12px;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+
+tbody tr {
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background: rgba(227, 227, 227, 0.308);
+}
+.btnAceptar{
+    width: 45px;
+    height: 45px;
+    background: url(../img/aceptar.png) no-repeat center center;
+    background-size: contain;
+    text-indent: -9999px; /* Ocultar el texto del botón */
+    border: transparent;
+    cursor: pointer;
+}
+.btnRechazar{
+    width: 45px;
+    height: 45px;
+    background: url(../img/rechazar.png) no-repeat center center;
+    background-size: contain;
+    text-indent: -9999px; /* Ocultar el texto del botón */
+    border: transparent;
+    cursor: pointer;
 }

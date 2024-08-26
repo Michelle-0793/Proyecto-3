@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Solicitud de permiso</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="/formulario.256b64c0.css">
 </head>
 <body>
 
 <header>
-    <div><img class="imgLogo" src="/__LOGO.93b401f4.png" alt=""></div>
-    <div><h3>Registro de Salida de Computadoras</h3></div>
-    <div><button class="btnHistorial" id="btnHistorial">Ver historial</button></div>
+    <div class="divLogo"><img class="imgLogo" src="/__LOGO.93b401f4.png" alt=""></div>
+    <div class="divTituloRegistro"><h3>Formulario de solicitud</h3></div>
+    <div class="divBtnVerHistorial"><button class="btnHistorial" id="btnHistorial">Ver historial</button></div>
 </header>
-<br><br>
+<br><br><br>
 <div class="divInputDatos">
 <input class="inputRegistro" id="cedula" type="text" placeholder="Usuario" readonly=""><br><br>
 <input class="inputRegistro" id="codigoComputadora" type="text" placeholder="Código computadora">
@@ -49,8 +50,8 @@
 <div><label onclick="window.modal1.showModal();" class="ver" for="aceptar">Ver</label></div>
 </div>
 <dialog id="modal1">
-<img onclick="window.modal1.close();" class="iconCerrar" src="/__cerrar.734a4ecb.png" alt="">
-<h3>Términos y Condiciones</h3>
+<img onclick="window.modal1.close();" class="iconCerrar" src="/cerrar.35e580ca.png" alt="">
+<h3 class="tituloVentana">Términos y Condiciones</h3>
 <p class="terminosCondiciones">
     ▪ Si viajas en transporte público, debes resguardar tu equipo en tu bolso personal, no exponerlo. <br><br>
     ▪ Si llevas el equipo, procura ir acompañado.<br><br>
@@ -71,7 +72,8 @@
 
 <div id="mensaje"></div>
 
-<br><br>
+<br><br><br>
+<div class="divTabla">
 <table id="tablaSolicitudes">
     <thead>
         <tr>
@@ -88,7 +90,7 @@
         <!-- Aquí se insertarán las filas de las solicitudes -->
     </tbody>
 </table>
-
+</div>
 <script src="/formulario.ce48b6d3.js" defer=""></script>
 
 

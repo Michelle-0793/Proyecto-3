@@ -559,6 +559,7 @@ function hmrAccept(bundle, id) {
 },{}],"d3rjD":[function(require,module,exports) {
 var _postSolicitud = require("../servicios/postSolicitud");
 var _getSolicitud = require("../servicios/getSolicitud");
+var _deleteSolicitud = require("../servicios/deleteSolicitud");
 //import { getUsers } from "../servicios/getUsuarios";
 //1 DECLARAR VARIABLES DEL DOM
 const cedula = document.getElementById("cedula");
@@ -603,10 +604,12 @@ function renderizarSolicitudes(solicitudes) {
             const celdaBotones = document.createElement("td");
             // Botón para aceptar la solicitud
             const btnAceptar = document.createElement("button");
+            btnAceptar.classList.add("btnAceptar"); //clase para el btn
             btnAceptar.textContent = "Aceptar";
             btnAceptar.addEventListener("click", ()=>aceptarSolicitud(solicitud.id));
             // Botón para rechazar la solicitud
             const btnRechazar = document.createElement("button");
+            btnRechazar.classList.add("btnRechazar"); //clase para el btn
             btnRechazar.textContent = "Rechazar";
             btnRechazar.addEventListener("click", ()=>rechazarSolicitud(solicitud.id));
             // Agregar botones a la celda
@@ -670,7 +673,7 @@ async function aceptarSolicitud(idSolicitud) {
     console.log(solicitud);
     await (0, _postSolicitud.postSolicitudHistorial)(solicitud); // Mueve la solicitud al historial
     await (0, _postSolicitud.postSolicitudAceptadas)(solicitud); // Mueve la solicitud a aceptadas
-    await (0, _postSolicitud.deleteSolicitud)(idSolicitud); // Elimina la solicitud del formulario
+    await (0, _deleteSolicitud.deleteSolicitud)(idSolicitud); // Elimina la solicitud del formulario
     cargarSolicitudes(); // Recarga la lista de solicitudes
 }
 //RECHAZAR SOLICITUD
@@ -680,7 +683,7 @@ async function rechazarSolicitud(idSolicitud) {
     solicitud.estado = "Rechazada";
     console.log(solicitud);
     await (0, _postSolicitud.postSolicitudHistorial)(solicitud); // Mueve la solicitud al historial
-    await (0, _postSolicitud.deleteSolicitud)(idSolicitud); // Elimina la solicitud del formulario
+    await (0, _deleteSolicitud.deleteSolicitud)(idSolicitud); // Elimina la solicitud del formulario
     cargarSolicitudes(); // Recarga la lista de solicitudes
 }
 //ENVIAR AL HISTORIAL
@@ -696,7 +699,7 @@ function verHistorial() {
 btnHistorial.addEventListener("click", verHistorial);
 btnEnviar.addEventListener("click", enviarSolicitud);
 
-},{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7"}],"aWKt8":[function(require,module,exports) {
+},{"../servicios/postSolicitud":"aWKt8","../servicios/getSolicitud":"2Hfe7","../servicios/deleteSolicitud":"1UBwW"}],"aWKt8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "postSolicitud", ()=>postSolicitud);
@@ -854,6 +857,29 @@ async function getSolicitudesAceptadas() {
         return data; // Asegúrate de que esta es una lista
     } catch (error) {
         console.error("Error al obtener el historial:", error);
+        throw error;
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1UBwW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "deleteSolicitud", ()=>deleteSolicitud);
+async function deleteSolicitud(id) {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error deleting request with id ${id}`);
+        return {
+            message: `Request with id ${id} deleted successfully`
+        };
+    } catch (error) {
+        console.error("Error deleting request:", error);
+        // Puedes mostrar un mensaje al usuario aquí si lo deseas
         throw error;
     }
 }
