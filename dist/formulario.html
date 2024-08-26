@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="/formulario.256b64c0.css">
 </head>
 <body>
-    <h3>Registro de Salida de Computadoras</h3>
-    <input class="inputRegistro" id="cedula" type="text" placeholder="Usuario" readonly=""><br>
-<br>
 
+<header>
+    <div><img class="imgLogo" src="/__LOGO.93b401f4.png" alt=""></div>
+    <div><h3>Registro de Salida de Computadoras</h3></div>
+    <div><button class="btnHistorial" id="btnHistorial">Ver historial</button></div>
+</header>
+<br><br>
+<div class="divInputDatos">
+<input class="inputRegistro" id="cedula" type="text" placeholder="Usuario" readonly=""><br><br>
 <input class="inputRegistro" id="codigoComputadora" type="text" placeholder="Código computadora">
 <br><br>
 
@@ -20,6 +25,8 @@
     <option value="sedeSantaAna">Sede Santa Ana</option>
     <option value="sedePuntarenas">Sede Puntarenas</option>
 </select> 
+</div>
+
 <br><br>
 
 <div class="divFechas">
@@ -34,20 +41,32 @@
     </div>
 </div>
 
-<br><br>
+<br>
 
 <div class="divAceptarTC">
-<div><input type="checkbox" id="terminosCondiciones" name="terminosCondiciones"></div>
-
-<div><label class="aceptarTC" for="terminosCondiciones">Acepto terminos y condiciones</label></div>
-
+<div><input class="checkbox" type="checkbox" id="terminosCondiciones" name="terminosCondiciones"></div>
+<label class="aceptarTC" for="terminosCondiciones">Acepto términos y condiciones.</label>
+<div><label onclick="window.modal1.showModal();" class="ver" for="aceptar">Ver</label></div>
 </div>
+<dialog id="modal1">
+<img onclick="window.modal1.close();" class="iconCerrar" src="/__cerrar.734a4ecb.png" alt="">
+<h3>Términos y Condiciones</h3>
+<p class="terminosCondiciones">
+    ▪ Si viajas en transporte público, debes resguardar tu equipo en tu bolso personal, no exponerlo. <br><br>
+    ▪ Si llevas el equipo, procura ir acompañado.<br><br>
+    ▪ Si está lloviendo, procura llevar el equipo en un vehículo apropiado para evitar algún daño.<br><br>
+    ▪ Evitar jugar, descargar o utilizar el equipo para otros motivos que no sean relacionados con el estudio.<br><br>
+    ▪ El equipo será revisado antes y después de ser entregado. <br>
+    Cualquier alteración o instalación indebida podría resultar en la pérdida de privilegios.<br><br>
+    ▪ Si retiras una computadora sin haber completado el formulario y la boleta física, podrías ser amonestado.<br><br>
+    ▪ Este formulario debe llenarse junto con la boleta física, que debe estar firmada por la persona encargada.
+</p>
+</dialog>
 
-<br><br>
+<br>
 
-<div>
-    <button id="btnEnviar">Enviar</button>
-    <button id="btnHistorial">Ver historial</button>
+<div class="divBtnEnviar">
+    <button class="btnEnviar" id="btnEnviar">Enviar solicitud</button>
 </div>
 
 <div id="mensaje"></div>
