@@ -567,7 +567,7 @@ async function cargarHistorial() {
     historial.forEach((solicitud)=>{
         const fila = document.createElement("tr");
         fila.innerHTML = `
-            <td>${solicitud.nombreUsuario}</td>
+            <td>${solicitud.cedulaUsuario}</td>
             <td>${solicitud.codigoComputadora}</td>
             <td>${solicitud.sede}</td>
             <td>${solicitud.fechaSalida}</td>
@@ -581,36 +581,7 @@ cargarHistorial();
 function verAceptadas() {
     window.location.href = "solcitudesAceptadas.html";
 }
-btnAceptadas.addEventListener("click", verAceptadas); /*
-function renderizarSolicitudes(solicitudes) {
-    solicitudes.forEach(solicitud => {
-        // Fila para cada solicitud
-        const fila = document.createElement("tr");
-
-        fila.innerHTML = `
-            <td>${solicitud.nombreUsuario}</td>
-            <td>${solicitud.codigoComputadora}</td>
-            <td>${solicitud.sede}</td>
-            <td>${solicitud.fechaSalida}</td>
-            <td>${solicitud.fechaRegreso}</td>
-            <td>${solicitud.estado || "Pendiente"}</td>
-        `;
-    })} 
-
-    cargarHistorial() 
-
-// Función para obtener y mostrar solicitudes
-async function cargarSolicitudes() {
-    // Obtengo las solicitudes
-    const solicitud = await getSolicitud();
-    // Limpio el cuerpo de la tabla antes de renderizar nuevas solicitudes
-    cuerpoTabla.innerHTML = "";
-
-    // Renderizar las solicitudes en la tabla
-    renderizarSolicitudes(solicitud);
-}
-
-*/ 
+btnAceptadas.addEventListener("click", verAceptadas);
 
 },{"../servicios/getSolicitud":"2Hfe7"}],"2Hfe7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

@@ -94,8 +94,10 @@ h3{
 }
 .divAceptarTC{
     display: grid;
-    grid-template-columns: 25px 198px 15px;
+    grid-template-columns: 25px 70px 160px;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 
 }
 .aceptarTC{
@@ -107,10 +109,11 @@ h3{
 .ver{
     color: #04082c;
     font-family: sans-serif;
-   font-weight: bold;
+    font-weight: bold;
     src: url(../font/AvenirLTStd-Book.otf);
     font-size: 14px; 
     cursor: pointer;
+    text-decoration: underline;
 }
 input[type=checkbox] + label{
     cursor: pointer;
@@ -118,9 +121,6 @@ input[type=checkbox] + label{
 .divInputDatos{
     justify-content: center;
     text-align: center;
-}
-.divAceptarTC{
-    justify-content: center;
 }
 .terminosCondiciones{
     font-family: sans-serif;
@@ -135,27 +135,31 @@ input[type=checkbox] + label{
     border: transparent;
   }
   .iconCerrar{
-    width: auto;
-    height: 30px;
-    cursor: pointer;
-    border: transparent;
+    position: absolute; 
+    top: 30px;
+    right: 45px;
+    width: auto; 
+    height: 30px; 
+    cursor: pointer; 
+    border: none;
   }
   
   dialog {
     max-width: 500px;
     padding: 40px 70px;
     background-color: #FAFAFA;
-    border: transparent;
+    border: none;
     border-radius: 50px;
+    outline: none;
+    position: relative;
+
   }
   
   dialog::backdrop {
     background: rgba(227, 227, 227, 0.9);
-    border: transparent;
+    border: none;
   }
-  .checkbox{
-    cursor: pointer;
-}
+
 .tituloVentana{
     color: #04082c;
     font-family: sans-serif;
@@ -165,7 +169,7 @@ input[type=checkbox] + label{
 }
 .btnEnviar{
     height:40px;
-    width: 180px;
+    width: 200px;
     border: transparent;
     font-size: 16px;
     border-radius: 50px;;
@@ -176,7 +180,7 @@ input[type=checkbox] + label{
 }
 .btnHistorial{
     height:40px;
-    width: 160px;
+    width: 230px;
     border: transparent;
     font-size: 16px;
     border-radius: 50px;;
@@ -199,7 +203,7 @@ input[type=checkbox] + label{
     background: linear-gradient(#d1a2cb, #A5728A );
 }
 table {
-    margin-top: 50px;
+
     color: #fff;
     font-family: sans-serif;
     src: url(../font/AvenirLTStd-Book.otf);
@@ -252,3 +256,24 @@ tbody tr:hover {
     border: transparent;
     cursor: pointer;
 }
+ .modalSolicitud {
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    color: #04082c; /* Cambia el color del texto */
+  }
+
+  .modalSolicitud .swal2-title {
+    font-size: 18px; /* Cambia el tamaño del título */
+    color: #04082c; /* Cambia el color del título */
+  }
+
+  .modalSolicitud .swal2-icon.swal2-success {
+    color: #8e44ad !important; /* Cambia el color del ícono de éxito */
+  }
+  
+  .modalSolicitud .swal2-popup {
+    background: #E3E3E3; /* Cambia el color de fondo */
+    border: transparent; /* Cambia el borde del modal */
+    border-radius: 50px;
+    padding: 20px;
+  }

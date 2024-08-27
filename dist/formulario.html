@@ -12,7 +12,7 @@
 <header>
     <div class="divLogo"><img class="imgLogo" src="/__LOGO.93b401f4.png" alt=""></div>
     <div class="divTituloRegistro"><h3>Formulario de solicitud</h3></div>
-    <div class="divBtnVerHistorial"><button class="btnHistorial" id="btnHistorial">Ver historial</button></div>
+    <div class="divBtnVerHistorial"><button class="btnHistorial" id="btnHistorial">Ver historial de solicitudes</button></div>
 </header>
 <br><br><br>
 <div class="divInputDatos">
@@ -46,8 +46,8 @@
 
 <div class="divAceptarTC">
 <div><input class="checkbox" type="checkbox" id="terminosCondiciones" name="terminosCondiciones"></div>
-<label class="aceptarTC" for="terminosCondiciones">Acepto términos y condiciones.</label>
-<div><label onclick="window.modal1.showModal();" class="ver" for="aceptar">Ver</label></div>
+<label class="aceptarTC" for="terminosCondiciones">Acepto los</label>
+<div><label onclick="window.modal1.showModal();" class="ver" for="aceptar">términos y condiciones</label></div>
 </div>
 <dialog id="modal1">
 <img onclick="window.modal1.close();" class="iconCerrar" src="/cerrar.35e580ca.png" alt="">
@@ -74,6 +74,7 @@
 
 <br><br><br>
 <div class="divTabla">
+    <div class="contenedorTabla">
 <table id="tablaSolicitudes">
     <thead>
         <tr>
@@ -89,7 +90,8 @@
     <tbody id="cuerpoTabla">
         <!-- Aquí se insertarán las filas de las solicitudes -->
     </tbody>
-</table>
+ </table>
+  </div>
 </div>
 <script src="/formulario.ce48b6d3.js" defer=""></script>
 

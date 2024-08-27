@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de solicitudes</title>
+    <link rel="stylesheet" href="../css/historial.css">
 </head>
 <body>
-    <h1>Historial de Solicitudes</h1>
-    <br>
-    <input type="text" id="busqueda" placeholder="Buscar por nombre, fecha o estado">
-    <button id="btnBuscar">Buscar</button>
-<br><br>
-    <button id="btnAceptadas">Ver solicitudes aceptadas</button>    
+
+<header>
+    <div class="divLogo"><img class="imgLogo" src="../img/__LOGO.png" alt=""></div>
+    <div class="divTituloRegistro"><h3>Historial de solicitudes</h3></div>
+    <div class="divbtnAceptadas"><button class="btnAceptadas" id="btnAceptadas">Solicitudes aceptadas</button></div>
+</header>
 
 <br><br>
+<div class="divBusqueda">
+<div class="divinputBuscar"><input class="inputBuscar" type="text" id="busqueda" placeholder="Buscar por usuario, fecha o estado"></div>
+<div><button class="btnBuscar"></button></div>
+</div>
+
+<div class="divTabla">
+    <div class="contenedorTabla">
     <table id="tablaSolicitudes">
         <thead>
             <tr>
@@ -28,7 +36,9 @@
         <tbody id="cuerpoTablaHistorial">
             <!-- Aquí se insertarán las filas de las solicitudes -->
         </tbody>
-    </table>
+     </table>
+      </div>
+    </div>
 
 <script type="module" src="../js/historial.js"></script>
 </body>

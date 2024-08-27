@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel serve src/pages/formulario.html --open",
+    "start": "parcel serve src/pages/historial.html --open",
     "server": "node server",
     "test": "jest"
   },
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "sweetalert2": "^11.12.4"
   }
 }

@@ -123,7 +123,17 @@ async function enviarSolicitud() {
    
 // Enviar la nueva solicitud usando postSolicitud
     await postSolicitud(nuevaSolicitud);
-    mensaje.textContent = "Solicitud enviada exitosamente";
+    Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Solcitud enviada con éxito",
+        showConfirmButton: false,
+        timer: 3000,
+        customClass: {
+            popup: "modalSolicitud"
+        }
+    });
+    
     console.log(nuevaSolicitud);  
     cargarSolicitudes()
 

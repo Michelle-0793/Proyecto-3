@@ -566,7 +566,7 @@ async function cargarHistorial() {
     historial.forEach((solicitud)=>{
         const fila = document.createElement("tr");
         fila.innerHTML = `
-            <td>${solicitud.nombreUsuario}</td>
+            <td>${solicitud.cedulaUsuario}</td>
             <td>${solicitud.codigoComputadora}</td>
             <td>${solicitud.sede}</td>
             <td>${solicitud.fechaSalida}</td>

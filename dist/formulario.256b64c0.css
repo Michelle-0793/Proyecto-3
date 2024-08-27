@@ -79,7 +79,9 @@ h3 {
 }
 
 .divAceptarTC {
-  grid-template-columns: 25px 198px 15px;
+  text-align: center;
+  grid-template-columns: 25px 70px 160px;
+  justify-content: center;
   align-items: center;
   display: grid;
 }
@@ -98,6 +100,7 @@ h3 {
   font-family: sans-serif;
   font-size: 14px;
   font-weight: bold;
+  text-decoration: underline;
 }
 
 input[type="checkbox"] + label {
@@ -106,10 +109,6 @@ input[type="checkbox"] + label {
 
 .divInputDatos {
   text-align: center;
-  justify-content: center;
-}
-
-.divAceptarTC {
   justify-content: center;
 }
 
@@ -131,24 +130,25 @@ input[type="checkbox"] + label {
   width: auto;
   height: 30px;
   cursor: pointer;
-  border: #0000;
+  border: none;
+  position: absolute;
+  top: 30px;
+  right: 45px;
 }
 
 dialog {
   max-width: 500px;
   background-color: #fafafa;
-  border: #0000;
+  border: none;
   border-radius: 50px;
+  outline: none;
   padding: 40px 70px;
+  position: relative;
 }
 
 dialog::backdrop {
   background: #e3e3e3e6;
-  border: #0000;
-}
-
-.checkbox {
-  cursor: pointer;
+  border: none;
 }
 
 .tituloVentana {
@@ -161,7 +161,7 @@ dialog::backdrop {
 
 .btnEnviar {
   height: 40px;
-  width: 180px;
+  width: 200px;
   text-align: center;
   color: #fff;
   cursor: pointer;
@@ -173,7 +173,7 @@ dialog::backdrop {
 
 .btnHistorial {
   height: 40px;
-  width: 160px;
+  width: 230px;
   text-align: center;
   color: #fff;
   cursor: pointer;
@@ -203,7 +203,6 @@ table {
   text-align: center;
   table-layout: fixed;
   border-collapse: collapse;
-  margin-top: 50px;
   font-family: sans-serif;
   font-size: 15px;
 }
@@ -249,6 +248,28 @@ tbody tr:hover {
   cursor: pointer;
   background: url("rechazar.253e4117.png") center / contain no-repeat;
   border: #0000;
+}
+
+.modalSolicitud {
+  src: url("AvenirLTStd-Book.a6bc3530.otf");
+  color: #04082c;
+  font-family: sans-serif;
+}
+
+.modalSolicitud .swal2-title {
+  color: #04082c;
+  font-size: 18px;
+}
+
+.modalSolicitud .swal2-icon.swal2-success {
+  color: #8e44ad !important;
+}
+
+.modalSolicitud .swal2-popup {
+  background: #e3e3e3;
+  border: #0000;
+  border-radius: 50px;
+  padding: 20px;
 }
 
 /*# sourceMappingURL=formulario.256b64c0.css.map */

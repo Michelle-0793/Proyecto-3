@@ -656,7 +656,16 @@ async function enviarSolicitud() {
     };
     // Enviar la nueva solicitud usando postSolicitud
     await (0, _postSolicitud.postSolicitud)(nuevaSolicitud);
-    mensaje.textContent = "Solicitud enviada exitosamente";
+    Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Solcitud enviada con \xe9xito",
+        showConfirmButton: false,
+        timer: 3000,
+        customClass: {
+            popup: "modalSolicitud"
+        }
+    });
     console.log(nuevaSolicitud);
     cargarSolicitudes();
     // Limpiar los campos del formulario
