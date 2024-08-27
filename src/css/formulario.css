@@ -209,6 +209,8 @@ dialog::backdrop {
 
 /*ESTILOS TABLA*/
 .divTabla{
+    padding: 10px;
+    overflow-x: auto; /* Permite el desplazamiento horizontal si es necesario */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -224,6 +226,10 @@ table {
     font-size: 15px;
     table-layout: fixed;
     border-collapse: collapse;
+    margin: 0 auto; 
+    padding: 0; 
+    margin-left: 10px; 
+    padding-left: 10px; 
 }
 thead {
     background: rgba(29, 12, 23, 0.4);
@@ -286,3 +292,110 @@ tbody tr:hover {
     border-radius: 50px;
     padding: 20px;
   }
+
+
+
+  /* Media query para pantallas de 768px o menos */
+@media only screen and (max-width: 768px) {
+
+    header {
+        grid-template-columns: 1fr;
+        width:768px;
+        height: 240px;
+        margin: 0;
+        align-items: center;
+    }
+    
+    .imgLogo {
+        margin-top: 30px;
+        height: auto;
+        width: 200px;
+    }
+
+    .h3 {
+        font-size: 16px;
+    }
+
+    .inputRegistro, .select {
+        width: 200px;
+        transform: none;
+    }
+
+    .divFechas {
+        margin-top: -20px;
+        grid-template-columns: 1fr;
+    }
+
+    .btnHistorial, .btnEnviar {
+        width: 250px;
+        margin: 10px 0;
+        margin-top: -30px;
+    }
+
+    /* Ajuste de la tabla */
+    .divTabla {
+        padding: 10px;
+        justify-content: center; /* Centra el contenido dentro del contenedor */
+    }
+
+    table {
+        max-width: 100px;
+        margin: 0 auto; /* Centra la tabla automáticamente */
+        font-size: 11px; /* Reduce ligeramente el tamaño de la fuente */
+        table-layout: auto; /* Permite que la tabla ajuste el ancho de las columnas */
+    }
+
+    th, td {
+        padding: 5px 5px; /* Reduce el relleno para que quepa mejor en pantallas pequeñas */
+        text-align: center; 
+    }
+
+    tbody tr {
+        margin-bottom: 10px; /* Espaciado entre filas */
+    }
+
+    td {
+        justify-content: space-between; /* Alinea el contenido de las celdas */
+        text-align: center;
+    }
+
+    td::before {
+        content: attr(data-label); /* Muestra el nombre de la columna antes del valor */
+        flex-basis: 50%; /* Ocupa el 50% del espacio disponible */
+        font-weight: bold; /* Resalta el nombre de la columna */
+    }
+
+    td:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Agrega la línea divisoria al final de cada fila */
+    }
+}
+    
+    .modalSolicitud .swal2-popup {
+        padding: 10px;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+@media only screen and (max-width: 480px) {
+
+    .inputRegistro, .select {
+        font-size: 14px;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    .divFechas {
+        padding: 10px;
+    }
+
+    .btnHistorial, .btnEnviar {
+        font-size: 14px;
+        height: 35px;
+    }
+
+    .modalSolicitud .swal2-title {
+        font-size: 16px;
+    }
+}
