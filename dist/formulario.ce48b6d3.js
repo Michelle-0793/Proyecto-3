@@ -661,7 +661,7 @@ async function enviarSolicitud() {
         icon: "success",
         title: "Solcitud enviada con \xe9xito",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 1500,
         customClass: {
             popup: "modalSolicitud"
         }
@@ -673,6 +673,7 @@ async function enviarSolicitud() {
     sede.value = "";
     fechaSalida.value = "";
     fechaRegreso.value = "";
+    terminosCondiciones.checked = false;
 }
 //ACEPTAR SOLICITUD
 async function aceptarSolicitud(idSolicitud) {
@@ -874,6 +875,7 @@ async function getSolicitudesAceptadas() {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "deleteSolicitud", ()=>deleteSolicitud);
+parcelHelpers.export(exports, "deleteHistorial", ()=>deleteHistorial);
 async function deleteSolicitud(id) {
     try {
         const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
@@ -889,6 +891,24 @@ async function deleteSolicitud(id) {
     } catch (error) {
         console.error("Error deleting request:", error);
         // Puedes mostrar un mensaje al usuario aquí si lo deseas
+        throw error;
+    }
+}
+// servicios/deleteSolicitud.js
+async function deleteHistorial() {
+    try {
+        const response = await fetch("http://localhost:3001/historial", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error("Error deleting all requests");
+        return {
+            message: "All requests deleted successfully"
+        };
+    } catch (error) {
+        console.error("Error deleting all requests:", error);
         throw error;
     }
 }

@@ -28,51 +28,76 @@ header{
     border-style: solid; 
 }
 */
-.divBusqueda{
-    display: grid;
-    grid-template-columns: 300px 100px;
+.divBusqueda {
+    display: flex;
     justify-content: center;
-    align-items: center;
-    align-content: center;
-    justify-items: center;
+    margin-top: 20px;
 }
-.inputBuscar{
-    height:add(5rem, input-height-border);
-    line-height:1.25;
-    padding:3rem;
-    padding-top:1.625rem;
-    padding-block:.625rem;
-    height:30px;
-    width: 250px;
-    transform:scale(.85) translateY(-.5rem) translateX(.15rem);
-    color:gray-300;
-    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+
+.divBusquedaContenido {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Ajusta el espacio entre el input y el botón si es necesario */
+}
+
+.inputBuscar {
+    height: 30px;
+    width: 300px;
+    padding: 5px;
     font-size: 16px;
     border-radius: 50px;
     border: transparent;
-    background-color: #E3E3E3;  
-    text-align: center; 
+    background-color: #E3E3E3;
+    text-align: center;
 }
-.btnBuscar{
-    width: 40px;
+
+.btnBuscar {
+    width: 40px; /* Ajusta el tamaño del botón si es necesario */
     height: 40px;
     background: url(../img/__buscar.png) no-repeat center center;
     background-size: contain;
-    text-indent: -9999px; /* Ocultar el texto del botón */
     border: transparent;
     cursor: pointer;
+    border-radius: 60px;
+    transition: transform 0.1s, box-shadow 0.1s, opacity 0.3s; /* Transiciones suaves */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+    background-color: transparent; /* Asegúrate de que el fondo no sea blanco */
 }
-.btnAceptadas{
-    height:40px;
+
+.btnBuscar:hover {
+    opacity: 0.8; /* Cambia la opacidad al pasar el cursor */
+    filter: brightness(0.8); /* Cambia el brillo de la imagen */
+}
+
+.btnBuscar:active {
+    transform: translateY(4px); /* Efecto de hundimiento */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más pequeña al presionar */
+}
+
+.btnAceptadas {
+    height: 40px;
     width: 230px;
     border: transparent;
     font-size: 16px;
-    border-radius: 50px;;
-    background-color: #A5728A;  
-    text-align: center; 
-    color: white; 
-    cursor: pointer; 
+    border-radius: 50px;
+    background-color: #A5728A;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.3s, opacity 0.3s; /* Transiciones suaves para el efecto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
 }
+
+.btnAceptadas:hover {
+    background-color: #8D4A6D; /* Cambia el color de fondo al pasar el cursor */
+    opacity: 0.8; /* Cambia la opacidad al pasar el cursor */
+}
+
+.btnAceptadas:active {
+    transform: translateY(4px); /* Efecto de hundimiento */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más pequeña al presionar */
+}
+
 
 .imgLogo{
     width: auto;
@@ -109,7 +134,7 @@ table {
 }
 
 thead {
-    background: rgba(29, 12, 23, 0.4);
+    background: rgba(29, 12, 23, 0.5);
     color: #ffffff;
 }
 
@@ -134,7 +159,8 @@ td {
 
 tbody tr {
     cursor: pointer;
-    background-color: #E3E3E3;
+    background-color: #e3e3e3c5;
+
 }
 
 tbody tr:hover {

@@ -1,0 +1,140 @@
+body{
+    margin: 0;
+}
+
+/*ESTILOS BOTÓN HEADER*/
+header{
+    display: grid;
+    grid-template-columns: 300px 700px 300px;
+    background-color: #04082c;
+    align-items: center;
+    width: auto;
+    height: 110px;
+    text-align: center;
+    justify-content: center;
+}
+.imgLogo{
+    width: auto;
+    height: 70px;
+}
+h3{
+    color: #ffffff;
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    font-size: 25px;
+    text-align: center;
+}
+
+/*ESTILOS BOTÓN ELIMINAR*/
+.btnEliminarHistorial {
+    height: 40px;
+    width: 230px;
+    border: transparent;
+    font-size: 16px;
+    border-radius: 50px;
+    background-color: #A5728A;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.3s, opacity 0.3s; /* Transiciones suaves para el efecto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+}
+
+.btnEliminarHistorial:hover {
+    background-color: #8D4A6D; /* Cambia el color de fondo al pasar el cursor */
+    opacity: 0.8; /* Cambia la opacidad al pasar el cursor */
+}
+
+.btnEliminarHistorial:active {
+    transform: translateY(4px); /* Efecto de hundimiento */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más pequeña al presionar */
+}
+
+
+/*ESTILOS TABLA*/
+.divTabla{
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.contenedorTabla {
+    width: 100%;
+    max-width: 1100px;
+    overflow-x: auto;
+}
+
+table {
+    color: #04082c;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 15px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead {
+    background: rgba(29, 12, 23, 0.5);
+    color: #ffffff;
+}
+
+th {
+    padding: 20px 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+tr {
+    height: 50px; /* Ajusta este valor */
+}
+
+td {
+    width: 100px; /* Ajusta este valor */
+    padding: 12px;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+tbody tr {
+    cursor: pointer;
+    background-color: #e3e3e3c5;
+
+}
+
+tbody tr:hover {
+    background: rgba(227, 227, 227, 0.308);
+}
+
+
+/*ESTILOS MODALES*/
+
+.modalEliminar {
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    color: #04082c; /* Cambia el color del texto */
+  }
+
+  .modalEliminar .swal2-title {
+    font-size: 18px; /* Cambia el tamaño del título */
+    color: #04082c; /* Cambia el color del título */
+  }
+
+  .modalEliminar .swal2-icon.swal2-success {
+    color: #8e44ad !important; /* Cambia el color del ícono de éxito */
+  }
+  
+  .modalEliminar .swal2-popup {
+    background: #E3E3E3; /* Cambia el color de fondo */
+    border: transparent; /* Cambia el borde del modal */
+    border-radius: 100px;
+    padding: 20px;
+  }
+.modalEliminado{
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    color: #04082c; /* Cambia el color del texto */
+}

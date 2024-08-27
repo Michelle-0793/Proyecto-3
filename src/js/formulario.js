@@ -128,7 +128,7 @@ async function enviarSolicitud() {
         icon: "success",
         title: "Solcitud enviada con éxito",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 1500,
         customClass: {
             popup: "modalSolicitud"
         }
@@ -142,6 +142,7 @@ async function enviarSolicitud() {
     sede.value = "";
     fechaSalida.value = "";
     fechaRegreso.value = "";
+    terminosCondiciones.checked = false;
 }
 
 //ACEPTAR SOLICITUD

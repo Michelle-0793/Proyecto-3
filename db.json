@@ -1,6 +1,25 @@
 {
   "users": [],
-  "solicitudes": [],
+  "solicitudes": [
+    {
+      "id": "4a14",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "PC89",
+      "sede": "sedePuntarenas",
+      "fechaSalida": "2024-08-28",
+      "fechaRegreso": "2024-08-30",
+      "estado": "Pendiente"
+    },
+    {
+      "id": "a8e8",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "PC093",
+      "sede": "sedeSantaAna",
+      "fechaSalida": "2024-08-29",
+      "fechaRegreso": "2024-08-30",
+      "estado": "Pendiente"
+    }
+  ],
   "historial": [
     {
       "id": "2f4f",
@@ -10,6 +29,15 @@
       "fechaSalida": "2024-08-27",
       "fechaRegreso": "2024-08-30",
       "estado": "Aceptada"
+    },
+    {
+      "id": "57d0",
+      "cedulaUsuario": "503020841",
+      "codigoComputadora": "PC789",
+      "sede": "sedeNosara",
+      "fechaSalida": "2024-08-26",
+      "fechaRegreso": "2024-08-30",
+      "estado": "Rechazada"
     }
   ],
   "solicitudesAceptadas": [

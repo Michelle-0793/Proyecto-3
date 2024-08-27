@@ -18,3 +18,25 @@ async function deleteSolicitud(id) {
 }
 
 export { deleteSolicitud };
+
+// servicios/deleteSolicitud.js
+
+async function deleteHistorial() {
+    try {
+        const response = await fetch('http://localhost:3001/historial', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!response.ok) {
+            throw new Error('Error deleting all requests');
+        }
+        return { message: 'All requests deleted successfully' };
+    } catch (error) {
+        console.error('Error deleting all requests:', error);
+        throw error;
+    }
+}
+
+export { deleteHistorial };

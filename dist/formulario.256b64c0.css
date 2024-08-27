@@ -181,6 +181,18 @@ dialog::backdrop {
   border: #0000;
   border-radius: 50px;
   font-size: 16px;
+  transition: transform .1s, box-shadow .1s, background-color .3s, opacity .3s;
+  box-shadow: 0 4px 6px #0003;
+}
+
+.btnHistorial:hover {
+  opacity: .8;
+  background-color: #8d4a6d;
+}
+
+.btnHistorial:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 4px #0003;
 }
 
 .divBtnEnviar {

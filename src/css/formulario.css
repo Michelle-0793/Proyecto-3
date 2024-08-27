@@ -127,6 +127,8 @@ input[type=checkbox] + label{
     src: url(../font/AvenirLTStd-Book.otf);
     border: transparent;
 }
+
+/*ESTILOS MODAL TÉRMINOS Y CONDICIONES*/ 
 .container {
     padding: 20px;
     max-width: 600px;
@@ -143,7 +145,6 @@ input[type=checkbox] + label{
     cursor: pointer; 
     border: none;
   }
-  
   dialog {
     max-width: 500px;
     padding: 40px 70px;
@@ -153,9 +154,8 @@ input[type=checkbox] + label{
     outline: none;
     position: relative;
 
-  }
-  
-  dialog::backdrop {
+}
+dialog::backdrop {
     background: rgba(227, 227, 227, 0.9);
     border: none;
   }
@@ -167,6 +167,7 @@ input[type=checkbox] + label{
     font-size: 23px;
     text-align: center;  
 }
+
 .btnEnviar{
     height:40px;
     width: 200px;
@@ -178,16 +179,27 @@ input[type=checkbox] + label{
     color: white;
     cursor: pointer;
 }
-.btnHistorial{
-    height:40px;
+/*ESTILOS BOTÓN VER HISTORIAL*/
+.btnHistorial {
+    height: 40px;
     width: 230px;
     border: transparent;
     font-size: 16px;
-    border-radius: 50px;;
-    background-color: #A5728A;  
-    text-align: center; 
-    color: white; 
-    cursor: pointer; 
+    border-radius: 50px;
+    background-color: #A5728A;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.3s, opacity 0.3s; /* Transiciones suaves para el efecto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+}
+.btnHistorial:hover {
+    background-color: #8D4A6D; /* Cambia el color de fondo al pasar el cursor */
+    opacity: 0.8; /* Cambia la opacidad al pasar el cursor */
+}
+.btnHistorial:active {
+    transform: translateY(4px); /* Efecto de hundimiento */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más pequeña al presionar */
 }
 .divBtnEnviar{
     justify-content: center;
@@ -195,6 +207,7 @@ input[type=checkbox] + label{
     text-align: center;
 }
 
+/*ESTILOS TABLA*/
 .divTabla{
     display: flex;
     align-items: center;
@@ -212,11 +225,9 @@ table {
     table-layout: fixed;
     border-collapse: collapse;
 }
-
 thead {
     background: rgba(29, 12, 23, 0.4);
 }
-
 th {
     padding: 20px 15px ;
     font-weight: 700;
@@ -224,17 +235,13 @@ th {
     src: url(../font/AvenirLTStd-Book.otf);
     text-transform: uppercase;
 }
-
 td {
     padding: 12px;
     border-bottom: solid 1px rgba(255, 255, 255, 0.2);
 }
-
-
 tbody tr {
     cursor: pointer;
 }
-
 tbody tr:hover {
     background: rgba(227, 227, 227, 0.308);
 }
@@ -256,6 +263,8 @@ tbody tr:hover {
     border: transparent;
     cursor: pointer;
 }
+
+/*ESTILOS MODAL*/
  .modalSolicitud {
     font-family: sans-serif;
     src: url(../font/AvenirLTStd-Book.otf);
