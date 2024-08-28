@@ -1,6 +1,6 @@
 async function postSolicitud(solicitud) {
     try {
-        const response = await fetch('http://localhost:3001/solicitudes', {
+        const response = await fetch('http://localhost:3002/solicitudes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ export { postSolicitud };
 // postSolicitudHistorial.js
 async function postSolicitudHistorial(solicitud) {
     try {
-        const response = await fetch('http://localhost:3001/historial', {
+        const response = await fetch('http://localhost:3002/historial', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ export { postSolicitudHistorial };
 // postSolicitudHistorial.js
 async function postSolicitudAceptadas(solicitud) {
     try {
-        const response = await fetch('http://localhost:3001/solicitudesAceptadas', {
+        const response = await fetch('http://localhost:3002/solicitudesAceptadas', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

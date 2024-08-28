@@ -1,6 +1,6 @@
 async function getSolicitud() {
     try {
-        const response = await fetch(`http://localhost:3001/solicitudes`, {
+        const response = await fetch(`http://localhost:3002/solicitudes`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ export { getSolicitud };
 
 async function getSolicitudById(id) {
     try {
-        const response = await fetch(`http://localhost:3001/solicitudes/`+id, {
+        const response = await fetch(`http://localhost:3002/solicitudes/`+id, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ export { getSolicitudById };
 
 async function getHistorial() {
     try {
-        const response = await fetch('http://localhost:3001/historial', {
+        const response = await fetch('http://localhost:3002/historial', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ export  { getHistorial };
 
 async function getSolicitudesAceptadas() {
     try {
-        const response = await fetch('http://localhost:3001/solicitudesAceptadas', {
+        const response = await fetch('http://localhost:3002/solicitudesAceptadas', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

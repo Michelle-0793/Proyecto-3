@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+}
+
+header {
+  width: auto;
+  height: 110px;
+  text-align: center;
+  background-color: #04082c;
+  grid-template-columns: 300px 700px 300px;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+}
+
+.imgLogo {
+  width: auto;
+  height: 70px;
+}
+
+h3 {
+  color: #fff;
+  src: url("AvenirLTStd-Book.a6bc3530.otf");
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 25px;
+}
+
+.btnEliminarHistorial {
+  height: 40px;
+  width: 230px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  background-color: #a5728a;
+  border: #0000;
+  border-radius: 50px;
+  font-size: 16px;
+  transition: transform .1s, box-shadow .1s, background-color .3s, opacity .3s;
+  box-shadow: 0 4px 6px #0003;
+}
+
+.btnEliminarHistorial:hover {
+  opacity: .8;
+  background-color: #8d4a6d;
+}
+
+.btnEliminarHistorial:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 4px #0003;
+}
+
+.divTabla {
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  display: flex;
+}
+
+.contenedorTabla {
+  width: 100%;
+  max-width: 1100px;
+  overflow-x: auto;
+}
+
+table {
+  color: #04082c;
+  text-align: center;
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+thead {
+  color: #fff;
+  background: #1d0c1780;
+}
+
+th {
+  text-transform: uppercase;
+  padding: 20px 15px;
+  font-weight: 700;
+}
+
+tr {
+  height: 50px;
+}
+
+td {
+  width: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-bottom: 1px solid #fff3;
+  padding: 12px;
+  overflow: hidden;
+}
+
+tbody tr {
+  cursor: pointer;
+  background-color: #e3e3e3c5;
+}
+
+tbody tr:hover {
+  background: #e3e3e34f;
+}
+
+.modalEliminar {
+  src: url("AvenirLTStd-Book.a6bc3530.otf");
+  color: #04082c;
+  font-family: sans-serif;
+}
+
+.modalEliminar .swal2-title {
+  color: #04082c;
+  font-size: 18px;
+}
+
+.modalEliminar .swal2-icon.swal2-success {
+  color: #8e44ad !important;
+}
+
+.modalEliminar .swal2-popup {
+  background: #e3e3e3;
+  border: #0000;
+  border-radius: 100px;
+  padding: 20px;
+}
+
+.modalEliminado {
+  src: url("AvenirLTStd-Book.a6bc3530.otf");
+  color: #04082c;
+  font-family: sans-serif;
+}
+
+/*# sourceMappingURL=solicitudesAceptadas.1c561ae6.css.map */

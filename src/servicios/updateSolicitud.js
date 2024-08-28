@@ -1,7 +1,7 @@
 async function updateSolicitud(id, estado) {
     try {
         // Realiza una solicitud PUT a la URL especificada con el ID
-        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
+        const response = await fetch(`http://localhost:3002/solicitudes/${id}`, {
             method: 'PUT', // Especifica que se está utilizando el método PUT
             headers: {
                 'Content-Type': 'application/json' // Indica que los datos se envían en formato JSON

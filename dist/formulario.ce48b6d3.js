@@ -733,7 +733,7 @@ parcelHelpers.export(exports, "postSolicitudHistorial", ()=>postSolicitudHistori
 parcelHelpers.export(exports, "postSolicitudAceptadas", ()=>postSolicitudAceptadas);
 async function postSolicitud(solicitud) {
     try {
-        const response = await fetch("http://localhost:3001/solicitudes", {
+        const response = await fetch("http://localhost:3002/solicitudes", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -751,7 +751,7 @@ async function postSolicitud(solicitud) {
 // postSolicitudHistorial.js
 async function postSolicitudHistorial(solicitud) {
     try {
-        const response = await fetch("http://localhost:3001/historial", {
+        const response = await fetch("http://localhost:3002/historial", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -769,7 +769,7 @@ async function postSolicitudHistorial(solicitud) {
 // postSolicitudHistorial.js
 async function postSolicitudAceptadas(solicitud) {
     try {
-        const response = await fetch("http://localhost:3001/solicitudesAceptadas", {
+        const response = await fetch("http://localhost:3002/solicitudesAceptadas", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -824,7 +824,7 @@ parcelHelpers.export(exports, "getHistorial", ()=>getHistorial);
 parcelHelpers.export(exports, "getSolicitudesAceptadas", ()=>getSolicitudesAceptadas);
 async function getSolicitud() {
     try {
-        const response = await fetch(`http://localhost:3001/solicitudes`, {
+        const response = await fetch(`http://localhost:3002/solicitudes`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -840,7 +840,7 @@ async function getSolicitud() {
 }
 async function getSolicitudById(id) {
     try {
-        const response = await fetch(`http://localhost:3001/solicitudes/` + id, {
+        const response = await fetch(`http://localhost:3002/solicitudes/` + id, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -856,7 +856,7 @@ async function getSolicitudById(id) {
 }
 async function getHistorial() {
     try {
-        const response = await fetch("http://localhost:3001/historial", {
+        const response = await fetch("http://localhost:3002/historial", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -872,7 +872,7 @@ async function getHistorial() {
 }
 async function getSolicitudesAceptadas() {
     try {
-        const response = await fetch("http://localhost:3001/solicitudesAceptadas", {
+        const response = await fetch("http://localhost:3002/solicitudesAceptadas", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -895,7 +895,7 @@ parcelHelpers.export(exports, "deleteHistorial", ()=>deleteHistorial);
 parcelHelpers.export(exports, "deleteSolicitudesAceptadas", ()=>deleteSolicitudesAceptadas);
 async function deleteSolicitud(id) {
     try {
-        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
+        const response = await fetch(`http://localhost:3002/solicitudes/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -914,7 +914,7 @@ async function deleteSolicitud(id) {
 // servicios/deleteSolicitud.js
 async function deleteHistorial() {
     try {
-        const response = await fetch("http://localhost:3001/historial", {
+        const response = await fetch("http://localhost:3002/historial", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -931,7 +931,7 @@ async function deleteHistorial() {
 }
 async function deleteSolicitudesAceptadas() {
     try {
-        const response = await fetch(`http://localhost:3001/solicitudesAceptadas`, {
+        const response = await fetch(`http://localhost:3002/solicitudesAceptadas`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

@@ -37,7 +37,7 @@ header{
     border: transparent;
     font-size: 16px;
     border-radius: 50px;
-    background-color: #1d0c17;
+    background-color: #04082c;
     text-align: center;
     color: white;
     cursor: pointer;
@@ -221,5 +221,5 @@ tbody tr:hover {
     font-family: sans-serif;
     src: url(../font/AvenirLTStd-Book.otf);
     color: #04082c; /* Cambia el color del texto */
-    border-radius: 30px;
+    
 }

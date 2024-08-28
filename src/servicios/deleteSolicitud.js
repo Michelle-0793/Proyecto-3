@@ -1,6 +1,6 @@
 async function deleteSolicitud(id) {
     try {
-        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
+        const response = await fetch(`http://localhost:3002/solicitudes/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ export { deleteSolicitud };
 
 async function deleteHistorial() {
     try {
-        const response = await fetch('http://localhost:3001/historial', {
+        const response = await fetch('http://localhost:3002/historial', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ export { deleteHistorial };
 
 async function deleteSolicitudesAceptadas() {
     try {
-        const response = await fetch(`http://localhost:3001/solicitudesAceptadas`, {
+        const response = await fetch(`http://localhost:3002/solicitudesAceptadas`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
