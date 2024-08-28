@@ -13,6 +13,31 @@ header {
   display: grid;
 }
 
+.btnEliminarHistorial {
+  height: 40px;
+  width: 200px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  background-color: #04082c;
+  border: #0000;
+  border-radius: 50px;
+  margin-left: 130px;
+  font-size: 16px;
+  transition: transform .1s, box-shadow .1s, background-color .3s, opacity .3s;
+  box-shadow: 0 4px 6px #0003;
+}
+
+.btnEliminarHistorial:hover {
+  opacity: .8;
+  background-color: #04082c;
+}
+
+.btnEliminarHistorial:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 4px #0003;
+}
+
 .divBusqueda {
   justify-content: center;
   margin-top: 20px;
@@ -148,6 +173,35 @@ tbody tr {
 
 tbody tr:hover {
   background: #e3e3e34f;
+}
+
+.modalEliminar {
+  src: url("AvenirLTStd-Book.a6bc3530.otf");
+  color: #04082c;
+  border-radius: 30px;
+  font-family: sans-serif;
+}
+
+.modalEliminar .swal2-title {
+  color: #04082c;
+  font-size: 18px;
+}
+
+.modalEliminar .swal2-icon.swal2-success {
+  color: #8e44ad !important;
+}
+
+.modalEliminar .swal2-popup {
+  background: #e3e3e3;
+  border: #0000;
+  padding: 20px;
+}
+
+.modalEliminado {
+  src: url("AvenirLTStd-Book.a6bc3530.otf");
+  color: #04082c;
+  border-radius: 30px;
+  font-family: sans-serif;
 }
 
 /*# sourceMappingURL=historial.6fd4baa1.css.map */

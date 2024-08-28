@@ -558,8 +558,10 @@ function hmrAccept(bundle, id) {
 
 },{}],"1lCog":[function(require,module,exports) {
 var _getSolicitud = require("../servicios/getSolicitud");
+var _deleteSolicitud = require("../servicios/deleteSolicitud");
 const cuerpoTablaHistorial = document.getElementById("cuerpoTablaHistorial");
 const btnAceptadas = document.getElementById("btnAceptadas");
+const btnEliminar = document.getElementById("btnEliminar");
 async function cargarHistorial() {
     const historial = await (0, _getSolicitud.getHistorial)(); // Obtener historial
     console.log(cuerpoTablaHistorial);
@@ -577,13 +579,48 @@ async function cargarHistorial() {
         cuerpoTablaHistorial.appendChild(fila);
     });
 }
+const usuarioDatos = JSON.parse(localStorage.getItem("usuarioDatos"));
+const selectRol = usuarioDatos ? usuarioDatos.rol : ""; // Extraer el rol con un operador ternario,
+if (selectRol === "Administrador") {
+    // Función para eliminar el historial
+    async function eliminarHistorial() {
+        const result = await Swal.fire({
+            title: "\xbfEst\xe1s seguro de que quieres eliminar todo el historial?",
+            text: "No podr\xe1s revertir esto",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#04082c",
+            cancelButtonColor: "#1D0C17",
+            confirmButtonText: "\xa1S\xed, eliminar!",
+            customClass: {
+                popup: "modalEliminar"
+            }
+        });
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "\xa1Eliminado!",
+                text: "El historial ha sido eliminado.",
+                icon: "success",
+                confirmButtonColor: "#04082c",
+                customClass: {
+                    popup: "modalEliminado"
+                }
+            });
+            await (0, _deleteSolicitud.deleteHistorial)(); // Llamar a la función para eliminar el historial
+            cargarHistorial(); // Recargar el historial para reflejar los cambios
+        }
+    }
+    // Evento al botón de eliminar
+    btnEliminar.addEventListener("click", eliminarHistorial);
+}
+// Cargar el historial al cargar la página
 cargarHistorial();
 function verAceptadas() {
     window.location.href = "solcitudesAceptadas.html";
 }
 btnAceptadas.addEventListener("click", verAceptadas);
 
-},{"../servicios/getSolicitud":"2Hfe7"}],"2Hfe7":[function(require,module,exports) {
+},{"../servicios/getSolicitud":"2Hfe7","../servicios/deleteSolicitud":"1UBwW"}],"2Hfe7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSolicitud", ()=>getSolicitud);
@@ -685,6 +722,67 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["aXeaW","1lCog"], "1lCog", "parcelRequire6682")
+},{}],"1UBwW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "deleteSolicitud", ()=>deleteSolicitud);
+parcelHelpers.export(exports, "deleteHistorial", ()=>deleteHistorial);
+parcelHelpers.export(exports, "deleteSolicitudesAceptadas", ()=>deleteSolicitudesAceptadas);
+async function deleteSolicitud(id) {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`Error deleting request with id ${id}`);
+        return {
+            message: `Request with id ${id} deleted successfully`
+        };
+    } catch (error) {
+        console.error("Error deleting request:", error);
+        // Puedes mostrar un mensaje al usuario aquí si lo deseas
+        throw error;
+    }
+}
+// servicios/deleteSolicitud.js
+async function deleteHistorial() {
+    try {
+        const response = await fetch("http://localhost:3001/historial", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`); // Mostrar el estado HTTP en el error
+        return {
+            message: "All requests deleted successfully"
+        };
+    } catch (error) {
+        console.error("Error deleting all requests:", error);
+        throw error;
+    }
+}
+async function deleteSolicitudesAceptadas() {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudesAceptadas`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) throw new Error("Error deleting all requests");
+        return {
+            message: "All requests deleted successfully"
+        };
+    } catch (error) {
+        console.error("Error deleting all requests:", error);
+        // Puedes mostrar un mensaje al usuario aquí si lo deseas
+        throw error;
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aXeaW","1lCog"], "1lCog", "parcelRequire6682")
 
 //# sourceMappingURL=historial.c40667c0.js.map

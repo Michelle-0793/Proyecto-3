@@ -28,6 +28,34 @@ header{
     border-style: solid; 
 }
 */
+
+/*ESTILOS BOTÓN ELIMINAR*/
+
+.btnEliminarHistorial {
+    height: 40px;
+    width: 200px;
+    border: transparent;
+    font-size: 16px;
+    border-radius: 50px;
+    background-color: #1d0c17;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.3s, opacity 0.3s; /* Transiciones suaves para el efecto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+    margin-left: 130px;
+}
+
+.btnEliminarHistorial:hover {
+    background-color: #04082c; /* Cambia el color de fondo al pasar el cursor */
+    opacity: 0.8; /* Cambia la opacidad al pasar el cursor */
+}
+
+.btnEliminarHistorial:active {
+    transform: translateY(4px); /* Efecto de hundimiento */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más pequeña al presionar */
+}
+
 .divBusqueda {
     display: flex;
     justify-content: center;
@@ -165,4 +193,33 @@ tbody tr {
 
 tbody tr:hover {
     background: rgba(227, 227, 227, 0.308);
+}
+/*ESTILOS MODALES*/
+
+.modalEliminar {
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    color: #04082c; /* Cambia el color del texto */
+    border-radius: 30px;
+  }
+
+  .modalEliminar .swal2-title {
+    font-size: 18px; /* Cambia el tamaño del título */
+    color: #04082c; /* Cambia el color del título */
+  }
+
+  .modalEliminar .swal2-icon.swal2-success {
+    color: #8e44ad !important; /* Cambia el color del ícono de éxito */
+  }
+  
+  .modalEliminar .swal2-popup {
+    background: #E3E3E3; /* Cambia el color de fondo */
+    border: transparent; /* Cambia el borde del modal */
+    padding: 20px;
+  }
+.modalEliminado{
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    color: #04082c; /* Cambia el color del texto */
+    border-radius: 30px;
 }

@@ -30,7 +30,7 @@ async function deleteHistorial() {
             }
         });
         if (!response.ok) {
-            throw new Error('Error deleting all requests');
+            throw new Error(`HTTP error! Status: ${response.status}`); // Mostrar el estado HTTP en el error
         }
         return { message: 'All requests deleted successfully' };
     } catch (error) {
@@ -40,3 +40,26 @@ async function deleteHistorial() {
 }
 
 export { deleteHistorial };
+
+
+
+async function deleteSolicitudesAceptadas() {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudesAceptadas`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!response.ok) {
+            throw new Error('Error deleting all requests');
+        }
+        return { message: 'All requests deleted successfully' };
+    } catch (error) {
+        console.error('Error deleting all requests:', error);
+        // Puedes mostrar un mensaje al usuario aquí si lo deseas
+        throw error;
+    }
+}
+
+export { deleteSolicitudesAceptadas };

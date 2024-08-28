@@ -267,35 +267,41 @@ tbody tr:hover {
   border: #0000;
 }
 
-.modalSolicitud {
+.my-title {
   src: url("AvenirLTStd-Book.a6bc3530.otf");
   color: #04082c;
   font-family: sans-serif;
-}
-
-.modalSolicitud .swal2-title {
-  color: #04082c;
   font-size: 18px;
 }
 
-.modalSolicitud .swal2-icon.swal2-success {
-  color: #8e44ad !important;
+.my-popup, .modal2 {
+  background-color: #fff;
+  border-radius: 30px;
 }
 
-.modalSolicitud .swal2-popup {
-  background: #e3e3e3;
-  border: #0000;
-  border-radius: 50px;
-  padding: 20px;
+.my-confirm-button {
+  color: #fff;
+  src: url("AvenirLTStd-Book.a6bc3530.otf");
+  background-color: #04082c;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.my-confirm-button:hover {
+  background-color: #04082c4f;
 }
 
 @media only screen and (max-width: 768px) {
   header {
-    width: 768px;
-    height: 240px;
-    grid-template-columns: 1fr;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    flex-direction: column;
     align-items: center;
     margin: 0;
+    display: flex;
   }
 
   .imgLogo {
@@ -304,32 +310,47 @@ tbody tr:hover {
     margin-top: 30px;
   }
 
-  .h3 {
+  h3 {
     font-size: 16px;
   }
 
-  .inputRegistro, .select {
-    width: 200px;
-    transform: none;
+  .divFechas {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+    display: flex;
   }
 
-  .divFechas {
-    grid-template-columns: 1fr;
-    margin-top: -20px;
+  .inputRegistro, .select {
+    width: 80%;
+    max-width: 200px;
+    text-align: center;
+    margin: 10px auto;
   }
 
   .btnHistorial, .btnEnviar {
-    width: 250px;
-    margin: -30px 0 10px;
+    width: 80%;
+    max-width: 200px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    font-size: 14px;
+    display: flex;
   }
 
   .divTabla {
-    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
     padding: 10px;
+    display: flex;
   }
 
   table {
-    max-width: 100px;
+    max-width: 100%;
     table-layout: auto;
     margin: 0 auto;
     font-size: 11px;
@@ -346,7 +367,9 @@ tbody tr:hover {
 
   td {
     text-align: center;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
 
   td:before {
@@ -360,28 +383,40 @@ tbody tr:hover {
   }
 }
 
-.modalSolicitud .swal2-popup {
-  text-align: center;
-  border-radius: 20px;
-  padding: 10px;
-}
-
 @media only screen and (max-width: 480px) {
   .inputRegistro, .select {
+    width: 90%;
+    max-width: 200px;
+    text-align: center;
+    margin: 10px auto;
     font-size: 14px;
   }
 
   header {
+    width: 434px;
     text-align: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
   }
 
   .divFechas {
-    padding: 10px;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
   }
 
   .btnHistorial, .btnEnviar {
+    width: 90%;
+    max-width: 200px;
     height: 35px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
     font-size: 14px;
+    display: flex;
   }
 
   .modalSolicitud .swal2-title {

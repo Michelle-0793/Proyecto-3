@@ -270,84 +270,110 @@ tbody tr:hover {
     cursor: pointer;
 }
 
-/*ESTILOS MODAL*/
- .modalSolicitud {
+
+/*MODALES*/
+.my-title {
     font-family: sans-serif;
     src: url(../font/AvenirLTStd-Book.otf);
-    color: #04082c; /* Cambia el color del texto */
-  }
+    font-size: 18px;
+    color: #04082c;
+}
 
-  .modalSolicitud .swal2-title {
-    font-size: 18px; /* Cambia el tamaño del título */
-    color: #04082c; /* Cambia el color del título */
-  }
+/* Personaliza el estilo del popup */
+.my-popup {
+    background-color: #ffffff;
+    border-radius: 30px; /* Ajusta el radio de las esquinas */
+}
 
-  .modalSolicitud .swal2-icon.swal2-success {
-    color: #8e44ad !important; /* Cambia el color del ícono de éxito */
-  }
-  
-  .modalSolicitud .swal2-popup {
-    background: #E3E3E3; /* Cambia el color de fondo */
-    border: transparent; /* Cambia el borde del modal */
-    border-radius: 50px;
-    padding: 20px;
-  }
+/* Personaliza el estilo del popup */
+.modal2{
+    background-color: #ffffff;
+    border-radius: 30px; /* Ajusta el radio de las esquinas */
+}
+/* Personaliza el botón de confirmación */
+.my-confirm-button {
+    background-color: #04082c;
+    color: #fff;
+    font-family: sans-serif;
+    src: url(../font/AvenirLTStd-Book.otf);
+    font-size: 14px; 
+    padding: 10px 20px;
+    border-radius: 5px; 
+}
 
+/* Cambiar el color del botón cuando se coloca el cursor encima */
+.my-confirm-button:hover {
+    background-color: #04082c4f;
+}
 
-
-  /* Media query para pantallas de 768px o menos */
+ /* Media query para pantallas de 768px o menos */
 @media only screen and (max-width: 768px) {
-
     header {
-        grid-template-columns: 1fr;
-        width:768px;
-        height: 240px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra los elementos verticalmente en el contenedor */
+        width: 100%;
+        height: auto;
         margin: 0;
-        align-items: center;
+        text-align: center; /* Centra el texto en el header */
     }
-    
+
     .imgLogo {
         margin-top: 30px;
         height: auto;
         width: 200px;
     }
 
-    .h3 {
+    h3 {
         font-size: 16px;
     }
 
-    .inputRegistro, .select {
-        width: 200px;
-        transform: none;
+    .divFechas {
+        display: flex;
+        flex-direction: column; /* Asegura que los elementos estén en una columna */
+        align-items: center; /* Centra los elementos horizontalmente */
+        width: 100%;
+        margin-top: -20px;
+        justify-content: center;
+        
     }
 
-    .divFechas {
-        margin-top: -20px;
-        grid-template-columns: 1fr;
+    .inputRegistro, .select {
+        width: 80%; /* Ajusta el ancho según sea necesario */
+        max-width: 200px;
+        margin: 10px auto; /* Centra los elementos horizontalmente */
+        text-align: center;
     }
 
     .btnHistorial, .btnEnviar {
-        width: 250px;
-        margin: 10px 0;
-        margin-top: -30px;
+        width: 80%; /* Ajusta el ancho según sea necesario */
+        max-width: 200px;
+        margin: 10px auto; /* Centra los botones horizontalmente */
+        font-size: 14px;
+        height: 35px;
+        display: flex;
+        align-items: center; /* Centra el texto verticalmente */
+        justify-content: center; /* Centra el texto horizontalmente */
     }
 
-    /* Ajuste de la tabla */
     .divTabla {
         padding: 10px;
-        justify-content: center; /* Centra el contenido dentro del contenedor */
+        display: flex;
+        flex-direction: column; /* Asegura que los elementos de la tabla estén en una columna */
+        align-items: center; /* Centra la tabla horizontalmente */
+        width: 100%;
     }
 
     table {
-        max-width: 100px;
-        margin: 0 auto; /* Centra la tabla automáticamente */
+        max-width: 100%; /* Ajusta la tabla al ancho del contenedor */
+        margin: 0 auto; /* Centra la tabla horizontalmente */
         font-size: 11px; /* Reduce ligeramente el tamaño de la fuente */
         table-layout: auto; /* Permite que la tabla ajuste el ancho de las columnas */
     }
 
     th, td {
-        padding: 5px 5px; /* Reduce el relleno para que quepa mejor en pantallas pequeñas */
-        text-align: center; 
+        padding: 5px;
+        text-align: center; /* Centra el contenido dentro de las celdas */
     }
 
     tbody tr {
@@ -355,12 +381,14 @@ tbody tr:hover {
     }
 
     td {
-        justify-content: space-between; /* Alinea el contenido de las celdas */
+        display: flex;
+        align-items: center; /* Centra verticalmente el contenido de las celdas */
+        justify-content: center; /* Centra horizontalmente el contenido de las celdas */
         text-align: center;
     }
 
     td::before {
-        content: attr(data-label); /* Muestra el nombre de la columna antes del valor */
+        content: attr(data-label);
         flex-basis: 50%; /* Ocupa el 50% del espacio disponible */
         font-weight: bold; /* Resalta el nombre de la columna */
     }
@@ -369,30 +397,44 @@ tbody tr:hover {
         border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Agrega la línea divisoria al final de cada fila */
     }
 }
-    
-    .modalSolicitud .swal2-popup {
-        padding: 10px;
-        border-radius: 20px;
-        text-align: center;
-    }
 
+
+
+/* Media query para pantallas de 480px o menos */
 @media only screen and (max-width: 480px) {
-
     .inputRegistro, .select {
         font-size: 14px;
+        width: 90%; /* Ajusta el ancho según sea necesario */
+        max-width: 200px;
+        margin: 10px auto; /* Centra los elementos horizontalmente */
+        text-align: center;
     }
 
     header {
-        text-align: center;
+        width: 434px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra los elementos verticalmente */
+        text-align: center; /* Centra el texto en el header */
     }
 
     .divFechas {
-        padding: 10px;
+        display: flex;
+        flex-direction: column; /* Asegura que los elementos estén en una columna */
+        align-items: center; /* Centra los elementos horizontalmente */
+        width: 100%;
+        text-align: center;
     }
 
     .btnHistorial, .btnEnviar {
+        width: 90%; /* Ajusta el ancho según sea necesario */
+        max-width: 200px;
+        margin: 10px auto; /* Centra los botones horizontalmente */
         font-size: 14px;
         height: 35px;
+        display: flex;
+        align-items: center; /* Centra verticalmente el texto del botón */
+        justify-content: center; /* Centra horizontalmente el texto del botón */
     }
 
     .modalSolicitud .swal2-title {

@@ -637,12 +637,26 @@ async function cargarSolicitudes() {
 async function enviarSolicitud() {
     // Validar que todos los campos estén llenos
     if (!cedula.value || !codigoComputadora.value || !sede.value || !fechaSalida.value || !fechaRegreso.value) {
-        mensaje.textContent = "Por favor, complete todos los campos";
+        Swal.fire({
+            title: "Por favor, complete todos los campos",
+            customClass: {
+                popup: "my-popup",
+                title: "my-title",
+                confirmButton: "my-confirm-button"
+            }
+        });
         return;
     }
     // Validar que se hayan aceptado los términos y condiciones
     if (!terminosCondiciones.checked) {
-        mensaje.textContent = "Debe aceptar los t\xe9rminos y condiciones";
+        Swal.fire({
+            title: "Debe aceptar los t\xe9rminos y condiciones",
+            customClass: {
+                popup: "my-popup",
+                title: "my-title",
+                confirmButton: "my-confirm-button"
+            }
+        });
         return;
     }
     // Crear un objeto con los datos de la nueva solicitud
@@ -663,7 +677,9 @@ async function enviarSolicitud() {
         showConfirmButton: false,
         timer: 1500,
         customClass: {
-            popup: "modalSolicitud"
+            popup: "modal2",
+            title: "my-title",
+            confirmButton: "my-confirm-button"
         }
     });
     console.log(nuevaSolicitud);
@@ -876,6 +892,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "deleteSolicitud", ()=>deleteSolicitud);
 parcelHelpers.export(exports, "deleteHistorial", ()=>deleteHistorial);
+parcelHelpers.export(exports, "deleteSolicitudesAceptadas", ()=>deleteSolicitudesAceptadas);
 async function deleteSolicitud(id) {
     try {
         const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
@@ -903,12 +920,30 @@ async function deleteHistorial() {
                 "Content-Type": "application/json"
             }
         });
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`); // Mostrar el estado HTTP en el error
+        return {
+            message: "All requests deleted successfully"
+        };
+    } catch (error) {
+        console.error("Error deleting all requests:", error);
+        throw error;
+    }
+}
+async function deleteSolicitudesAceptadas() {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudesAceptadas`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
         if (!response.ok) throw new Error("Error deleting all requests");
         return {
             message: "All requests deleted successfully"
         };
     } catch (error) {
         console.error("Error deleting all requests:", error);
+        // Puedes mostrar un mensaje al usuario aquí si lo deseas
         throw error;
     }
 }

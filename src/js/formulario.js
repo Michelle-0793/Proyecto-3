@@ -100,13 +100,27 @@ async function cargarSolicitudes() {
 async function enviarSolicitud() {
     // Validar que todos los campos estén llenos
     if (!cedula.value || !codigoComputadora.value || !sede.value || !fechaSalida.value || !fechaRegreso.value) {
-        mensaje.textContent = "Por favor, complete todos los campos";
+        Swal.fire({
+            title: "Por favor, complete todos los campos",
+            customClass: {
+              popup: 'my-popup',
+              title: 'my-title',
+              confirmButton: 'my-confirm-button'
+            }
+          });
         return;
     }
 
     // Validar que se hayan aceptado los términos y condiciones
     if (!terminosCondiciones.checked) {
-        mensaje.textContent = "Debe aceptar los términos y condiciones";
+        Swal.fire({
+            title: "Debe aceptar los términos y condiciones",
+            customClass: {
+              popup: 'my-popup',
+              title: 'my-title',
+              confirmButton: 'my-confirm-button'
+            }
+          });
         return;
     }
 
@@ -130,8 +144,10 @@ async function enviarSolicitud() {
         showConfirmButton: false,
         timer: 1500,
         customClass: {
-            popup: "modalSolicitud"
-        }
+            popup: 'modal2',
+            title: 'my-title',
+            confirmButton: 'my-confirm-button'
+          }
     });
     
     console.log(nuevaSolicitud);  

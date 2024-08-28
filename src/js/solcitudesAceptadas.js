@@ -1,5 +1,5 @@
 import { getSolicitudesAceptadas } from "../servicios/getSolicitud";
-import { deleteHistorial } from "../servicios/deleteSolicitud";
+import { deleteSolicitudesAceptadas } from "../servicios/deleteSolicitud";
 
 const cuerpoTablaHistorial = document.getElementById("cuerpoTablaHistorial");
 const btnEliminar = document.getElementById("btnEliminar");
@@ -22,8 +22,11 @@ async function cargarHistorial() {
         cuerpoTablaHistorial.appendChild(fila);
     });
 }
+const usuarioDatos = JSON.parse(localStorage.getItem("usuarioDatos"));
+const selectRol = usuarioDatos ? usuarioDatos.rol : ""; // Extraer el rol con un operador ternario,
 
-// Función para eliminar el historial
+if (selectRol==="Administrador") {
+   // Función para eliminar el historial
 async function eliminarHistorial() {
     const result = await Swal.fire({
         title: "¿Estás seguro de que quieres eliminar todo el historial?",
@@ -37,7 +40,6 @@ async function eliminarHistorial() {
             popup: "modalEliminar"
         }
     });
-
     if (result.isConfirmed) {
         Swal.fire({
             title: "¡Eliminado!",
@@ -47,14 +49,20 @@ async function eliminarHistorial() {
             customClass: {
                 popup: "modalEliminado"
             }
+            
         });
-        await deleteHistorial(); // Llamar a la función para eliminar el historial
+        await deleteSolicitudesAceptadas(); // Llamar a la función para eliminar el historial
         cargarHistorial(); // Recargar el historial para reflejar los cambios
-    }
+    } 
+}
+
+
+// Evento al botón de eliminar
+btnEliminar.addEventListener("click", eliminarHistorial);
+
 }
 
 // Cargar el historial al cargar la página
 cargarHistorial();
 
-// Evento al botón de eliminar
-btnEliminar.addEventListener("click", eliminarHistorial);
+

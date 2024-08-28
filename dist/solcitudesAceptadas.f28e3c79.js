@@ -579,38 +579,42 @@ async function cargarHistorial() {
         cuerpoTablaHistorial.appendChild(fila);
     });
 }
-// Función para eliminar el historial
-async function eliminarHistorial() {
-    const result = await Swal.fire({
-        title: "\xbfEst\xe1s seguro de que quieres eliminar todo el historial?",
-        text: "No podr\xe1s revertir esto",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#04082c",
-        cancelButtonColor: "#1D0C17",
-        confirmButtonText: "\xa1S\xed, eliminar!",
-        customClass: {
-            popup: "modalEliminar"
-        }
-    });
-    if (result.isConfirmed) {
-        Swal.fire({
-            title: "\xa1Eliminado!",
-            text: "El historial ha sido eliminado.",
-            icon: "success",
+const usuarioDatos = JSON.parse(localStorage.getItem("usuarioDatos"));
+const selectRol = usuarioDatos ? usuarioDatos.rol : ""; // Extraer el rol con un operador ternario,
+if (selectRol === "Administrador") {
+    // Función para eliminar el historial
+    async function eliminarHistorial() {
+        const result = await Swal.fire({
+            title: "\xbfEst\xe1s seguro de que quieres eliminar todo el historial?",
+            text: "No podr\xe1s revertir esto",
+            icon: "warning",
+            showCancelButton: true,
             confirmButtonColor: "#04082c",
+            cancelButtonColor: "#1D0C17",
+            confirmButtonText: "\xa1S\xed, eliminar!",
             customClass: {
-                popup: "modalEliminado"
+                popup: "modalEliminar"
             }
         });
-        await (0, _deleteSolicitud.deleteHistorial)(); // Llamar a la función para eliminar el historial
-        cargarHistorial(); // Recargar el historial para reflejar los cambios
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "\xa1Eliminado!",
+                text: "El historial ha sido eliminado.",
+                icon: "success",
+                confirmButtonColor: "#04082c",
+                customClass: {
+                    popup: "modalEliminado"
+                }
+            });
+            await (0, _deleteSolicitud.deleteSolicitudesAceptadas)(); // Llamar a la función para eliminar el historial
+            cargarHistorial(); // Recargar el historial para reflejar los cambios
+        }
     }
+    // Evento al botón de eliminar
+    btnEliminar.addEventListener("click", eliminarHistorial);
 }
 // Cargar el historial al cargar la página
 cargarHistorial();
-// Evento al botón de eliminar
-btnEliminar.addEventListener("click", eliminarHistorial);
 
 },{"../servicios/getSolicitud":"2Hfe7","../servicios/deleteSolicitud":"1UBwW"}],"2Hfe7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -719,6 +723,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "deleteSolicitud", ()=>deleteSolicitud);
 parcelHelpers.export(exports, "deleteHistorial", ()=>deleteHistorial);
+parcelHelpers.export(exports, "deleteSolicitudesAceptadas", ()=>deleteSolicitudesAceptadas);
 async function deleteSolicitud(id) {
     try {
         const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
@@ -746,12 +751,30 @@ async function deleteHistorial() {
                 "Content-Type": "application/json"
             }
         });
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`); // Mostrar el estado HTTP en el error
+        return {
+            message: "All requests deleted successfully"
+        };
+    } catch (error) {
+        console.error("Error deleting all requests:", error);
+        throw error;
+    }
+}
+async function deleteSolicitudesAceptadas() {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudesAceptadas`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
         if (!response.ok) throw new Error("Error deleting all requests");
         return {
             message: "All requests deleted successfully"
         };
     } catch (error) {
         console.error("Error deleting all requests:", error);
+        // Puedes mostrar un mensaje al usuario aquí si lo deseas
         throw error;
     }
 }
